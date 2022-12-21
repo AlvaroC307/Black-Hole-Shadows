@@ -3,11 +3,11 @@ import numpy as np
 import sympy as sp
 import math
 
-from sympy import*
+# Definir los simbolos a usar
+M=sp.symbols("M")
+t,r,theta,phi=sp.symbols("t,r,theta,phi")
 
-M=symbols("M")
-t,r,theta,phi=symbols("t,r,theta,phi")
-
+# Definicion de la Metrica
 g00=-(1-2*M/r)
 g01=0
 g02=0
@@ -23,6 +23,19 @@ g23=0
 g30=0
 g31=0
 g32=0
-g33=r**2*sin(theta)**2
+g33=r**2*sp.sin(theta)**2
 
-G= np.array([[g00,g01,g02,g03],[g10,g11,g12,g13],[g20,g21,g22,g23],[g30,g31,g32,g33]])
+# Metrica en forma matricial
+G = sp.Matrix([[g00,g01,g02,g03],[g10,g11,g12,g13],[g20,g21,g22,g23],[g30,g31,g32,g33]])
+
+def metric(i,j):
+    return G[i,j]
+
+
+def inverse_metric(i,j):
+    return G.inv(method="LU")[i,j]
+
+
+#print(G[0,0])    
+#print(metric(0,0)) 
+#print(inverse_metric(0,0)) 
