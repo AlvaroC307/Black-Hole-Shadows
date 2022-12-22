@@ -5,12 +5,12 @@ import math
 
 from sympy import Symbol
 
-# Parametros del Agujero Negro (Masa, Spin, Carga electrica y Carga Magnetica)
+# Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
 M=1
 a=0
 Qe=0
 Qm=0
 
-# Posicion del Observador 
+# Posicion del Observador y Condiciones Iniciales
 r_0= 0
 theta_0= 0
