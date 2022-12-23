@@ -2,4 +2,8 @@
 
 ¿Que es mas eficiente? Poner los simbolos de christoffel en un .txt/.dat o llamarles como una funcion
 Preguntar a Marc si me dan una metrica numerica como está dada, porque igual los simbolos de crhistoffel cambian para cada punto
-Igual mejor eso cuando ya este el codigo entero hecho, como una version 2, que acepte merticas numericas
+Igual mejor eso cuando ya este el codigo entero hecho, como una version 2, que acepte metricas numericas
+
+Fichero independiente para resolver la ecuacion de las geodesicas
+
+Crear una inicializacion antes del montecarlo para tener siempre puntos claves, por ejemplo, ejes x,y...
