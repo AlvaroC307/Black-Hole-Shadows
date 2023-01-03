@@ -2,6 +2,7 @@
 import numpy as np
 import sympy as sp
 import math
+import random
 
 # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
 M=1
@@ -15,3 +16,5 @@ theta_0= 0
 
 # Numero de Pixeles en un lado, el numero de pixele total será, N_pix * N_pix
 N_pix=100
+
+rnd=random.random()

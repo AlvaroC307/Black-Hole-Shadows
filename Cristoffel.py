@@ -16,6 +16,8 @@ coord=[t,r,theta,phi]
 # Definicion de una funcion para calcular las parciales de la metrica,
 # el imput (k) es el numero de la lista de coordenadas sobre la que se deriva
 
+Metric.G
+
 def partial_metric(i,j,k):
     return sp.diff(metric(i,j),coord[k])
 
