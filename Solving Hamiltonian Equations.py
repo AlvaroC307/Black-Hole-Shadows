@@ -47,7 +47,7 @@ mu2 = 0  # Como son para geodesicas luminosas siempre se tomara mu^2=0, esto ya 
 
 
 
-#Definicion del Hamitoniano
+#Definicion del Hamitoniano (REVISAR CREO QUE FALTA ALGO, SALE P_T_0 en vez de 0, o reescibir con un for y la metrica ¿para que?)
 def H(r, theta, p_r, p_theta):
      sumando1 = (a*L_z-(r**2+a**2)*E)**2/(Delta(r,M,a))
      sumando2 = (L_z-a*E*(math.sin(theta))**2)**2/(math.sin(theta))**2
