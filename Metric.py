@@ -36,6 +36,4 @@ G = sp.Matrix([[g00, g01, g02, g03], [g10, g11, g12, g13],
               [g20, g21, g22, g23], [g30, g31, g32, g33]])
 Inv_G = G.inv(method="LU")
 
-for i in range(4):
-    for j in range(4):
-        print(sp.simplify(Inv_G[i,j]))
+

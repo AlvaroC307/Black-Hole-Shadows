@@ -25,3 +25,8 @@ def Mom_temp(t,r,phi,theta,p_r,p_theta,p_phi,M,a):
         p_t=p_t_positivo
 
     return p_t
+
+def Mom_Sup_r(t,r,phi,theta,p_t,p_theta,p_phi,M,a):
+    coord=(t,r,phi,theta)
+    param=(M,a)
+    
