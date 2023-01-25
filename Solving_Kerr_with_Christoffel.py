@@ -21,8 +21,8 @@ r_0 = 5*M
 theta_0 = math.pi/4
 phi_0 = 0
 t_0 = 0
-p_r_0 = -1.0
-p_theta_0 = 0.0
+p_r_0 = 1.00
+p_theta_0 = 0.00
 p_phi_0 = 0.0
 # Definimos P_t_0 para que sean geodesicas luminosas, es decir -mu^2=0
 coords_0=(t_0, r_0, phi_0, theta_0)
@@ -48,13 +48,11 @@ for i in range(4):
 
 
 #Definicion del Hamitoniano 
-def H(t, r, phi, theta, p_r, p_theta):
+def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta):
      coord_H=(t,r,phi,theta)
-     sumando_t_phi = E**2*Inv_G(0,0,*coord_H,*param)+L_z**2*Inv_G(2,2,*coord_H,*param)-E*L_z*Inv_G(0,2,*coord_H,*param)
+     sumando_t_phi = p_t**2*Inv_G(0,0,*coord_H,*param)+p_phi**2*Inv_G(2,2,*coord_H,*param)+2*p_t*p_phi*Inv_G(0,2,*coord_H,*param)
      sumando_r_theta = p_r**2*Inv_G(1,1,*coord_H,*param)+p_theta**2*Inv_G(3,3,*coord_H,*param)
      return (sumando_t_phi+sumando_r_theta)/2
-
-
 
 # Definir las 8 funciones que se van a integrar con los simbolos de christoffel
 
@@ -130,29 +128,30 @@ def ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
 
 def Switch_punto(i, t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
     if i == 0:
-        return ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
     elif i == 1:
-        return ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
     elif i == 2:
-        return ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
     elif i == 3:
-        return ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
     elif i == 4:
-        return t_punto(ps_t)
+        return -t_punto(ps_t)
     elif i == 5:
-        return r_punto(ps_r)
+        return -r_punto(ps_r)
     elif i==6:
-        return phi_punto(ps_phi)
+        return -phi_punto(ps_phi)
     elif i==7:
-        return theta_punto(ps_theta)
+        return -theta_punto(ps_theta)
 
 # Metodo de RK4 para 8 ecuaciones diferenciales de primer orden
 
 # Datos extra necesarios para la resolucion numerica
 
 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos (o esta en una orbita estable)??????
-N = 500
+N =1000
 h = 0.01  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR)
+veces_r=0
 
 
 # Inicializar Vectores con las coordenadas y sus momentos, act hace referencia a los actuales y ant a a los anteriores
@@ -193,9 +192,15 @@ for i in range(N):
     for j in range(8):
         coord_act[j] = coord_ant[j]+(Paso[j]/6)*(K1[j]+2*K2[j]+2*K3[j]+K4[j])
 
-    # Hacer que las constantes sigan constantes
 
-    
+    # Hacer que las constantes sigan siendo constantes
+
+    ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
+    cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(ps_r_cambio)
+
+    if cambio_porc_r<0.01:
+        coord_act[1]=ps_r_cambio
+        veces_r+=1
 
     # Escribir en un fichero
 
@@ -205,17 +210,19 @@ for i in range(N):
     # Lo que queda del for es simplemente para comprobar cosas
     
     p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
-    Papadopoulos=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])       #cambiar el nombre IMPORTANTE
+    coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
     for i in range(4):
-        p_t+=G(0, i, *Papadopoulos, *param)*coord_act[i]
-        p_r+=G(1, i, *Papadopoulos, *param)*coord_act[i]
-        p_phi+=G(2, i, *Papadopoulos, *param)*coord_act[i]
-        p_theta+=G(3, i, *Papadopoulos, *param)*coord_act[i]
+        p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
+        p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
+        p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
+        p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
     #print(coord_act[3]**2+(cos(coord_act[7]))**2*(-(a*coord_act[0])**2+(coord_act[2]/(sin(coord_act[7])))**2))
-    #print(H(coord_act[4], coord_act[5], coord_act[6], coord_act[7], p_r, p_theta))
+    #print(H(coord_act[4], coord_act[5], coord_act[6], coord_act[7], p_t, p_r, p_phi, p_theta))
     #print(-p_t)
     #print(p_phi)
+    print(coord_ant[1]-coord_act[1])
 
 
 file_manager.close()
 print("ta chido")
+print(veces_r)

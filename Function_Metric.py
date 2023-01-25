@@ -101,7 +101,7 @@ def Christoffel(i,j,k,t,r,phi,theta,M,a):
         if j==0:
             if k==0:
                 return 0
-            if k==1:
+            if k==1: 
                 return 1.0*M*(a**2 + r**2)*(-a**2*cos(theta)**2 + r**2)/((a**2*cos(theta)**2 + r**2)**2*(-2*M*r + a**2 + r**2))
             if k==2:
                 return 0
