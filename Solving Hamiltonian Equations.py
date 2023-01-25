@@ -28,7 +28,7 @@ p_theta_0 = 0.0
 p_phi_0 = 0.0
 # Definimos P_t_0 para que sean geodesicas luminosas, es decir -mu^2=0
 coord_0=(t_0,r_0,phi_0,theta_0)
-p_t_0=Mom_temp(*coord_0,p_r_0,p_theta_0,p_phi_0,*param)
+p_t_0=Mom_temp(*coord_0,p_r_0,p_phi_0,p_theta_0,*param)
 
 # Calculo de las Constantes del Movimiento para ciertas condiciones "iniciales"
 E = -p_t_0
