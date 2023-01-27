@@ -14,8 +14,9 @@ from Equations_to_Solve_Christoffel import *
 # Este codigo se tiene que ejecutar mucho, para cada resolucion de las ecuaciones
 
 #Definicion del Hamitoniano 
-def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta):
+def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta, M, a):
      coord_H=(t,r,phi,theta)
+     param=(M, a)
      sumando_t_phi = p_t**2*Inv_G(0,0,*coord_H,*param)+p_phi**2*Inv_G(2,2,*coord_H,*param)+2*p_t*p_phi*Inv_G(0,2,*coord_H,*param)
      sumando_r_theta = p_r**2*Inv_G(1,1,*coord_H,*param)+p_theta**2*Inv_G(3,3,*coord_H,*param)
      return (sumando_t_phi+sumando_r_theta)/2
