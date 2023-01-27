@@ -27,7 +27,24 @@ def Mom_temp(t,r,phi,theta,p_r,p_phi,p_theta,M,a):
     return p_t
 
 
-# En este caso es para cambiar p_r, para ello, comprobamos el signo con el p_r calculado con el RK4
+def Mom_Sup_temp(t,r,phi,theta,ps_r,ps_phi,ps_theta,M,a):
+
+    coord=(t, r, phi, theta)
+    param=(M, a)
+    A=G(0, 0, *coord, *param)
+    B=2*ps_phi*G(0, 2, *coord, *param)
+    C=ps_r**2*G(1, 1, *coord, *param) +ps_phi**2*G(2, 2, *coord, *param) +ps_theta**2*G(3, 3, *coord, *param)
+    p_t_positivo=(-B+math.sqrt(B**2-4*A*C))/(2*A)
+    
+    if p_t_positivo<0:
+        p_t=(-B-math.sqrt(B**2-4*A*C))/(2*A)
+    else:
+        p_t=p_t_positivo
+
+    return p_t
+
+
+# En este caso es para cambiar p^r, para ello, comprobamos el signo con el p^r calculado con el RK4
 # Esta ecuacion es de la forma A*p^r**2+C=0, A=g_tt, C=...
 def Mom_Sup_r(t,r,phi,theta,ps_t,ps_r,ps_phi,ps_theta,M,a):
     coord=(t, r, phi, theta)
@@ -41,3 +58,19 @@ def Mom_Sup_r(t,r,phi,theta,ps_t,ps_r,ps_phi,ps_theta,M,a):
         ps_r_final=math.sqrt(-C/A)
 
     return ps_r_final
+
+
+# En este caso es para cambiar p^theta, para ello, comprobamos el signo con el p^theta calculado con el RK4
+# Esta ecuacion es de la forma A*p^r**2+C=0, A=g_tt, C=...
+def Mom_Sup_theta(t, r, phi, theta, ps_theta, M, a, E, L_z, Q):
+    coords=(t, r, phi, theta)
+    p_theta_cambio=math.sqrt(Q+(a*E*math.cos(theta))**2-(L_z/math.tan(theta))**2)
+
+    ps_theta_cambio=Inv_G(3 , 3, *coords, M, a)*p_theta_cambio #AQUI YA SE UTILIZA QUE ES UN AGUJERO NEGRO DE KERR, PARA GENERALIZAR HAY QUE CAMBIAR PARTE DE ESTA FUNCION
+
+    if ps_theta<0:
+        ps_theta_final=-ps_theta_cambio
+    else:
+        ps_theta_final=ps_theta_cambio
+
+    return ps_theta_final
