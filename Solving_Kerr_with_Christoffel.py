@@ -21,16 +21,16 @@ def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta, M, a):
      sumando_r_theta = p_r**2*Inv_G(1,1,*coord_H,*param)+p_theta**2*Inv_G(3,3,*coord_H,*param)
      return (sumando_t_phi+sumando_r_theta)/2
 
-def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a, N, h):
+def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
 
     # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
     param=(M, a)
     coords_0=(t_0, r_0, phi_0, theta_0)
 
     # Datos extra necesarios para la resolucion numerica
-    # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos (lo da el usuario o viene de base¿???????)
-    N =1000
-    h = 0.05  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR) (Lo da el usuario o viene de base¿?¿?¿)
+    # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos 
+    N =5000
+    h = 0.01  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR) (¿Hacer una estimacion, tipo (r_0-2*M)/5*N? o algo del estilo)
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -150,7 +150,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
 
-    # Apuntar que no es sombra en un fichero
+    # Apuntar que no llega al horizonte de eventos en un fichero
     file_manager.close()
     return 0
 

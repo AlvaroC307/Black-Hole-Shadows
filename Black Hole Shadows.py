@@ -7,14 +7,14 @@ import random
 # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
 M=1
 a=0
-Qe=0
-Qm=0
 
 # Posicion del Observador y Condiciones Iniciales
-r_0= 0
-theta_0= 0
+t_0=0
+r_0= 5*M
+phi_0=0
+theta_0= math.pi/4
 
-# Numero de Pixeles en un lado, el numero de pixele total será, N_pix * N_pix
+# Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
 N_pix=100
 
-rnd=random.random()
+# rnd=random.random()    Usar esto para cuando haga un montecarlo
