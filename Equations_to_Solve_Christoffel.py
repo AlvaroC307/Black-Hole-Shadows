@@ -29,8 +29,9 @@ def theta_punto(ps_theta):
 
 # la ecuacion seria: dot(p^mu)=-sum(p^alpha*sum(p^beta*chris(mu,alpha,beta))), la ecuacion de la geodesica donde dot(x^mu)=p^mu
 
-def ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
+def ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     coords=(t,r,phi,theta)
+    param=(M, a)
     moms=[ps_t, ps_r, ps_phi, ps_theta]
     suma_alpha=0
     for alpha in range(4):
@@ -41,8 +42,9 @@ def ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
     return -suma_alpha
 
 
-def ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
+def ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     coords=(t,r,phi,theta)
+    param=(M, a)
     moms=[ps_t, ps_r, ps_phi, ps_theta]
     suma_alpha=0
     for alpha in range(4):
@@ -53,8 +55,9 @@ def ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
     return -suma_alpha
 
 
-def ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
+def ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     coords=(t,r,phi,theta)
+    param=(M, a)
     moms=[ps_t, ps_r, ps_phi, ps_theta]
     suma_alpha=0
     for alpha in range(4):
@@ -65,8 +68,9 @@ def ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
     return -suma_alpha
 
 
-def ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
+def ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     coords=(t,r,phi,theta)
+    param=(M, a)
     moms=[ps_t, ps_r, ps_phi, ps_theta]
     suma_alpha=0
     for alpha in range(4):
@@ -79,15 +83,15 @@ def ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
 
 # El menos se debe a que estamos integrando la ecuacion backwards¿deberia meterlo en la funcion?
 
-def Switch_punto(i, t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta):
+def Switch_punto(i, t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     if i == 0:
-        return -ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a)
     elif i == 1:
-        return -ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a)
     elif i == 2:
-        return -ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a)
     elif i == 3:
-        return -ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a)
     elif i == 4:
         return -t_punto(ps_t)
     elif i == 5:

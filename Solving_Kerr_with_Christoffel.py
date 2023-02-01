@@ -83,16 +83,16 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Obtener los valores K_ij del metodo RK4
         for j in range(8):
-            K1.append(Switch_punto(j, coord_ant[4], coord_ant[5], coord_ant[6], coord_ant[7], coord_ant[0], coord_ant[1], coord_ant[2], coord_ant[3]))
+            K1.append(Switch_punto(j, coord_ant[4], coord_ant[5], coord_ant[6], coord_ant[7], coord_ant[0], coord_ant[1], coord_ant[2], coord_ant[3], *param))
         for j in range(8):
             K2.append(Switch_punto(j, coord_ant[4]+(Paso[4]/2)*K1[4], coord_ant[5]+(Paso[5]/2)*K1[5], coord_ant[6]+(Paso[6]/2)*K1[6], coord_ant[7]+(Paso[7]/2)*K1[7],
-            coord_ant[0]+(Paso[0]/2)*K1[0], coord_ant[1]+(Paso[1]/2)*K1[1], coord_ant[2]+(Paso[2]/2)*K1[2], coord_ant[3]+(Paso[3]/2)*K1[3]))
+            coord_ant[0]+(Paso[0]/2)*K1[0], coord_ant[1]+(Paso[1]/2)*K1[1], coord_ant[2]+(Paso[2]/2)*K1[2], coord_ant[3]+(Paso[3]/2)*K1[3], *param))
         for j in range(8):
             K3.append(Switch_punto(j, coord_ant[4]+(Paso[4]/2)*K2[4], coord_ant[5]+(Paso[5]/2)*K2[5], coord_ant[6]+(Paso[6]/2)*K2[6], coord_ant[7]+(Paso[7]/2)*K2[7],
-            coord_ant[0]+(Paso[0]/2)*K2[0], coord_ant[1]+(Paso[1]/2)*K2[1], coord_ant[2]+(Paso[2]/2)*K2[2], coord_ant[3]+(Paso[3]/2)*K2[3]))
+            coord_ant[0]+(Paso[0]/2)*K2[0], coord_ant[1]+(Paso[1]/2)*K2[1], coord_ant[2]+(Paso[2]/2)*K2[2], coord_ant[3]+(Paso[3]/2)*K2[3], *param))
         for j in range(8):
             K4.append(Switch_punto(j, coord_ant[4]+(Paso[4])*K3[4], coord_ant[5]+(Paso[5])*K3[5], coord_ant[6]+(Paso[6])*K3[6], coord_ant[7]+(Paso[7])*K3[7],
-            coord_ant[0]+(Paso[0])*K3[0], coord_ant[1]+(Paso[1])*K3[1], coord_ant[2]+(Paso[2])*K3[2], coord_ant[3]+(Paso[3])*K3[3]))
+            coord_ant[0]+(Paso[0])*K3[0], coord_ant[1]+(Paso[1])*K3[1], coord_ant[2]+(Paso[2])*K3[2], coord_ant[3]+(Paso[3])*K3[3], *param))
 
         # Obtener las coordenadas actuales
         for j in range(8):
