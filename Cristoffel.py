@@ -2,6 +2,7 @@
 import numpy as np
 import sympy as sp
 import math
+import csv
 
 # Importar otros ficheros de la carpeta
 
@@ -30,9 +31,18 @@ def Christoffel(i,j,k):
     return sp.simplify(suma)
 
 
-# Print de cada simbolo de Christoffel para comprobar que sean correctos
+
+# Escribir cada simbolo de Christoffel en un fichero
+# Definimos un fichero en el que escribir los resultados que nos interesen
+file_Chris = open("./Data/Christoffel_symbols.csv", "w", newline="")
+csv_Chris = csv.writer(file_Chris)
 
 for i in range(4):
     for j in range(4):
         for k in range(4):
-            print("[",i,j,k,"] ",Christoffel(i,j,k))
+            Chris_ijk=Christoffel(i,j,k)
+            print("Progreso: [",i,j,k,"]")
+            csv_Chris.writerow([i,j,k,Chris_ijk])
+
+file_Chris.close()
+print("Escritura de los símbolos de Christoffel finalizada")

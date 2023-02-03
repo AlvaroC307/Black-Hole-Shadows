@@ -1,0 +1,12 @@
+Explicacion de como ejecutar los programas correctamente:
+
+--------MÉTRICAS ANALÍTICAS:
+
+Primer paso: Escribir la métrica analítica que se quiera comprobar en el archivo Metric.py en cada uno de los 16 g_munu (g00,g01,g02,...)
+             el programa esta escrito de tal manera que las coordenadas vayan en el siguiente orden: t-r-phi-theta
+
+Segundo paso: Ejecutar el programa Metric.py, con ello se obtiene la métrica inversa y se escriben los elementos de la métrica y la
+              métrica inversa en dos ficheros
+
+Tercer paso: Ejecutar el programa Cristoffel.py, este programa escribe los 64 símbolos de christoffel necesarios en otro fichero,
+             Los tres ficheros que se acaban de escribir estarán disponibles en la carpeta Data

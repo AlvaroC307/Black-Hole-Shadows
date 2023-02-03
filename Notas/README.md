@@ -7,7 +7,7 @@ Descripcion corta de los programas
 
 Metric.py utiliza Sympy para escribir una metrica analitica en forma de matriz para luego extraerla en otros ficheros si es necesario
 
-Cristoffel.py (si, esta mal escrito, falta una h), utiliza dicha metrica analitica y la utiliza para obtener los simbolos de christoffel, ya que estos son necesarios para resolver la ecuacion de las geodesicas general
+Cristoffel.py (si, esta mal escrito, falta una h), utiliza dicha metrica analitica y la utiliza para obtener los simbolos de christoffel, ya que estos son necesarios para resolver la ecuacion de las geodesicas general (BUG: a veces tarda en terminar de compilar, puede deberse a un problema con el simpyfy?¿ porque no termina de compilar)
 
 Function_Metric.py define la metrica y la metrica inversa como funciones, para poder estar usandolas en otros ficheros sin problema. También define una funcion para los simbolos de christoffel, he revisado y deberían estar bien, no se si se pueden pasar automaticamente desde Cristoffel.py, preguntar y buscar en google. 
 
