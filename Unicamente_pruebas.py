@@ -14,7 +14,7 @@ csvfile = csv.writer(file_manager)
 
 M=1
 a=0.9
-r_0 = 5*M
+r_0 = (1.4358)*M
 theta_0 = math.pi/3
 phi_0 = 0
 t_0 = 0
