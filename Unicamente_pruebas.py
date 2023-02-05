@@ -8,9 +8,8 @@ from Function_Metric import *
 
 
 
-file_manager=open('./Data/Christoffel_prueba_con_Mathematica.csv', "w", newline="")
+file_manager=open('./Data/Christoffel_prueba_cambio.csv', "w", newline="")
 csvfile = csv.writer(file_manager)
-
 
 M=1
 a=0.9
@@ -28,3 +27,4 @@ for i in range(4):
 
 
 file_manager.close()
+

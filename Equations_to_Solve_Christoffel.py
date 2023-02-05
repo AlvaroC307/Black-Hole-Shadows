@@ -1,7 +1,5 @@
 # Importar Librerias utiles
-import numpy as np
 import math
-import csv
 # Importar otros ficheros de la carpeta
 
 import Function_Metric

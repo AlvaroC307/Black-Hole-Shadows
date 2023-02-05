@@ -22,7 +22,7 @@ Equations_to_Solve_Christoffel.py, crea las 8 ecuaciones lineales de las geodesi
 Solving_Kerr_with_Christoffel.py, es una función para resolver las ecuaciones de las geodesicas generales mediante un método RK4, cada resolución se van adaptando p^r y p^theta para mantener constante a las constantes necesarias en el caso analítico de Kerr, si fuera un caso en general solo se cambiaría una de esas constantes. El bucle de resolución con el RK4, se para cuando llega al horizote de eventos de un agujero negro de Kerr en específico, esto habrá que cambiarlo para una resolución general. 
 
 
-Angle_to_Momentum.py es un fichero que se encargará de tener una función que cambie los ángulos definidos en un entorno de Minkowski alrededor de la pantalla, los cambia a los tres momentos p_r, p_phi, p_theta en coordenadas de Boyer-Lindquist
+Angle_to_Momentum.py es un fichero que se encargará de tener una función que cambie las coordenadas definidas en un entorno local de Minkowski alrededor de la pantalla, los cambia a los tres momentos p_r, p_phi, p_theta en coordenadas de Boyer-Lindquist
 
 
 Black Hole Shadows.py es el fichero final, que utiliza el resto para devolver la imagen de un agujero negro con sus detalles correspondientes.
