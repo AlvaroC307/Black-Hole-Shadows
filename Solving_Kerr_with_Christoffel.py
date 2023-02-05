@@ -29,8 +29,8 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
     # Datos extra necesarios para la resolucion numerica
     # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos 
-    N =5000
-    h = 0.01  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR) (¿Hacer una estimacion, tipo (r_0-2*M)/5*N? o algo del estilo)
+    N =1000
+    h = 0.05  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR) (¿Hacer una estimacion, tipo (r_0-2*M)/5*N? o algo del estilo)
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -101,30 +101,26 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta
 
-        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
-        cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(ps_r_cambio)
+        #ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
+        #cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
 
-        if cambio_porc_r<0.01:
-            coord_act[1]=ps_r_cambio
-            veces_cambio_r+=1
+        #if cambio_porc_r<0.01:
+        #    coord_act[1]=ps_r_cambio
+        #    veces_cambio_r+=1
 
-        ps_theta_cambio=Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, Q)
-        cambio_porc_theta=abs(ps_theta_cambio-coord_act[3])/abs(ps_theta_cambio)
+        #ps_theta_cambio=Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, Q)
+        #cambio_porc_theta=abs(ps_theta_cambio-coord_act[3])/abs(coord_act[3])
 
-        if  cambio_porc_theta<0.01:
-            coord_act[3]=ps_theta_cambio
-            veces_cambio_theta+=1
-
-
+        #if  cambio_porc_theta<0.01:
+        #    coord_act[3]=ps_theta_cambio
+        #    veces_cambio_theta+=1
 
 
-        # Comprobaciones si se va al horizonte de eventos o no (de momento lo voy a comprobar con el horizonte de eventros teorico)
-        # Cuando haya que hacer el programa de verdad bien, cambiarlo
-        R_horizon=M+math.sqrt(M**2-a**2)
-        if coord_act[5]<=R_horizon:
-            # Apuntar en un fichero si es black hole o no
-            file_manager.close()
-            return 0 # Esto para la funcion
+
+
+        # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie por al menos 5, comprobar que tire bien en todos los casos)
+        if abs(coord_act[4]-coord_ant[4])>=6:
+            return 1 # Esto significa que cae al agujero negro
 
 
         # Escribir en un fichero
@@ -134,34 +130,31 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Lo que queda del for es simplemente para comprobar cosas
         
-        #p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
-        #coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
-        #for i in range(4):
-        #    p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
+        p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
+        coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
+        for i in range(4):
+            p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
+            p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
+            p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
+            p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
 
-        #print(coord_act[3]**2+(cos(coord_act[7]))**2*(-(a*coord_act[0])**2+(coord_act[2]/(sin(coord_act[7])))**2))
-        #print(H(coord_act[4], coord_act[5], coord_act[6], coord_act[7], p_t, p_r, p_phi, p_theta))
-        #print(-p_t)
-        #print(p_phi)
-        #print(coord_ant[1]-coord_act[1])
+        print(p_phi-1)
 
 
-
-    # Apuntar que no llega al horizonte de eventos en un fichero
     file_manager.close()
-    return 0
+    return 0 # Esto significa que no cae al agujero negro en N pasos
 
 
 # Para hacer pruebas:
 M=1
-a=0
+a=0.9
 r_0 = 5*M
-theta_0 = math.pi/4
+theta_0 = math.pi/2
 phi_0 = 0
 t_0 = 0
 p_r_0 = 1.0
 p_theta_0 = 0.0
-p_phi_0 = 0.0
+p_phi_0 = 1.0
+p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+
+Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

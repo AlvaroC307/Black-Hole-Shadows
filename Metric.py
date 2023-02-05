@@ -33,7 +33,7 @@ g33 = r**2+(a*sp.cos(theta))**2
 # Metrica en forma matricial y cálculo de su inversa
 G = sp.Matrix([[g00, g01, g02, g03], [g10, g11, g12, g13],
               [g20, g21, g22, g23], [g30, g31, g32, g33]])
-Inv_G = G.inv(method="LU")
+Inv_G = (G.inv(method="LU"))
 
 
 
