@@ -38,11 +38,11 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
 
 
 # Para hacer pruebas
-x, y = 0 ,0
-M, a=1, 0 
-t_0, r_0, phi_0, theta_0=0, 5*M, 0, math.pi/2
+#x, y = 0, 0
+#M, a=1, 0 
+#t_0, r_0, phi_0, theta_0=0, 5*M, 0, math.pi/2
 
-coords_0=(t_0, r_0, phi_0, theta_0)
-param=(M, a)
+#coords_0=(t_0, r_0, phi_0, theta_0)
+#param=(M, a)
 
-print(Screen_to_Momentum(x,y,*coords_0,*param))
+#print(Screen_to_Momentum(x,y,*coords_0,*param))

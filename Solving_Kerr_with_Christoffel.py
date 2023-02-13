@@ -26,7 +26,6 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
     # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
     param=(M, a)
     coords_0=(t_0, r_0, phi_0, theta_0)
-
     # Datos extra necesarios para la resolucion numerica
     # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos 
     N =1000
@@ -65,8 +64,8 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
     veces_cambio_theta=0
 
     # Definimos un fichero en el que escribir los resultados que nos interesen
-    file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager)
+    #file_manager = open("./Data/Prueba.csv", "w", newline="")
+    #csv_manager = csv.writer(file_manager)
 
 
     # Método RK4 como tal, empieza aqui-----------------------------------
@@ -119,42 +118,39 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie por al menos 5, comprobar que tire bien en todos los casos)
-        if abs(coord_act[4]-coord_ant[4])>=6:
+        if abs(coord_act[4]-coord_ant[4])>=10:
             return 1 # Esto significa que cae al agujero negro
 
 
         # Escribir en un fichero
-
-        csv_manager.writerow(
-            coord_act)
+        #csv_manager.writerow(coord_act)
 
         # Lo que queda del for es simplemente para comprobar cosas
         
-        p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
-        coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
-        for i in range(4):
-            p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
-            p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
-            p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
-            p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
-
-        print(p_phi-1)
+        #p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
+        #coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
+        #for i in range(4):
+        #    p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
+        #    p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
+        #    p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
+        #    p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
 
 
-    file_manager.close()
+    #file_manager.close()
+
     return 0 # Esto significa que no cae al agujero negro en N pasos
 
 
 # Para hacer pruebas:
-M=1
-a=0.9
-r_0 = 5*M
-theta_0 = math.pi/2
-phi_0 = 0
-t_0 = 0
-p_r_0 = 1.0
-p_theta_0 = 0.0
-p_phi_0 = 1.0
-p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+#M=1
+#a=0.9
+#r_0 = 5*M
+#theta_0 = math.pi/3
+#phi_0 = 0
+#t_0 = 0
+#p_r_0 = 1
+#p_theta_0 = 10.0
+#p_phi_0 = -10.0
+#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
 
-Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

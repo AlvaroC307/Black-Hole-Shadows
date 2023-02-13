@@ -10,3 +10,10 @@ Segundo paso: Ejecutar el programa Metric.py, con ello se obtiene la métrica in
 
 Tercer paso: Ejecutar el programa Cristoffel.py, este programa escribe los 64 símbolos de christoffel necesarios en otro fichero,
              Los tres ficheros que se acaban de escribir estarán disponibles en la carpeta Data
+
+Cuarto paso: Introducir en el programa Black Hole Shadows los datos referentes al agujero negro que se quiera calcular la sombras
+             (Actualmente, solo funciona para agujeros negros tipo Kerr, ya que los unicos parámetros son a y M, preguntar a Mario como cambiarlo)
+             También se debe introducir el número de Pixeles, siendo una imagen N_pix*N_pix, depende del detalle que se quiera en la imagen 
+
+
+
