@@ -22,7 +22,7 @@ theta_0= math.pi/4
 coords_0=(t_0, r_0, phi_0, theta_0)
 
 # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
-N_pix=10
+N_pix=25
 
 
 
@@ -69,8 +69,6 @@ for i in range(N_pix+1):
                 # No cae al agujero negro
             else:
                 print('Error')
-
-# AÑADIR UNA BARRA DE PROGRESO
 
             
 # rnd=random.random()    Usar esto para cuando haga un montecarlo
