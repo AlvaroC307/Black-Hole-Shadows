@@ -14,10 +14,10 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Momento temporal general no solo Kerr 
 -Paso Adaptativo 
+-Volver a poner que se mantenga p_r
 --------------Version 1.x:
--Añadir Disco de Acrección 
--Volver a poner que se mantenga p_r 
--Cambio de angulo a x,y genéraico 
+-Añadir Disco de Acrección  
+-Cambio de angulo a x,y genérico 
 -Escribir bien los parametros 
 -4 colores diferentes dependiendo del cuadrante en el que acabe el fotón
 --------------Version x.0:
