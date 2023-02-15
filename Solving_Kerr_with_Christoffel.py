@@ -2,6 +2,7 @@
 import numpy as np
 import math
 import csv
+import time
 # Importar otros ficheros de la carpeta
 
 import Function_Metric
@@ -22,7 +23,7 @@ def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta, M, a):
      return (sumando_t_phi+sumando_r_theta)/2
 
 def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
-
+    Time_program_initial=time.time()
     # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
     param=(M, a)
     coords_0=(t_0, r_0, phi_0, theta_0)
@@ -64,8 +65,8 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
     veces_cambio_theta=0
 
     # Definimos un fichero en el que escribir los resultados que nos interesen
-    #file_manager = open("./Data/Prueba.csv", "w", newline="")
-    #csv_manager = csv.writer(file_manager)
+    file_manager = open("./Data/Prueba.csv", "w", newline="")
+    csv_manager = csv.writer(file_manager)
 
 
     # Método RK4 como tal, empieza aqui-----------------------------------
@@ -98,7 +99,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
             coord_act[j] = coord_ant[j]+(Paso[j]/6)*(K1[j]+2*K2[j]+2*K3[j]+K4[j])
 
 
-        # Hacer que las constantes sigan siendo constantes, p^r y p^theta
+        # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
         #ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
         #cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
@@ -114,43 +115,42 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
         #    coord_act[3]=ps_theta_cambio
         #    veces_cambio_theta+=1
 
+        # Fin del hacer que las cte sigan cte----------------------------------
 
 
-
-        # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie por al menos 5, comprobar que tire bien en todos los casos)
+        # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho)
         if abs(coord_act[4]-coord_ant[4])>=10:
+            Time_program_final=time.time()
+            print(Time_program_final-Time_program_initial)
             return 1 # Esto significa que cae al agujero negro
+
+        
+        if ((coord_act[5])>=10*M) and ((coord_act[5]-coord_ant[5])>0): #Elijo un valor más pequeño que 10?
+            Time_program_final=time.time()
+            print(Time_program_final-Time_program_initial)
+            return 0 # Esto significa que se va al infinito
 
 
         # Escribir en un fichero
-        #csv_manager.writerow(coord_act)
+        csv_manager.writerow(coord_act)
 
-        # Lo que queda del for es simplemente para comprobar cosas
-        
-        #p_t, p_r, p_phi, p_theta = 0, 0, 0, 0
-        #coords_tupla_act=(coord_act[4],coord_act[5],coord_act[6],coord_act[7])  
-        #for i in range(4):
-        #    p_t+=G(0, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_r+=G(1, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_phi+=G(2, i, *coords_tupla_act, *param)*coord_act[i]
-        #    p_theta+=G(3, i, *coords_tupla_act, *param)*coord_act[i]
+       
 
-
-    #file_manager.close()
+    file_manager.close()
 
     return 0 # Esto significa que no cae al agujero negro en N pasos
 
 
 # Para hacer pruebas:
-#M=1
-#a=0.9
-#r_0 = 5*M
-#theta_0 = math.pi/3
-#phi_0 = 0
-#t_0 = 0
-#p_r_0 = 1
-#p_theta_0 = 10.0
-#p_phi_0 = -10.0
-#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+M=1
+a=0.0
+r_0 = 5*M
+theta_0 = math.pi/3
+phi_0 = 0
+t_0 = 0
+p_r_0 = 1
+p_theta_0 = 10.0
+p_phi_0 = -10.0
+p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
 
-#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

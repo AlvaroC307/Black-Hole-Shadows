@@ -32,11 +32,11 @@ N_pix=25
 
 # Lo de arriba lo debe de dar el usuario, a partir de aqui, es el programa-----------------
 
-rho2_Sch=r_0/2*M
-angle_Sch=math.asin(math.sqrt((27*(rho2_Sch-1))/(4*(rho2_Sch**3)))) # Angulo de la sombra para un agujero negro de Schwarzschild con la misma masa
-L_Sch=r_0*math.tan(angle_Sch) # Radio para el angulo de schwarzschild
+rho2_Schwarzschild=r_0/2*M
+angle_Schwarzschild=math.asin(math.sqrt((27*(rho2_Schwarzschild-1))/(4*(rho2_Schwarzschild**3)))) # Angulo de la sombra para un agujero negro de Schwarzschild con la misma masa
+L_Schwarzschild=r_0*math.tan(angle_Schwarzschild) # Radio para el angulo de schwarzschild
 
-L_screen=3*L_Sch # Multiplicamos por 4 para que haya espacio para verlo bien
+L_screen=3*L_Schwarzschild # Multiplicamos por 4 para que haya espacio para verlo bien
 paso=L_screen/N_pix
 
 
@@ -62,10 +62,10 @@ for i in range(N_pix+1):
             k+=1
 
             if In_or_out==1:
-                csv_In.writerow([x,y])
+                csv_In.writerow([x, y])
                 # Cae al agujero negro
             elif In_or_out==0:
-                csv_Out.writerow([x,y])
+                csv_Out.writerow([x, y])
                 # No cae al agujero negro
             else:
                 print('Error')

@@ -1,5 +1,7 @@
-
+cambiar el tamaño del paso, N, y comprobar si se va muy lejos
 
 Crear una inicializacion antes del montecarlo para tener siempre puntos claves, por ejemplo, ejes x,y...
 
 Mirar que paquete es numba, que pone que va veces mas rapido que python basico
+
+Volver a añadir que p^r cambie para que se mantenga constante, aunque solo sea ese y el de carter no

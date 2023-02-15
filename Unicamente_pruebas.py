@@ -6,15 +6,15 @@ import csv
 import Function_Metric
 from Function_Metric import *
 
-N_pix=10
-L_screen=12 # Multiplicamos por 4 para que haya espacio para verlo bien
-paso=L_screen/N_pix
 
+h=0.1
 
-for i in range(N_pix+1):
-    for j in range(N_pix+1): 
-            x=i*paso-L_screen/2
-            y=j*paso-L_screen/2 # Estan mal definidas
+paso=[h,h]
 
-            print(x,y)
+h=0,2
+
+print(paso)
+
+#Añadir por ejemplo: si r_act-r_ant<0 && r_act>10M¿o menos incluso?, asumir que se ha ido a la verga
+
 
