@@ -29,3 +29,5 @@ Versiones Finales---------------------------
                  Añadido de comentarios sobre el progreso del programa
     Version 1.01 Cambio del programa SWC.py para que pare el cálculo de las geodésicas cuando la coordenada radial está aumentando
                  y es mayor que 10*M
+    Version 1.02 Cambio del programa Black_Hole_Shadows.py para tomar los valores y parámetros de un fichero y así no cambiarlo cada
+                 vez que se haga una imagen nueva

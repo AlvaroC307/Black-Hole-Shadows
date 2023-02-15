@@ -1,34 +1,42 @@
 # Importar Librerias utiles
-import sympy as sp
 import math
 import random
 import csv
+from math import *
 
 import Angle_to_Momentum
 from Angle_to_Momentum import *
 import Solving_Kerr_with_Christoffel
 from Solving_Kerr_with_Christoffel import *
 
-# Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
-M=1
-a=0
-param=(M,a)
+
+# Leer el fichero de inputs
+csv_Input= open('./Input/Input.csv', 'r')
+Reader_Input = csv.reader(csv_Input)
+
+list_Input=[]
+for row in Reader_Input:
+    content_input = row[1]
+    list_Input.append(content_input)
+
+
+# Masa del agujero negro
+M=eval(list_Input[0])
 
 # Posicion del Observador y Condiciones Iniciales
-t_0=0
-r_0= 5*M
-phi_0=0
-theta_0= math.pi/4
+t_0=eval(list_Input[1])
+r_0=eval(list_Input[2])
+phi_0=eval(list_Input[3])
+theta_0= eval(list_Input[4])
 coords_0=(t_0, r_0, phi_0, theta_0)
 
 # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
-N_pix=50
+N_pix=eval(list_Input[5])
 
+# Parametros del Agujero Negro (Spin, Carga electrica y Magnetica, etc)
 
-
-
-
-
+a=eval(list_Input[6])
+param=(M,a)
 
 # Lo de arriba lo debe de dar el usuario, a partir de aqui, es el programa-----------------
 
@@ -70,7 +78,7 @@ for i in range(N_pix+1):
             else:
                 print('Error')
 
-            
+csv_Input.close()
 # rnd=random.random()    Usar esto para cuando haga un montecarlo
 
 

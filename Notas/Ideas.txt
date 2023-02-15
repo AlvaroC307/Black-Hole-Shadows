@@ -19,7 +19,6 @@ Opciones mejorar programa:
 -Volver a poner que se mantenga p_r 
 -Cambio de angulo a x,y genéraico 
 -Escribir bien los parametros 
--Dar los valores iniciales en un fichero extra para no cambiar el programa cada vez 
 -4 colores diferentes dependiendo del cuadrante en el que acabe el fotón
 --------------Version x.0:
 -Aceptar métricas numéricas 
