@@ -2,7 +2,7 @@
 import numpy as np
 import math
 import csv
-import time
+#import time
 # Importar otros ficheros de la carpeta
 
 import Function_Metric
@@ -23,7 +23,7 @@ def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta, M, a):
      return (sumando_t_phi+sumando_r_theta)/2
 
 def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
-    Time_program_initial=time.time()
+    #Time_program_initial=time.time()
     # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
     param=(M, a)
     coords_0=(t_0, r_0, phi_0, theta_0)
@@ -120,14 +120,14 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho)
         if abs(coord_act[4]-coord_ant[4])>=10:
-            Time_program_final=time.time()
-            print(Time_program_final-Time_program_initial)
+        #    Time_program_final=time.time()
+        #    print(Time_program_final-Time_program_initial)
             return 1 # Esto significa que cae al agujero negro
 
         
         if ((coord_act[5])>=10*M) and ((coord_act[5]-coord_ant[5])>0): #Elijo un valor más pequeño que 10?
-            Time_program_final=time.time()
-            print(Time_program_final-Time_program_initial)
+        #    Time_program_final=time.time()
+        #    print(Time_program_final-Time_program_initial)
             return 0 # Esto significa que se va al infinito
 
 
@@ -142,15 +142,15 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
 # Para hacer pruebas:
-M=1
-a=0.0
-r_0 = 5*M
-theta_0 = math.pi/3
-phi_0 = 0
-t_0 = 0
-p_r_0 = 1
-p_theta_0 = 10.0
-p_phi_0 = -10.0
-p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+#M=1
+#a=0.0
+#r_0 = 5*M
+#theta_0 = math.pi/3
+#phi_0 = 0
+#t_0 = 0
+#p_r_0 = 1
+#p_theta_0 = 10.0
+#p_phi_0 = -10.0
+#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
 
-Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

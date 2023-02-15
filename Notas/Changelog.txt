@@ -1,0 +1,31 @@
+Versiones Alpha----------------------------
+
+    Alpha 0.1  Desarrollo de Christoffel.py y Metric.py mediante sympy
+    Alpha 0.11 Cambio de la manera de llamar a los elementos de las matrices G e Inv_G, ahora funciona llamando a una matriz directamente
+    
+    Alpha 0.2  Desarrollo de Solving_Hamiltonian_Equations.py básico
+    Alpha 0.21 Arreglo de diversos errores de Solving_Hamiltonian_Equations y cambios para su generalización
+
+Versiones Beta----------------------------
+
+    Beta 0.1  Desarrollo de Function_Metric.py y Solving_Kerr-With_Christoffel.py, a partir de ahora SWC.py,
+              en vez de con el hamiltoniano, cambio completo de como resolver las geodésicas
+    Beta 0.11 Reescritura de Function_Metric.py para que el programa tome los simbolos de Christoffel automaticamente y no haya
+              que pasarselos a mano 
+    Beta 0.12 Reescritura de Function.Metric.py para evitar programacion espaguetti, reduciendo el tamaño del fichero de 300 a 70
+              líneas totales
+    Beta 0.13 Diversas comprobaciones y eliminación de la parte del programa que cambiaba p^r y p^theta para mantener a m^2 y Q constantes
+
+    Beta 0.2  Cambio de SWC.py a una funcion para poder ejecutarlo en un futuro en Black_Hole_Shadows.py
+    Beta 0.21 SWC.py pasa a ser una función con 2 outputs
+
+    Beta 0.3  Escritura del programa Angle_to_Momentum.py especifico para la métrica de tipo Kerr
+    Beta 0.31 Escritura del programa Black_Hole_Shadows.py pero sin ser funcional completamente, no está bien definido los límites
+              de la pantalla, no existe una barra de progreso y no se escribe en ningún fichero, versión simplificada
+
+Versiones Finales---------------------------
+
+    Version 1.0  Escritura del programa Black_Hole_Shadows.py y primeras ejecuciones del programa para N_pix=10 y para N_pix=25.
+                 Añadido de comentarios sobre el progreso del programa
+    Version 1.01 Cambio del programa SWC.py para que pare el cálculo de las geodésicas cuando la coordenada radial está aumentando
+                 y es mayor que 10*M

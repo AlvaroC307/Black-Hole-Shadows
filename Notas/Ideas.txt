@@ -5,3 +5,24 @@ Crear una inicializacion antes del montecarlo para tener siempre puntos claves, 
 Mirar que paquete es numba, que pone que va veces mas rapido que python basico
 
 Volver a añadir que p^r cambie para que se mantenga constante, aunque solo sea ese y el de carter no
+
+El paso adaptativo que vaya multiplicado por r o algo¿?
+
+
+Opciones mejorar programa:
+
+--------------Version 1.0x:
+-Momento temporal general no solo Kerr 
+-Paso Adaptativo 
+--------------Version 1.x:
+-Añadir Disco de Acrección 
+-Volver a poner que se mantenga p_r 
+-Cambio de angulo a x,y genéraico 
+-Escribir bien los parametros 
+-Dar los valores iniciales en un fichero extra para no cambiar el programa cada vez 
+-4 colores diferentes dependiendo del cuadrante en el que acabe el fotón
+--------------Version x.0:
+-Aceptar métricas numéricas 
+-Montecarlo 
+-Usar Varias CPU para agilizar el programa
+
