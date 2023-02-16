@@ -29,8 +29,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
     coords_0=(t_0, r_0, phi_0, theta_0)
     # Datos extra necesarios para la resolucion numerica
     # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos 
-    N =1000
-    h = 0.05  # Tamaño del paso (AHORA MISMO IGUAL PARA TODOS; SE PUEDE CAMBIAR) (¿Hacer una estimacion, tipo (r_0-2*M)/5*N? o algo del estilo)
+    N =5000
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -59,7 +58,6 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
     coord_act = [ps_t_0, ps_r_0, ps_phi_0, ps_theta_0, t_0, r_0, phi_0, theta_0]
     coord_ant = []
-    Paso=[h,h,h,h,h,h,h,h] #En principio el paso es igual para las 8 ecuaciones
 
     veces_cambio_r=0
     veces_cambio_theta=0
@@ -80,6 +78,19 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
         K2 = []
         K3 = []
         K4 = []
+
+        if (coord_act[5]>75*M):
+            h=5
+        elif (coord_ant[5]>25*M):
+            h=2
+        elif (coord_ant[5]>10*M):
+            h=1
+        elif (coord_ant[5]>4*M):
+            h=0.1
+        else:
+            h=0.05
+
+        Paso=[h,h,h,h,h,h,h,h]
 
         # Obtener los valores K_ij del metodo RK4
         for j in range(8):
@@ -142,15 +153,15 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
 # Para hacer pruebas:
-#M=1
-#a=0.0
-#r_0 = 5*M
-#theta_0 = math.pi/3
-#phi_0 = 0
-#t_0 = 0
-#p_r_0 = 1
-#p_theta_0 = 10.0
-#p_phi_0 = -10.0
-#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+M=1
+a=0.9
+r_0 = 100*M
+theta_0 = math.pi/2
+phi_0 = 0
+t_0 = 0
+p_r_0 = 1
+p_theta_0 = 0
+p_phi_0 = 0
+p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
 
-#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

@@ -31,3 +31,4 @@ Versiones Finales---------------------------
                  y es mayor que 10*M
     Version 1.02 Cambio del programa Black_Hole_Shadows.py para tomar los valores y parámetros de un fichero y así no cambiarlo cada
                  vez que se haga una imagen nueva
+    Version 1.03 Generalización de Mom_temp para métricas no tipo Kerr. Paso Adaptativo para diversos valores de la coordenada radial

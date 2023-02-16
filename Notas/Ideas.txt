@@ -8,12 +8,13 @@ Volver a añadir que p^r cambie para que se mantenga constante, aunque solo sea 
 
 El paso adaptativo que vaya multiplicado por r o algo¿?
 
+Comprobaciones de como es una geodésica en el límite del agujero negro
 
 Opciones mejorar programa:
 
 --------------Version 1.0x:
--Momento temporal general no solo Kerr 
--Paso Adaptativo 
+-Momento temporal general no solo Kerr (Done in 1.03)
+-Paso Adaptativo (Done in 1.03)
 -Volver a poner que se mantenga p_r
 --------------Version 1.x:
 -Añadir Disco de Acrección  
@@ -22,6 +23,6 @@ Opciones mejorar programa:
 -4 colores diferentes dependiendo del cuadrante en el que acabe el fotón
 --------------Version x.0:
 -Aceptar métricas numéricas 
--Montecarlo 
+-Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir )
 -Usar Varias CPU para agilizar el programa
 
