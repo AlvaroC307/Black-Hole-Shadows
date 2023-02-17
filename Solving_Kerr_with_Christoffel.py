@@ -22,6 +22,21 @@ def H(t, r, phi, theta, p_t, p_r, p_phi, p_theta, M, a):
      sumando_r_theta = p_r**2*Inv_G(1,1,*coord_H,*param)+p_theta**2*Inv_G(3,3,*coord_H,*param)
      return (sumando_t_phi+sumando_r_theta)/2
 
+
+# Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
+def Paso_adap(r,M):
+    if (r>60*M):
+        h=5
+    elif (r>20*M):
+        h=2
+    elif (r>10*M):
+        h=1
+    elif (r>4*M):
+        h=0.1
+    else:
+        h=0.05
+    return h
+
 def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
     #Time_program_initial=time.time()
     # Parametros del Agujero Negro (Masa, Spin, Carga electrica y Magnetica, etc)
@@ -79,16 +94,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
         K3 = []
         K4 = []
 
-        if (coord_act[5]>75*M):
-            h=5
-        elif (coord_ant[5]>25*M):
-            h=2
-        elif (coord_ant[5]>10*M):
-            h=1
-        elif (coord_ant[5]>4*M):
-            h=0.1
-        else:
-            h=0.05
+        h=Paso_adap(coord_act[5], M)
 
         Paso=[h,h,h,h,h,h,h,h]
 
@@ -112,12 +118,16 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
-        #ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
-        #cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
+        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
+        if ps_r_cambio=="Imaginary":
+            return 1 # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
+        else:
+            cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
 
-        #if cambio_porc_r<0.01:
-        #    coord_act[1]=ps_r_cambio
-        #    veces_cambio_r+=1
+        if cambio_porc_r<0.01:
+            coord_act[1]=ps_r_cambio
+            veces_cambio_r+=1
+            print(veces_cambio_r)
 
         #ps_theta_cambio=Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, Q)
         #cambio_porc_theta=abs(ps_theta_cambio-coord_act[3])/abs(coord_act[3])
@@ -153,15 +163,15 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
 # Para hacer pruebas:
-M=1
-a=0.9
-r_0 = 100*M
-theta_0 = math.pi/2
-phi_0 = 0
-t_0 = 0
-p_r_0 = 1
-p_theta_0 = 0
-p_phi_0 = 0
-p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
+#M=1
+#a=0.999
+#r_0 = 100*M
+#theta_0 = math.pi/2
+#phi_0 = 0
+#t_0 = 0
+#p_r_0 = 1
+#p_theta_0 = 0
+#p_phi_0 = 0
+#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
 
-Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

@@ -32,3 +32,6 @@ Versiones Finales---------------------------
     Version 1.02 Cambio del programa Black_Hole_Shadows.py para tomar los valores y parámetros de un fichero y así no cambiarlo cada
                  vez que se haga una imagen nueva
     Version 1.03 Generalización de Mom_temp para métricas no tipo Kerr. Paso Adaptativo para diversos valores de la coordenada radial
+    Version 1.04 Reañadido de la funcion Mom_Sum_r, haciendo una comprobacion en caso de que la raiz sea imaginaria, se asuma que 
+                 ha caido al interior del agujero negro. Revisado y alterado el funcionamiento del paso adaptativo además de 
+                 convertirlo en una función extra.

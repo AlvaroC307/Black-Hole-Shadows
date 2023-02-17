@@ -13,11 +13,11 @@ Comprobaciones de como es una geodésica en el límite del agujero negro
 Opciones mejorar programa:
 
 --------------Version 1.0x:
--Momento temporal general no solo Kerr (Done in 1.03)
--Paso Adaptativo (Done in 1.03)
--Volver a poner que se mantenga p_r
+-Generalizar Mom_Sup_Temp
+-Ejes del gráfico
 --------------Version 1.x:
 -Añadir Disco de Acrección  
+-Plot en Python
 -Cambio de angulo a x,y genérico 
 -Escribir bien los parametros 
 -4 colores diferentes dependiendo del cuadrante en el que acabe el fotón

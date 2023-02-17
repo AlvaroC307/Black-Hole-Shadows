@@ -54,6 +54,10 @@ def Mom_Sup_r(t,r,phi,theta,ps_t,ps_r,ps_phi,ps_theta,M,a):
     A=G(1, 1, *coord, *param)
     C=ps_t**2*G(0, 0, *coord, *param) +ps_phi**2*G(2, 2, *coord, *param) +2*ps_phi*ps_t*G(0, 2, *coord, *param) +ps_theta**2*G(3, 3, *coord, *param)
 
+    
+    if (C/A>0):
+        return "Imaginary"
+
     if ps_r<0:
         ps_r_final=-math.sqrt(-C/A)
     else:
