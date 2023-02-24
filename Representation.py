@@ -1,0 +1,1 @@
+# Leer los ficheros de resultados para representarlo en un dibujo

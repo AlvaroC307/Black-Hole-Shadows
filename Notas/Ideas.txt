@@ -15,14 +15,16 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
+-Comprobar que g_rr cambia de signo para definir cuando cae dentro del agujero negro
+-Cambiar el limite 10M a dado por un parametro
 --------------Version 1.x:
 -Añadir Disco de Acrección  
--Plot en Python
 -Cambio de angulo a x,y genérico 
 -Escribir bien los parametros 
--4 colores diferentes dependiendo del cuadrante en el que acabe el fotón
+-4 colores diferentes dependiendo del cuadrante en el que acabe el fotón (funcion para comprobarlo, usar Minkowski)
 --------------Version x.0:
 -Aceptar métricas numéricas 
+-Plot en Python
 -Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir )
 -Usar Varias CPU para agilizar el programa
 

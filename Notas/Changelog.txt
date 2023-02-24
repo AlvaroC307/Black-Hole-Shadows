@@ -35,3 +35,5 @@ Versiones Finales---------------------------
     Version 1.04 Reañadido de la funcion Mom_Sum_r, haciendo una comprobacion en caso de que la raiz sea imaginaria, se asuma que 
                  ha caido al interior del agujero negro. Revisado y alterado el funcionamiento del paso adaptativo además de 
                  convertirlo en una función extra.
+
+    Version 1.1  Utilizando Minkowski a partir de r=10M, calcular en que cuadrante cae el fotón y su color. 

@@ -61,7 +61,7 @@ csv_Out = csv.writer(file_Out)
 for i in range(N_pix+1):
     for j in range(N_pix+1): 
             x=i*paso-L_screen/2
-            y=j*paso-L_screen/2 # Estan mal definidas
+            y=j*paso-L_screen/2 
             list_momentum=Screen_to_Momentum(x, y, *coords_0, *param)
             tupla_momentum=(list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
             In_or_out=Geodesic_Chris(*coords_0, *tupla_momentum , *param)
@@ -69,14 +69,12 @@ for i in range(N_pix+1):
             print("Progreso:", int(k*Porc_Avance), "%")
             k+=1
 
-            if In_or_out==1:
-                csv_In.writerow([x, y])
+            if In_or_out=="Black":
+                csv_In.writerow([x, y, "Black"])
                 # Cae al agujero negro
-            elif In_or_out==0:
-                csv_Out.writerow([x, y])
-                # No cae al agujero negro
             else:
-                print('Error')
+                csv_Out.writerow([x, y, In_or_out])
+                # No cae al agujero negro y el tercer elemento es el color que tiene el pixel, si pone "None" es que es el eje x o z
 
 csv_Input.close()
 # rnd=random.random()    Usar esto para cuando haga un montecarlo

@@ -11,6 +11,7 @@ import Momento_Temporal_Inicial
 from Momento_Temporal_Inicial import *
 import Equations_to_Solve_Christoffel
 from Equations_to_Solve_Christoffel import *
+import Background as Backg
 
 # Este codigo se tiene que ejecutar mucho, para cada resolucion de las ecuaciones
 
@@ -120,14 +121,14 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
         if ps_r_cambio=="Imaginary":
-            return 1 # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
+            return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
         else:
             cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
 
         if cambio_porc_r<0.01:
             coord_act[1]=ps_r_cambio
-            veces_cambio_r+=1
-            print(veces_cambio_r)
+            #veces_cambio_r+=1
+            #print(veces_cambio_r)
 
         #ps_theta_cambio=Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, Q)
         #cambio_porc_theta=abs(ps_theta_cambio-coord_act[3])/abs(coord_act[3])
@@ -143,13 +144,14 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
         if abs(coord_act[4]-coord_ant[4])>=10:
         #    Time_program_final=time.time()
         #    print(Time_program_final-Time_program_initial)
-            return 1 # Esto significa que cae al agujero negro
+            return "Black" # Esto significa que cae al agujero negro
 
         
         if ((coord_act[5])>=10*M) and ((coord_act[5]-coord_ant[5])>0): #Elijo un valor más pequeño que 10?
         #    Time_program_final=time.time()
         #    print(Time_program_final-Time_program_initial)
-            return 0 # Esto significa que se va al infinito
+            Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7])
+            return Back_Colour # Esto significa que se va al infinito
 
 
         # Escribir en un fichero
@@ -159,7 +161,8 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
     file_manager.close()
 
-    return 0 # Esto significa que no cae al agujero negro en N pasos
+    Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7])
+    return Back_Colour # Esto significa que no cae al agujero negro en N pasos
 
 
 # Para hacer pruebas:
