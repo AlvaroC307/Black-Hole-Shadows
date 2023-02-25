@@ -37,3 +37,4 @@ Versiones Finales---------------------------
                  convertirlo en una función extra.
 
     Version 1.1  Utilizando Minkowski a partir de r=10M, calcular en que cuadrante cae el fotón y su color. 
+    Version 1.11 Añadir un parámetro para a partir de cuando se considera que la métrica es Minkowski y el fotón no vuelve.
