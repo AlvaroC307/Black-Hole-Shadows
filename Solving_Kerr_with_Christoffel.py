@@ -46,6 +46,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
     # Datos extra necesarios para la resolucion numerica
     # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos 
     N =5000
+    r_limit=10*M # Parámetro para a partir de que radio se considera que la métrica a degenerado a Minkowski
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -147,7 +148,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
             return "Black" # Esto significa que cae al agujero negro
 
         
-        if ((coord_act[5])>=10*M) and ((coord_act[5]-coord_ant[5])>0): #Elijo un valor más pequeño que 10?
+        if ((coord_act[5])>=r_limit) and ((coord_act[5]-coord_ant[5])>0): #Elijo un valor más pequeño que 10?
         #    Time_program_final=time.time()
         #    print(Time_program_final-Time_program_initial)
             Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7])
