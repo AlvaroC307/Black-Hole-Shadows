@@ -1,4 +1,4 @@
-VERSION ACTUAL--> 1.04
+VERSION ACTUAL--> 1.11
 
 Explicacion de como ejecutar los programas correctamente:
 
@@ -17,5 +17,6 @@ Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negr
              (Actualmente, solo funciona para agujeros negros tipo Kerr, ya que los unicos parámetros son a y M, preguntar a Mario como cambiarlo)
              También se debe introducir el número de Pixeles, siendo una imagen N_pix*N_pix, depende del detalle que se quiera en la imagen 
 
-
+Quinto paso: Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y
+             lo muestra en pantalla. Para salir del dibujo, pulsar en él.
 

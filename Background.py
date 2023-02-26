@@ -17,4 +17,4 @@ def Sphere_Quadrants(r, phi, theta):
     elif (z<0) and (x>0):
         return "Blue"
     else:
-        return "None"
+        return "White" # z=0, x=0

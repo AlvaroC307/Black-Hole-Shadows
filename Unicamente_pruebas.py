@@ -7,14 +7,66 @@ import Function_Metric
 from Function_Metric import *
 
 
-h=0.1
+from turtle import Screen, Turtle
 
-paso=[h,h]
+PIXEL_SIZE = 30
+CURSOR_SIZE = 20
 
-h=0,2
+COLORS = {
+    'B': 'blue',
+    'K': 'black',
+    'O': 'orange',
+    'R': 'red',
+    'T': 'brown',
+    'W': 'white',
+    'Y': 'yellow',
+}
 
-print(paso)
+PIXELS = [
+    "WWWRRRRRRWWWW",
+    "WWRRRRRRRRRRW",
+    "WWTTTOOOKOWWW",
+    "WTOTOOOOKOOOW",
+    "WTOTTOOOOKOOO",
+    "WTTOOOOOKKKKW",
+    "WWWOOOOOOOOWW",
+    "WWRRBRRRRWWWW",
+    "WRRRBRRBRRRWW",
+    "RRRRBBBBRRRRW",
+    "OORBYBBYBROOW",
+    "OOOBBBBBBOOOW",
+    "OOBBBBBBBBOOW",
+    "WWBBBWWBBBWWW",
+    "WTTTWWWWTTTWW",
+    "TTTTWWWWTTTTW",
+]
 
-#Añadir por ejemplo: si r_act-r_ant<0 && r_act>10M¿o menos incluso?, asumir que se ha ido a la verga
+WIDTH, HEIGHT = len(PIXELS[0]), len(PIXELS)
+
+screen = Screen()
+screen.setup((WIDTH + 3) * PIXEL_SIZE, (HEIGHT + 3) * PIXEL_SIZE)
+screen.tracer(False)
+
+turtle = Turtle()
+turtle.hideturtle()
+turtle.shape('square')
+turtle.shapesize(PIXEL_SIZE / CURSOR_SIZE)
+turtle.penup()
+
+x0 = -WIDTH/2 * PIXEL_SIZE
+y0 = HEIGHT/2 * PIXEL_SIZE
+
+
+for i, row in enumerate(PIXELS):
+    print(i)
+    turtle.setposition(x0, y0 - i * PIXEL_SIZE)
+
+    for pixel in row:
+        turtle.color(COLORS[pixel])
+        turtle.stamp()
+        turtle.forward(PIXEL_SIZE)
+
+screen.tracer(True)
+screen.exitonclick()
 
 

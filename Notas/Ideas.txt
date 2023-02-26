@@ -22,7 +22,7 @@ Opciones mejorar programa:
 -Escribir bien los parametros 
 --------------Version x.0:
 -Aceptar métricas numéricas 
--Plot en Python
+-Plot en Python, falta hacer que guarde el dibujo en una carpeta
 -Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir )
 -Usar Varias CPU para agilizar el programa
 

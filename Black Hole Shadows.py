@@ -57,6 +57,8 @@ file_In = open("./Data/Geodesics_In.csv", "w", newline="")
 csv_In = csv.writer(file_In)
 file_Out = open("./Data/Geodesics_Out.csv", "w", newline="")
 csv_Out = csv.writer(file_Out)
+file_Total=open("./Data/Geodesics_Total.csv", "w", newline="")
+csv_Total=csv.writer(file_Total)
 
 for i in range(N_pix+1):
     for j in range(N_pix+1): 
@@ -69,12 +71,8 @@ for i in range(N_pix+1):
             print("Progreso:", int(k*Porc_Avance), "%")
             k+=1
 
-            if In_or_out=="Black":
-                csv_In.writerow([x, y, "Black"])
-                # Cae al agujero negro
-            else:
-                csv_Out.writerow([x, y, In_or_out])
-                # No cae al agujero negro y el tercer elemento es el color que tiene el pixel, si pone "None" es que es el eje x o z
+            csv_Total.writerow([i, j, In_or_out, x, y])
+            # El tercer elemento es el color que tiene el pixel, si pone "None" es que es el eje x o z
 
 csv_Input.close()
 # rnd=random.random()    Usar esto para cuando haga un montecarlo
