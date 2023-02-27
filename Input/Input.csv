@@ -3,5 +3,5 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2 
-N_pix,25
-a,0.0
+N_pix,50
+a,0.9

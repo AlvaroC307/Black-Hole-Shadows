@@ -36,5 +36,10 @@ Versiones Finales---------------------------
                  ha caido al interior del agujero negro. Revisado y alterado el funcionamiento del paso adaptativo además de 
                  convertirlo en una función extra.
 
-    Version 1.1  Utilizando Minkowski a partir de r=10M, calcular en que cuadrante cae el fotón y su color. 
+    Version 1.1  Utilizando Minkowski a partir de r=10M, calcular en que cuadrante cae el fotón y su color, gracias a Backgroung.py. 
     Version 1.11 Añadir un parámetro para decidir a partir de cuando se considera que la métrica es Minkowski y el fotón no vuelve.
+
+    Version 1.2  Creación del Plot en Python en el fichero Representacion.py. Comienzo del cambio de Black Hole Shadows para que vaya
+                 más rápido usando varios nucleos, estos cambios se hicieron en otro fichero para que el programa siguiera funcionando
+                 en caso de problema y para poder realizar comparaciones. Primeras imagenes con el color de deformación del 
+                 espacio-tiempo, N_pix=50.

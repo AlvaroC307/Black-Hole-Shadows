@@ -27,6 +27,11 @@ Angle_to_Momentum.py es un fichero que se encargará de tener una función que c
 
 Black Hole Shadows.py es el fichero final, que utiliza el resto para devolver la imagen de un agujero negro con sus detalles correspondientes.
 
+Background.py es un fichero que comprueba en que cuadrante de la esfera celestial ha caido el foton
+
+Representacion.py es el fichero que se ejecuta al final para poder observar el resultado del resto del programa. Grafica los puntos
+que se han calculado con una serie de colores para ver la forma de la sombra y como el agujero negro deforma el espacio-tiempo cercano
+
 
 
 Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de querer metricas numericas, su variacion numerica se llamaran: N_fichero.py
