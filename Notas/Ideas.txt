@@ -15,16 +15,16 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
--Comprobar que g_rr cambia de signo para definir cuando cae dentro del agujero negro
 -Guarde el dibujo en una carpeta
 -Arreglar el bug que hace que el agujero negro parece que gira al reves, y que los colores del fondo esten invertidos
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
 -Arreglar la barra de progreso
--Ajustar el paso para evitar lineas raras en el dibujo¿?, la ultima vez es lo unico que cambie,
- eso o cambiar la definicion de orizonte de eventos
+-Ajustar el paso para evitar lineas raras en el dibujo¿?, la ultima vez es lo unico que cambie
 -Hacer que el usuario pueda cambiar r_limit facilmente
 -Con el de 4 procesos, la imagen solo esta invertida, asi que imagino que esta mejor, tanto la forma como los colores estan a la
  derecha en vez de izqa y viceversa
+-Documentar
+-Volver a añadir la constante de carter?
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico 
@@ -34,3 +34,6 @@ Opciones mejorar programa:
 -Aceptar métricas numéricas 
 
 
+PRUEBAS QUE HACER:
+-Comprobar el r_limit
+-Comprobar las definiciones de Horizonte de eventos

@@ -48,7 +48,7 @@ def Mom_Sup_temp(t,r,phi,theta,ps_r,ps_phi,ps_theta,M,a):
 
 # En este caso es para cambiar p^r, para ello, comprobamos el signo con el p^r calculado con el RK4
 # Esta ecuacion es de la forma A*p^r**2+C=0, A=g_tt, C=...
-def Mom_Sup_r(t,r,phi,theta,ps_t,ps_r,ps_phi,ps_theta,M,a):
+def Mom_Sup_r(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     coord=(t, r, phi, theta)
     param=(M, a)
     A=G(1, 1, *coord, *param)

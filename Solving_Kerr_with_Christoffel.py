@@ -5,13 +5,13 @@ import csv
 #import time
 # Importar otros ficheros de la carpeta
 
-import Function_Metric
+
 from Function_Metric import *
 import Momento_Temporal_Inicial
 from Momento_Temporal_Inicial import *
-import Equations_to_Solve_Christoffel
 from Equations_to_Solve_Christoffel import *
 import Background as Backg
+from Angle_to_Momentum import *
 
 # Este codigo se tiene que ejecutar mucho, para cada resolucion de las ecuaciones
 
@@ -120,14 +120,15 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
-        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
-        if ps_r_cambio=="Imaginary":
-            return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
-        else:
-            cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
+#        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
+#        if ps_r_cambio=="Imaginary":
+#            print("Imaginario")
+#            return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
+#        else:
+#            cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
 
-        if cambio_porc_r<0.01:
-            coord_act[1]=ps_r_cambio
+#        if cambio_porc_r<0.01:
+#            coord_act[1]=ps_r_cambio
             #veces_cambio_r+=1
             #print(veces_cambio_r)
 
@@ -142,7 +143,8 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho)
-        if abs(coord_act[4]-coord_ant[4])>=10:
+       # if abs(coord_act[4]-coord_ant[4])>=15:
+        if (G(1, 1, coord_act[4], coord_act[5], coord_act[6], coord_act[7], *param)<=0):
         #    Time_program_final=time.time()
         #    print(Time_program_final-Time_program_initial)
             return "Black" # Esto significa que cae al agujero negro
@@ -162,20 +164,35 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
     file_manager.close()
 
-    Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7])
-    return Back_Colour # Esto significa que no cae al agujero negro en N pasos
+    #Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7])
+    return "White" #Back_Colour # Esto significa que no cae al agujero negro en N pasos
 
 
 # Para hacer pruebas:
-#M=1
-#a=0.999
-#r_0 = 100*M
-#theta_0 = math.pi/2
-#phi_0 = 0
-#t_0 = 0
+M=1
+a=0.9
+t_0=0
+r_0 = 100*M
+theta_0 = math.pi/2
+phi_0 = math.pi/2
+coords_0=(t_0, r_0, phi_0, theta_0)
+param=(M, a)
+
+#Pruebas con el momento puesto con las coordenadas x, y
+
+x=0.15452242237188582
+y=-6.953509006734862
+
+
+list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
+tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
+Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
+
+
+# Puebas con el momento puesto a mano
+
 #p_r_0 = 1
 #p_theta_0 = 0
 #p_phi_0 = 0
 #p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
-
 #Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)

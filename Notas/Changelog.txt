@@ -43,3 +43,5 @@ Versiones Finales---------------------------
                  más rápido usando varios nucleos, estos cambios se hicieron en otro fichero para que el programa siguiera funcionando
                  en caso de problema y para poder realizar comparaciones. Primeras imagenes con el color de deformación del 
                  espacio-tiempo, N_pix=50.
+    Version 1.21 Cambio de la definición de Horizonte de Eventos, ahora en vez de mirar cuando se dispara el tiempo comprueba cuando
+                 g_rr camia de signo y se hace negativa
