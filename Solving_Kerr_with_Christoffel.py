@@ -120,15 +120,15 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
-#        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
-#        if ps_r_cambio=="Imaginary":
-#            print("Imaginario")
-#            return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
-#        else:
-#            cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
+        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
+        if ps_r_cambio=="Imaginary":
+            print("Imaginario")
+            return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
+        else:
+            cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
 
-#        if cambio_porc_r<0.01:
-#            coord_act[1]=ps_r_cambio
+        if cambio_porc_r<0.01:
+            coord_act[1]=ps_r_cambio
             #veces_cambio_r+=1
             #print(veces_cambio_r)
 
@@ -169,24 +169,24 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
 
 # Para hacer pruebas:
-M=1
-a=0.9
-t_0=0
-r_0 = 100*M
-theta_0 = math.pi/2
-phi_0 = math.pi/2
-coords_0=(t_0, r_0, phi_0, theta_0)
-param=(M, a)
+#M=1
+#a=0.9
+#t_0=0
+#r_0 = 100*M
+#theta_0 = math.pi/2
+#phi_0 = math.pi/2
+#coords_0=(t_0, r_0, phi_0, theta_0)
+#param=(M, a)
 
 #Pruebas con el momento puesto con las coordenadas x, y
 
-x=0.15452242237188582
-y=-6.953509006734862
+#x=0.15452242237188582
+#y=-6.953509006734862
 
 
-list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
-tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
+#list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
+#tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
+#Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
 
 
 # Puebas con el momento puesto a mano
