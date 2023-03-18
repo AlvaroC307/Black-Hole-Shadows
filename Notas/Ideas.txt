@@ -15,7 +15,7 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
--Guarde el dibujo en una carpeta
+-Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
 -Arreglar la barra de progreso
 -Lineas raras del dibujo, parece que es un problema de la funcion mom_sup_r o el paso

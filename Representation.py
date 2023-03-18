@@ -1,7 +1,8 @@
 # Leer los ficheros de resultados para representarlo en un dibujo
 import csv
 import math
-from turtle import Screen, Turtle
+from turtle import Screen, Turtle, getcanvas
+
 
 
 file_Total = open('./Data/Geodesics_Total.csv', 'r')
@@ -21,7 +22,7 @@ Draw_Size= int(math.sqrt(len(List_Total)))
 
 screen = Screen()
 screen.setup((Draw_Size + 3) * Pixel_Size, (Draw_Size + 3) * Pixel_Size)
-screen.tracer(True)
+screen.tracer(False)
 
 turtle = Turtle()
 turtle.hideturtle()
@@ -42,6 +43,8 @@ for i in range(Draw_Size):
         turtle.forward(Pixel_Size)
         num=num+1
 
+canvas=getcanvas()
+canvas.postscript(file="./Graphics/" + "Black_Hole_Image.eps")
 
 screen.tracer(True)
 screen.exitonclick()

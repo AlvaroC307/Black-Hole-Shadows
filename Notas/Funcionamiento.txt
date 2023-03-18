@@ -20,3 +20,6 @@ Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negr
 Quinto paso: Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y
              lo muestra en pantalla. Para salir del dibujo, pulsar en él.
 
+Sexto paso: Ejecutar el fichero Eps_to_Jpg.py para ver el dibujo y guardarlo en formato JPEG. Es posible que haya que instalar un par
+            de modulos de python.
+
