@@ -23,13 +23,13 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
     # ps_local_r es simplemente el modulo, el cual no tendrá importancia en el cálculo de la forma de la sombra
 
     ps_local_r=1
-    ps_local_phi=-(x*ps_local_r)/r_0
-    ps_local_theta=(y*ps_local_r)/r_0
+    ps_local_phi=(x*ps_local_r)/r_0
+    ps_local_theta=-(y*ps_local_r)/r_0
 
     # Con esto, podemos obtener los valores del cuatrimomento en las coordenadas de Boyer-Lindquist
 
     p_r_0= ps_local_r/Ar
-    p_phi_0= ps_local_phi/Aphi
+    p_phi_0= ps_local_phi/Aphi 
     p_theta_0= ps_local_theta/Atheta
     p_t_0=mti.Mom_temp(*coords_0,p_r_0,p_phi_0,p_theta_0,*param)
 

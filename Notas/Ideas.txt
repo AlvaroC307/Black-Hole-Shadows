@@ -16,18 +16,15 @@ Opciones mejorar programa:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
 -Guarde el dibujo en una carpeta
--Arreglar el bug que hace que el agujero negro parece que gira al reves, y que los colores del fondo esten invertidos
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
 -Arreglar la barra de progreso
--Lineas raras del dibujo, parece que es un problema de la funcion mom_sup_r
+-Lineas raras del dibujo, parece que es un problema de la funcion mom_sup_r o el paso
 -Hacer que el usuario pueda cambiar r_limit facilmente
--Con el de 4 procesos, la imagen solo esta invertida, asi que imagino que esta mejor, tanto la forma como los colores estan a la
- derecha en vez de izqa y viceversa
 -Documentar
 -Volver a añadir la constante de carter?
 --------------Version 1.x:
 -Añadir Disco de Acrección  
--Cambio de angulo a x,y genérico 
+-Cambio de angulo a x,y genérico no solo para tipo Kerr
 -Escribir bien los parametros 
 -Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir)
 --------------Version x.0:

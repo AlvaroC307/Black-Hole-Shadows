@@ -45,3 +45,5 @@ Versiones Finales---------------------------
                  espacio-tiempo, N_pix=50.
     Version 1.21 Cambio de la definición de Horizonte de Eventos, ahora en vez de mirar cuando se dispara el tiempo comprueba cuando
                  g_rr camia de signo y se hace negativa
+    Version 1.22 Arreglo del bug que hacía que se representara verticalmente. Arreglo del bug que hacia que se representara espejado,
+                 para ello he quitado el menos de la definición de ps_phi_0 y ps_theta_0
