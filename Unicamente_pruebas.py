@@ -1,14 +1,14 @@
 # Importar Librerias utiles
 
-import math
+import time
 from math import *
-import csv
-import Function_Metric
 from Function_Metric import *
-import multiprocessing
+from playsound import playsound
 
-max_workers = multiprocessing.cpu_count()
+def Ruido():
+    playsound("./Sounds/Barra_Metal_Cayendo.mp3")
+    return 0
 
-print(f"Number of available CPU cores: {max_workers}")
+Ruido()
 
 

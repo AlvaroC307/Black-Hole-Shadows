@@ -12,13 +12,15 @@ Comprobaciones de como es una geodésica en el límite del agujero negro
 
 Opciones mejorar programa:
 
+--------------No Version:
+-Limpiar la carpeta de archivos y codigos actualmente inservibles
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
+-En 100x100 no termina de pintar parte de arriba y parte de abajo
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
     -Definición de horizonte de eventos en una función propia
--Arreglar la barra de progreso
 -Hacer que el usuario pueda cambiar r_limit facilmente
 *-Documentar
 -Hacer un proceso usando 8 nucleos en vez de 4
@@ -26,7 +28,7 @@ Opciones mejorar programa:
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
--Escribir bien los parametros 
+-Generalizar los parámetros 
 -Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir)
 --------------Version x.0:
 -Aceptar métricas numéricas 
@@ -35,3 +37,4 @@ Opciones mejorar programa:
 PRUEBAS QUE HACER:
 -Comprobar el r_limit
 -Comprobar las definiciones de Horizonte de eventos
+-Comprobar los valores del paso adaptativo

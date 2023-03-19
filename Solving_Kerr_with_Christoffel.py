@@ -37,7 +37,7 @@ def Paso_adap(r, theta, M):
     else:
         h=0.05
 
-    if (abs(theta))<0.05:
+    if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
         h=0.01
     return h
 
@@ -186,12 +186,12 @@ param=(M, a)
 
 #Pruebas con el momento puesto con las coordenadas x, y
 
-x,y=0.07726121118594291,-5.176501149458176
+x,y=0.07726121118594291,5.331023571830061
 
 list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
 Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
-print(Pixel_Color) """
+print(Pixel_Color)  """
 
 # Puebas con el momento puesto a mano
 

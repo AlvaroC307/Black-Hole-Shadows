@@ -2,6 +2,7 @@
 import math
 import time
 import csv
+
 from math import *
 
 from concurrent.futures import *
@@ -22,8 +23,7 @@ def Screen(r_0, M):  # Calculo del tamaño de la pantalla
     L_screen = 3*L_Schwarzschild
     return L_screen
 
-
-def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_little, list_Input):
+def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_little, list_Input, worker):
 
     # Masa del agujero negro
     M = eval(list_Input[0])
@@ -35,19 +35,13 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_little, list_Input):
     theta_0 = eval(list_Input[4])
     coords_0 = (t_0, r_0, phi_0, theta_0)
 
-    # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
-    N_pix = eval(list_Input[5])
-
-    if (N_pix % 2) == 1:  # Para que N_pix sea par y se pueda divir facil en 4 cuadrantes
-        N_pix += 1
-
     # Parametros del Agujero Negro (Spin, Carga electrica y Magnetica, etc)
 
     a = eval(list_Input[6])
     param = (M, a)
 
     # Barra de Progreso
-    Porc_Avance = 100/(N_pix)**2
+    Porc_Avance = 100/(N_pix_little)**2
 
     All_data_Quadrant = []
     Lx = x1-x0
@@ -70,7 +64,7 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_little, list_Input):
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
             Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
 
-            print("Progreso:", 4*int(k*Porc_Avance), "%")
+            print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%")
             k += 1
 
             Data_Quadrant = [i, j, Pixel_Color, x, y]
@@ -119,13 +113,13 @@ def main():
     executor = ProcessPoolExecutor(max_workers=4)
 
     a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
-                        0, -L_screen/2, 0, N_pix_little, list_Input)
+                        0, -L_screen/2, 0, N_pix_little, list_Input, "a")
     b = executor.submit(Black_Hole_Geodesic, 0, L_screen/2,
-                        -L_screen/2, 0, N_pix_little, list_Input)
+                        -L_screen/2, 0, N_pix_little, list_Input, "b")
     c = executor.submit(Black_Hole_Geodesic, -L_screen/2, 0,
-                        0, L_screen/2, N_pix_little, list_Input)
+                        0, L_screen/2, N_pix_little, list_Input, "c")
     d = executor.submit(Black_Hole_Geodesic, 0, L_screen/2,
-                        0, L_screen/2, N_pix_little, list_Input)
+                        0, L_screen/2, N_pix_little, list_Input, "d")
 
     for j in range(N_pix_little):
         for i in range(N_pix_little):
@@ -139,8 +133,10 @@ def main():
         for i in range(N_pix_little):
             csv_Total.writerow(d.result()[j][i])
 
+
     print(time.time()-start_time)
     file_Total.close()
+
     # rnd=random.random()    Usar esto para cuando haga un montecarlo
 
 
