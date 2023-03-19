@@ -52,5 +52,8 @@ Versiones Finales---------------------------
                  Revertido el cambio de la version 1.21 porque daba problemas. Añadido ciertas condiciones a la definición de
                  horizonte de eventos para evitar pixeles mal.
 
-    Version 1.3 (actualmente snapshot) Arreglo de la barra de progreso, ahora va para cada worker. Cambio del fichero Representation.py
-                 para que funcione con matplotlib y guarde una imagen png y otra pdf, el fichero Eps_to_Jpg ahora es redundante.
+    Version 1.3  Arreglo de la barra de progreso, ahora va para cada worker. Cambio del fichero Representation.py
+                 para que funcione con matplotlib y guarde una imagen png y otra pdf, el fichero Eps_to_Jpg ahora es redundante. Limpiar
+                 la carpeta de codigos y archivos inútiles. Añadido Factor_Screen para que el usuario en Input cambie el tamaño 
+                 deseado de la pantalla. Limpieza y comentarios de la mayoria de codigos excepto Angle_to_Momentum y Momento_Temporal_Inicial
+                 porque hay que repasar ambos programas más.

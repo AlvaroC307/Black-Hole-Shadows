@@ -1,12 +1,12 @@
 # Leer los ficheros de resultados para representarlo en un dibujo
 import csv
-import math
-from turtle import Screen, Turtle, getcanvas
-import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
-import numpy as np
+import matplotlib.pyplot as plt # Esto es para el plot
+import matplotlib.colors as mcolors # Esto es para cambiar los colores a valores numéricos
+import numpy as np # Esto es para los array al cambiar de los colores a valores numericos
 
-def tortuga():
+"""from turtle import Screen, Turtle, getcanvas
+
+    def tortuga(): # Esta funcion utiliza el modulo tortuga pero tiene problemas asi que la quitaré
 
     file_Total = open('./Data/Geodesics_Total.csv', 'r')
     Reader_Total = csv.reader(file_Total)
@@ -50,20 +50,20 @@ def tortuga():
     canvas.postscript(file="./Graphics/" + "Black_Hole_Image.eps")
 
     screen.tracer(True)
-    screen.exitonclick()
+    screen.exitonclick() """
 
 
 
 def matplot(N_pix):
-
+    # Abrir el fichero con los colores a lee
     file_Total = open('./Data/Geodesics_Total.csv', 'r')
     Reader_Total = csv.reader(file_Total)
 
-    Color_Total=[]
-    Color_Line=[]
+    Color_Line=[] # Lista donde se apuntan los colores de una linea en el eje x entera antes de pasarla a Color_Total
+    Color_Total=[] # Lista de Listas donde estarán todos los colores como string
     k=0
     for row in Reader_Total:
-        content=row[2]
+        content=row[2] # El color está en la tercera columna, el resto indican en que lugar está
         Color_Line.append(content)
         k+=1
         if k==N_pix:
@@ -71,18 +71,18 @@ def matplot(N_pix):
             k=0
             Color_Line=[]
 
-
+    # Cambio de la lista de listas de colores en string a un array de colores como números para matplotlib
     color_array = np.array([[mcolors.to_rgba(color) for color in row] for row in Color_Total])
 
     # Create a figure and plot the image
-    fig, ax = plt.subplots(figsize=(5, 5))
+    fig, ax = plt.subplots(figsize=(5, 5)) # figsize habla sobre el tamaño de la imagen
     ax.imshow(color_array)
 
-    # Hide the axes and show the plot
+    # Quitar los ejes, guardar y mostrar en pantalla la imagen 
     ax.axis('off')
-    plt.savefig('./Graphics/Black_Hole_Image.pdf', bbox_inches='tight')
-    plt.savefig('./Graphics/Black_Hole_Image.png', bbox_inches='tight')
-    plt.show()
+    plt.savefig('./Graphics/Black_Hole_Image.pdf', bbox_inches='tight') # Guardar la imagen como un pdf
+    plt.savefig('./Graphics/Black_Hole_Image.png', bbox_inches='tight') # Guardar la imagen como un png
+    plt.show() # Mostrar la imagen
 
 
 

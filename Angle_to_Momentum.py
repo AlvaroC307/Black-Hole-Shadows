@@ -1,6 +1,5 @@
 # Importar ficheros útiles
 import math
-import Function_Metric
 from Function_Metric import *
 import Momento_Temporal_Inicial as mti
 
@@ -23,8 +22,9 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
     # ps_local_r es simplemente el modulo, el cual no tendrá importancia en el cálculo de la forma de la sombra
 
     ps_local_r=1
-    ps_local_phi=(x*ps_local_r)/r_0
-    ps_local_theta=-(y*ps_local_r)/r_0
+    ps_local_phi=(x*ps_local_r)/r_0 #He quitado un menos pero deberia de estar, justificar con un menos de otro sitio supongo 
+    # Creo que el menos es porque esta espejado y tal, lo que dijo Marc. Justificar en algún sitio idk
+    ps_local_theta=(y*ps_local_r)/r_0
 
     # Con esto, podemos obtener los valores del cuatrimomento en las coordenadas de Boyer-Lindquist
 
@@ -35,14 +35,3 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
 
     list_momentos=[p_t_0, p_r_0, p_phi_0, p_theta_0]
     return list_momentos
-
-
-# Para hacer pruebas
-#x, y = 0, 0
-#M, a=1, 0 
-#t_0, r_0, phi_0, theta_0=0, 5*M, 0, math.pi/2
-
-#coords_0=(t_0, r_0, phi_0, theta_0)
-#param=(M, a)
-
-#print(Screen_to_Momentum(x,y,*coords_0,*param))

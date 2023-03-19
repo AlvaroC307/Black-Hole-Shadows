@@ -1,7 +1,5 @@
 # Importar Librerias utiles
-
-import math
-from math import *
+from math import * #Se debe importar entera para evitar problemas con el eval()
 import csv
 
 
@@ -15,7 +13,7 @@ def rho2(r, theta, a):
 
 
 # Lectura de los ficheros Metric, Inverse_Metric y Christoffel_symbols
-
+# Empezamos leyendo Metric y Inverse_Metric
 csv_Metric= open('./Data/Metric.csv', 'r')
 Reader_Metric = csv.reader(csv_Metric)
 csv_Inv_Metric= open('./Data/Inverse_Metric.csv', 'r')
@@ -23,20 +21,22 @@ Reader_Inv_Metric = csv.reader(csv_Inv_Metric)
 
 
 n=0
-list_Metric=[]
-Matrix_Metric=[]
+list_Metric=[] # Lista para escribir una sola linea de 4 elementos (1 indice fijo)
+Matrix_Metric=[] # Lista de Listas con todos los elementos
 
 for row in Reader_Metric:
-    content = row[2]
+    content = row[2] # Extraer el contenido del elemento 2 de la row en cuestion
     list_Metric.append(content)
     n+=1
-    if n==4:
+    if n==4: # Cuando esten 4 elementos en list_Metric meterlos en Matrix_Metric y reiniciar
         Matrix_Metric.append(list_Metric)
         list_Metric=[]
         n=0
 
 
-n=0
+csv_Metric.close()
+
+n=0 # Exactamente el mismo método para la metrica inversa que para la metrica 
 list_Inv_Metric=[]
 Matrix_Inv_Metric=[]
 
@@ -49,7 +49,7 @@ for row in Reader_Inv_Metric:
         list_Inv_Metric=[]
         n=0
 
-csv_Metric.close()
+
 csv_Inv_Metric.close()
 
 
@@ -59,11 +59,11 @@ csv_Chris= open('./Data/Christoffel_symbols.csv', 'r')
 Reader_Chris = csv.reader(csv_Chris)
 
 
-n=0
+n=0 # Se usa el mismo metodo que antes pero ahora se requieren de una lista, una lista de listas para pasarlas a la total
 m=0
-list_Chris=[]
-Matrix_Chris=[]
-Tri_Matrix_Chris=[]
+list_Chris=[] # Lista (2 indice fijos)
+Matrix_Chris=[] # Lista de listas (1 indices fijo)
+Tri_Matrix_Chris=[] # Matriz total con todos los datos
 for row in Reader_Chris:
     content = row[3]
     list_Chris.append(content)
@@ -83,15 +83,18 @@ csv_Chris.close()
 
 #-------------------Definicion de las funciones Metric, Inverse Metric y Christoffel Symbols 
 
-def G(i,j,t,r,phi,theta,M,a):
-    return eval(Matrix_Metric[i][j])
+# Cada elemento de estos tensores es un string creado por Sympy, al evaluar pasa a ser un numero en funcion de las coord o constantes
+# que se le hayan pasado
+
+def G(i, j, t, r, phi, theta, M, a):
+    return eval(Matrix_Metric[i][j]) 
 
 
-def Inv_G(i,j,t,r,phi,theta,M,a):
+def Inv_G(i, j, t, r, phi, theta, M, a):
     return eval(Matrix_Inv_Metric[i][j])
 
 
 # i hace referencia al superindice, j y k son los subindices
 
-def Christoffel(i,j,k,t,r,phi,theta,M,a):
+def Christoffel(i, j, k, t, r, phi, theta, M, a):
     return eval(Tri_Matrix_Chris[i][j][k])

@@ -1,13 +1,11 @@
-# Importar Librerias utiles
-import math
 # Importar otros ficheros de la carpeta
 
-import Function_Metric
 from Function_Metric import *
 
 # Definir las 8 funciones que se van a integrar con los simbolos de christoffel
 
 # la ecuacion de la geodesica dot(x^mu)=p^mu
+# ps_x significa p^x
 
 def t_punto(ps_t):
     return ps_t
@@ -79,7 +77,7 @@ def ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     return -suma_alpha
 
 
-# El menos se debe a que estamos integrando la ecuacion backwards¿deberia meterlo en la funcion?
+# El menos se debe a que estamos integrando la ecuacion hacia atras en la curva geodesica, por lo que se añade un menos al parámetro
 
 def Switch_punto(i, t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta, M, a):
     if i == 0:

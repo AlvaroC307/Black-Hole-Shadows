@@ -16,7 +16,9 @@ Tercer paso: Ejecutar el programa Cristoffel.py, este programa escribe los 64 s�
 Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negro que se quiera calcular la sombras
              (Actualmente, solo funciona para agujeros negros tipo Kerr, ya que los unicos parámetros son a y M, preguntar a Mario como cambiarlo)
              También se debe introducir el número de Pixeles, siendo una imagen N_pix*N_pix, depende del detalle que se quiera en la imagen 
-
+             El factor Factor_Screen es el factor multiplicativo a una pantalla que mida exactamente el tamaño de la sombra de Schwarzschild
+             se recomienda un Factor_Screen de 3 o 4.
+             
 Quinto paso: Ejecutar el fichero Concurrent_Black_Holes_prueba.py que devuelve los datos del color del pixel y su posición en
              la carpeta Data para realizar comprobaciones.
 

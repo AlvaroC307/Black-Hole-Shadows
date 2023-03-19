@@ -12,17 +12,18 @@ Comprobaciones de como es una geodésica en el límite del agujero negro
 
 Opciones mejorar programa:
 
---------------No Version:
--Limpiar la carpeta de archivos y codigos actualmente inservibles
+
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
--Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
-    -Definición de horizonte de eventos en una función propia
+-Definición de horizonte de eventos en una función propia
 -Hacer que el usuario pueda cambiar r_limit facilmente
-*-Documentar
--Hacer un proceso usando 8 nucleos en vez de 4
+-Documentar:
+    -Angle_to_Momentum.py:
+    -Momento_Temporal_Inicial.py:
+    -Representation.py: Ver que hacer con turtle
+-Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada) y cambiarlo a lo correcto: poner dos menos diferentes
 -Volver a añadir la constante de carter?
 --------------Version 1.x:
 -Añadir Disco de Acrección  
