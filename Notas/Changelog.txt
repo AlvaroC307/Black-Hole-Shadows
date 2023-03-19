@@ -48,3 +48,6 @@ Versiones Finales---------------------------
     Version 1.22 Arreglo del bug que hacía que se representara verticalmente. Arreglo del bug que hacia que se representara espejado,
                  para ello he quitado el menos de la definición de ps_phi_0 y ps_theta_0
     Version 1.23 Añadido un código para guardar la imagen en un archivo .eps y creado un fichero para pasar la imagen de eps a jpg
+    Version 1.24 Solucionado el problema en el eje sin(theta)=0, mediante un cambio en el paso adaptativo.
+                 Revertido el cambio de la version 1.21 porque daba problemas. Añadido ciertas condiciones a la definición de
+                 horizonte de eventos para evitar pixeles mal.

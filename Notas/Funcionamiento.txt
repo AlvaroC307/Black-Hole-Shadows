@@ -1,4 +1,4 @@
-VERSION ACTUAL--> 1.22
+VERSION ACTUAL--> 1.24
 
 Explicacion de como ejecutar los programas correctamente:
 

@@ -17,10 +17,11 @@ Opciones mejorar programa:
 -Ejes del gráfico
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
+    -Definición de horizonte de eventos en una función propia
 -Arreglar la barra de progreso
--Lineas raras del dibujo, parece que es un problema de la funcion mom_sup_r o el paso
 -Hacer que el usuario pueda cambiar r_limit facilmente
--Documentar
+*-Documentar
+-Hacer un proceso usando 8 nucleos en vez de 4
 -Volver a añadir la constante de carter?
 --------------Version 1.x:
 -Añadir Disco de Acrección  
