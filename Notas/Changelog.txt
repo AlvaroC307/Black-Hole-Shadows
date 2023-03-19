@@ -52,4 +52,5 @@ Versiones Finales---------------------------
                  Revertido el cambio de la version 1.21 porque daba problemas. Añadido ciertas condiciones a la definición de
                  horizonte de eventos para evitar pixeles mal.
 
-    Version 1.3 (actualmente snapshot) Arreglo de la barra de progreso, ahora va para cada worker. 
+    Version 1.3 (actualmente snapshot) Arreglo de la barra de progreso, ahora va para cada worker. Cambio del fichero Representation.py
+                 para que funcione con matplotlib y guarde una imagen png y otra pdf, el fichero Eps_to_Jpg ahora es redundante.

@@ -21,8 +21,5 @@ Quinto paso: Ejecutar el fichero Concurrent_Black_Holes_prueba.py que devuelve l
              la carpeta Data para realizar comprobaciones.
 
 Sexto paso: Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y
-             lo muestra en pantalla. Para salir del dibujo, pulsar en él.
-
-Séptimo paso: Ejecutar el fichero Eps_to_Jpg.py para ver el dibujo y guardarlo en formato JPEG. Es posible que haya que instalar un par
-             de modulos de python.
+            lo muestra en pantalla. Lo guarda en la carpeta Graphics como Black_Hole_Image.png
 

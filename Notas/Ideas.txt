@@ -17,7 +17,6 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
--En 100x100 no termina de pintar parte de arriba y parte de abajo
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Revisar y apañar Concurrent_Black_Holes_prueba.py para resumir un poco
     -Definición de horizonte de eventos en una función propia
