@@ -1,21 +1,38 @@
 # Importar Librerias utiles
 
 import time
+import csv
 from math import *
 from Function_Metric import *
 from playsound import playsound
+from concurrent.futures import *
 
-def Ruido():
+def esperar(name):
+    time.sleep(2)
+
+    csv_file=open("./Data/Borrar.csv", "r")
+    csv_reader=csv.reader(csv_file)
+    content=[]
+    for row in csv_reader:
+        content.append(row[0])
+    csv_file.close()
+
+    return 1
+
+def main():
+
+    executor = ProcessPoolExecutor(max_workers=2)
+
+    work_a=executor.submit(esperar, "a")
+    work_b=executor.submit(esperar, "b")
+
+    print(work_a.result()+work_b.result())
     playsound("./Sounds/Barra_Metal_Cayendo.mp3")
-    return 0
+    
 
-Ruido()
 
-N_pix=25
-
-if (N_pix % 4) !=0:
-        N_pix = N_pix + 4 - (N_pix % 4)
-
-print(N_pix)
+if __name__ == '__main__': #Llamar al main()
+    main()
+    
 
 

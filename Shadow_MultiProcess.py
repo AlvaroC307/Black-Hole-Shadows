@@ -2,6 +2,9 @@
 import math
 import time
 import csv
+from playsound import playsound
+import os
+
 
 from math import *
 
@@ -165,10 +168,15 @@ def main():
             csv_Total.writerow(work_h.result()[j][i])
 
 
-    print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
-    file_Total.close() # Cerrar el fichero
+    current_dir = os.getcwd()
+    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3'
 
+    print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
+    playsound(file_path)
+    file_Total.close() # Cerrar el fichero
 
 
 if __name__ == '__main__': #Llamar al main()
     main()
+
+

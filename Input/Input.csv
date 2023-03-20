@@ -3,6 +3,6 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2 
-N_pix,100
+N_pix,50
 Factor_Screen,3
-a,0.99
+a,0.999

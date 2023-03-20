@@ -57,3 +57,4 @@ Versiones Finales---------------------------
                  la carpeta de codigos y archivos inútiles. Añadido Factor_Screen para que el usuario en Input cambie el tamaño 
                  deseado de la pantalla. Limpieza y comentarios de la mayoria de codigos excepto Angle_to_Momentum y Momento_Temporal_Inicial
                  porque hay que repasar ambos programas más. Cambio del nombre del programa principal a Shadow_Multiprocess.
+    Version 1.31 Añadido de un sonido al acabar el programa Shadow_Multiprocess.py.

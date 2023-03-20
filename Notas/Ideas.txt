@@ -22,7 +22,6 @@ Opciones mejorar programa:
 -Documentar:
     -Angle_to_Momentum.py:
     -Momento_Temporal_Inicial.py:
-    -Representation.py: Ver que hacer con turtle
 -Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada) y cambiarlo a lo correcto: poner dos menos diferentes
 -Volver a añadir la constante de carter?
 --------------Version 1.x:
@@ -38,3 +37,4 @@ PRUEBAS QUE HACER:
 -Comprobar el r_limit
 -Comprobar las definiciones de Horizonte de eventos
 -Comprobar los valores del paso adaptativo
+-Comprobar Factor_Screen (eso se puede con uno simple de 50, pero hacer con 100 si hhay ordenadores de sobra)

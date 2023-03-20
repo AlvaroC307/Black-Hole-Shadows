@@ -4,55 +4,6 @@ import matplotlib.pyplot as plt # Esto es para el plot
 import matplotlib.colors as mcolors # Esto es para cambiar los colores a valores numéricos
 import numpy as np # Esto es para los array al cambiar de los colores a valores numericos
 
-"""from turtle import Screen, Turtle, getcanvas
-
-    def tortuga(): # Esta funcion utiliza el modulo tortuga pero tiene problemas asi que la quitaré
-
-    file_Total = open('./Data/Geodesics_Total.csv', 'r')
-    Reader_Total = csv.reader(file_Total)
-
-    List_Total=[]
-
-    for row in Reader_Total:
-        content=[int(row[0]), int(row[1]), row[2]]
-        List_Total.append(content)
-
-
-    # Usando el modulo turtle para hacer un pixelart
-    Pixel_Size = 10
-    Cursor_Size = 20
-    Draw_Size= int(math.sqrt(len(List_Total)))
-
-    screen = Screen()
-    screen.setup((Draw_Size + 3) * Pixel_Size, (Draw_Size + 3) * Pixel_Size)
-    screen.tracer(False)
-
-    turtle = Turtle()
-    turtle.hideturtle()
-    turtle.shape('square')
-    turtle.shapesize(Pixel_Size / Cursor_Size)
-    turtle.penup()
-
-    x0 = -Draw_Size/2 * Pixel_Size
-    y0 = Draw_Size/2 * Pixel_Size
-    num=0
-
-    for i in range(Draw_Size):
-        turtle.setposition(x0 , y0 - i * Pixel_Size  ) #comprobar que este yendo en el sentido bueno 
-        for j in range(Draw_Size):
-
-            turtle.color(List_Total[num][2])
-            turtle.stamp()
-            turtle.forward(Pixel_Size)
-            num=num+1
-
-    canvas=getcanvas()
-    canvas.postscript(file="./Graphics/" + "Black_Hole_Image.eps")
-
-    screen.tracer(True)
-    screen.exitonclick() """
-
-
 
 def matplot(N_pix):
     # Abrir el fichero con los colores a lee
@@ -71,7 +22,7 @@ def matplot(N_pix):
             k=0
             Color_Line=[]
 
-    # Cambio de la lista de listas de colores en string a un array de colores como números para matplotlib
+    # Cambio de la lista de listas de colores en string a un array de colores como lista de numeros en RGBA para matplotlib
     color_array = np.array([[mcolors.to_rgba(color) for color in row] for row in Color_Total])
 
     # Create a figure and plot the image
@@ -83,6 +34,8 @@ def matplot(N_pix):
     plt.savefig('./Graphics/Black_Hole_Image.pdf', bbox_inches='tight') # Guardar la imagen como un pdf
     plt.savefig('./Graphics/Black_Hole_Image.png', bbox_inches='tight') # Guardar la imagen como un png
     plt.show() # Mostrar la imagen
+
+   
 
 
 
