@@ -11,4 +11,11 @@ def Ruido():
 
 Ruido()
 
+N_pix=25
+
+if (N_pix % 4) !=0:
+        N_pix = N_pix + 4 - (N_pix % 4)
+
+print(N_pix)
+
 

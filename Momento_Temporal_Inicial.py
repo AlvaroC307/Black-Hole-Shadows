@@ -1,10 +1,8 @@
 # Importar Librerias utiles
-import numpy as np
 import math
 
 # Importar otros ficheros de la carpeta
 
-import Function_Metric
 from Function_Metric import *
 
 # Solucionar la ecuación cuadrática general (Aplicado ya las simplificaciones de la metrica debidas a estar en Kerr(Mom_temp no simplificado))

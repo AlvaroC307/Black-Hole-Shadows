@@ -22,7 +22,7 @@ def Screen(Factor_Screen, r_0, M):  # Calculo del tamaño de la pantalla
     L_Schwarzschild = r_0*math.tan(angle_Schwarzschild)
 
     # Multiplicamos por un numero que da el usuario para que haya pantalla para ver la sombra y el espacio correctamente
-    L_screen = Factor_Screen*L_Schwarzschild
+    L_screen = Factor_Screen * L_Schwarzschild
     return L_screen
 
 
@@ -109,7 +109,7 @@ def main():
     if (N_pix % 4) !=0:
         N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
 
-    Factor_Screen=list_Input[6] # Factor multiplicativo para el tamaño de la pantalla
+    Factor_Screen=eval(list_Input[6]) # Factor multiplicativo para el tamaño de la pantalla
 
 
     # Definimos un fichero en el que escribir los resultados que nos interesen

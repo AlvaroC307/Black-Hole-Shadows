@@ -1,4 +1,4 @@
-VERSION ACTUAL--> 1.24
+VERSION ACTUAL--> 1.3
 
 Explicacion de como ejecutar los programas correctamente:
 
@@ -19,7 +19,7 @@ Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negr
              El factor Factor_Screen es el factor multiplicativo a una pantalla que mida exactamente el tamaño de la sombra de Schwarzschild
              se recomienda un Factor_Screen de 3 o 4.
              
-Quinto paso: Ejecutar el fichero Concurrent_Black_Holes_prueba.py que devuelve los datos del color del pixel y su posición en
+Quinto paso: Ejecutar el fichero Shadow_Multiprocess.py que devuelve los datos del color del pixel y su posición en
              la carpeta Data para realizar comprobaciones.
 
 Sexto paso: Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y

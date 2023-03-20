@@ -100,8 +100,8 @@ def main():
 
     # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
     N_pix = eval(list_Input[5])
-    if (N_pix % 2) == 1:  # Para que N_pix sea par y se pueda divir facil en 4 cuadrantes
-        N_pix += 1
+    if (N_pix % 4) !=0:
+        N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
 
     matplot(N_pix)
 
