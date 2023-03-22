@@ -1,4 +1,4 @@
-VERSION ACTUAL--> 1.31
+VERSION ACTUAL--> 1.32
 
 Explicacion de como ejecutar los programas correctamente:
 
@@ -17,7 +17,8 @@ Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negr
              (Actualmente, solo funciona para agujeros negros tipo Kerr, ya que los unicos parámetros son a y M, preguntar a Mario como cambiarlo)
              También se debe introducir el número de Pixeles, siendo una imagen N_pix*N_pix, depende del detalle que se quiera en la imagen 
              El factor Factor_Screen es el factor multiplicativo a una pantalla que mida exactamente el tamaño de la sombra de Schwarzschild
-             se recomienda un Factor_Screen de 3 o 4.
+             se recomienda un Factor_Screen de 3 o 4. Back_Im toma valor C si quiere usar la funcion que define cada cuadrante de la
+             esfera de un color, y toma valor I si quieres proporcionar una imagen para usar de fondo.
              
 Quinto paso: Ejecutar el fichero Shadow_Multiprocess.py que devuelve los datos del color del pixel y su posición en
              la carpeta Data para realizar comprobaciones.

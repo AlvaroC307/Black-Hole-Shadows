@@ -15,6 +15,13 @@ def matplot(N_pix):
     k=0
     for row in Reader_Total:
         content=row[2] # El color está en la tercera columna, el resto indican en que lugar está
+
+        """ if content=="Black":
+            content=[0,0,0]
+        else:
+            content=eval(content) """
+            
+
         Color_Line.append(content)
         k+=1
         if k==N_pix:
@@ -22,8 +29,13 @@ def matplot(N_pix):
             k=0
             Color_Line=[]
 
+    print(content)
+
+
     # Cambio de la lista de listas de colores en string a un array de colores como lista de numeros en RGBA para matplotlib
+
     color_array = np.array([[mcolors.to_rgba(color) for color in row] for row in Color_Total])
+    #color_array = Color_Total
 
     # Create a figure and plot the image
     fig, ax = plt.subplots(figsize=(5, 5)) # figsize habla sobre el tamaño de la imagen
@@ -36,9 +48,6 @@ def matplot(N_pix):
     plt.show() # Mostrar la imagen
 
    
-
-
-
 
 def main():
     csv_Input = open('./Input/Input.csv', 'r')

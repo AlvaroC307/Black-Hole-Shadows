@@ -1,6 +1,7 @@
 # Importar Librerias utiles
 import math
 import csv
+import sys # Para parar el programa si hay un error
 #import time
 
 
@@ -32,7 +33,7 @@ def Paso_adap(r, theta, M):
         h=0.01
     return h
 
-def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
+def Geodesic_Chris(Back_Im,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
 
     # Escribir los parámetros y coordenadas iniciales del problema en dos tuplas
     param=(M, a)
@@ -110,7 +111,7 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
 
         ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3], *param)
         if ps_r_cambio=="Imaginary":
-            print("Imaginario")
+            ps_r_cambio="Imaginary"# Esto es estupido hay que quitarlo
         #   return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
         else:
             cambio_porc_r=abs(ps_r_cambio-coord_act[1])/abs(coord_act[1])
@@ -140,7 +141,12 @@ def Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M
         #Si la coordenada radial es mayor que r_limit y aumentando se considera que se va al infinito y no cae al Agujero Negro
         if ((coord_act[5])>=r_limit) and ((coord_act[5]-coord_ant[5])>0): 
             # Elegir el color en el que acaba al llegar a r_limit
-            Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7]) 
+            if Back_Im=="C":
+                Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7]) 
+            elif Back_Im=="I":
+                Back_Colour=Backg.Background_Image(coord_act[5], coord_act[6], coord_act[7], r_limit)
+            else:
+                sys.exit("Hay un error, Back_im debe ser C o I, para colores o imagen respectivamente")
             return Back_Colour # Esto significa que se va al infinito
 
 

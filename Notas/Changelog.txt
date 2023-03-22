@@ -58,3 +58,6 @@ Versiones Finales---------------------------
                  deseado de la pantalla. Limpieza y comentarios de la mayoria de codigos excepto Angle_to_Momentum y Momento_Temporal_Inicial
                  porque hay que repasar ambos programas más. Cambio del nombre del programa principal a Shadow_Multiprocess.
     Version 1.31 Añadido de un sonido al acabar el programa Shadow_Multiprocess.py.
+    Version 1.32 Comienzo de una funcion alternativa a Sphere_Quadrants, para si el usuario quiere dar una imagen de fondo el mismo. 
+                 Añadido de un parámetro en el Input.csv, que puede tomar valores "C" (colores) si se quiere usar la funcion 
+                 Sphere_Quadrants, o "I" (Image) si se quiere usar la nueva función Background_Image. No está todavía operativa.

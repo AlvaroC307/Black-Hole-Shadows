@@ -1,10 +1,5 @@
-cambiar el tamaño del paso, N, y comprobar si se va muy lejos
-
-Crear una inicializacion antes del montecarlo para tener siempre puntos claves, por ejemplo, ejes x,y...
 
 Mirar que paquete es numba, que pone que va veces mas rapido que python basico
-
-Volver a añadir que p^r cambie para que se mantenga constante, aunque solo sea ese y el de carter no
 
 El paso adaptativo que vaya multiplicado por r o algo¿?
 
@@ -24,6 +19,7 @@ Opciones mejorar programa:
     -Momento_Temporal_Inicial.py:
 -Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada) y cambiarlo a lo correcto: poner dos menos diferentes
 -Volver a añadir la constante de carter?
+-¿Cambiar los valores "Black", "Blue" por listas RGBA? Es mas claro de arreglar errores posibles con los colores. No se que hacer
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
@@ -38,3 +34,5 @@ PRUEBAS QUE HACER:
 -Comprobar las definiciones de Horizonte de eventos
 -Comprobar los valores del paso adaptativo
 -Comprobar Factor_Screen (eso se puede con uno simple de 50, pero hacer con 100 si hhay ordenadores de sobra)
+-Ver como cambia al cambiar theta_0, es posible que haya problema con el background (revisar) (problema cuando cambia phi_0 hay fijo)
+-Ver que pasa con distintos valores de a>M

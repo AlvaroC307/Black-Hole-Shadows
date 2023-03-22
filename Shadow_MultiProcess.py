@@ -43,9 +43,12 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
     theta_0 = eval(list_Input[4])
     coords_0 = (t_0, r_0, phi_0, theta_0)
 
+    # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
+    Back_Im=list_Input[7]
+
     # Parametros del Agujero Negro (Spin, Carga electrica y Magnetica, etc)
 
-    a = eval(list_Input[7])
+    a = eval(list_Input[8])
     param = (M, a)
 
     # Porcentaje para la Barra de Progreso
@@ -72,7 +75,7 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
             y = y0+i*paso_y # Avance del eje y
             list_momentum = Screen_to_Momentum(x, y, *coords_0, *param) # Calculo de los momentos para dicho punto
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-            Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param) # Calculo del color en dicho pixel
+            Pixel_Color = Geodesic_Chris(Back_Im, *coords_0, *tupla_momentum, *param) # Calculo del color en dicho pixel
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
