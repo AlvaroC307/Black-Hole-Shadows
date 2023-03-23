@@ -53,32 +53,14 @@ def Background_Image(r, phi, theta, r_limit):
     pixel_width = width // N_I
     pixel_height = height // N_I
 
-    """     # Loop over the pixels and extract their colors
-    for i in range(N_pix):
-        for j in range(N_pix):
-            # Get the pixel color """
+
+    # Get the pixel color 
     pixel_color = image.getpixel((Pix_x, Pix_z))
     Color= list(pixel_color) # Camiar una tupla  a una lista de tres elementos RGB    
-            # Do something with the pixel color
-            
-
-    #print(Pix_x, Pix_z)
-
-
-    # Primero se calculan los cuadrantes, para posteriormente sumar N_I/2 en ciertas coordenadas. Porque x,z son 0 en el centro del
-    # dibujo. Por ejemplo en la mitad x>0, si x=0 entonces el pixel debería ser N_I/2
-    """ if (z>=0) and (x>=0): # Primer cuadrante para z>0, x>0
-        Pix_x=(N_I/2)+int(paso_x*x)
-        Pix_z=(N_I/2)+int(paso_z*z)
-    elif (z>=0) and (x<0): # Segundo cuadrante para z>0, x<0
-        Pix_x=int(paso_x*x)
-        Pix_z=(N_I/2)+int(paso_z*z)
-    elif (z<0) and (x<0): # Tercer cuadrante para z<0, x<0
-        Pix_x=int(paso_x*x)
-        Pix_z=int(paso_z*z) 
-    elif (z<0) and (x>=0): # Cuarto cuadrante para z<0, x>0
-        Pix_x=(N_I/2)+int(paso_x*x)
-        Pix_z=int(paso_z*z)  """  
 
     return Color
+
+
+
+Background_Image(10, math.pi/2, math.pi/2, 10)
 

@@ -61,3 +61,6 @@ Versiones Finales---------------------------
     Version 1.32 Comienzo de una funcion alternativa a Sphere_Quadrants, para si el usuario quiere dar una imagen de fondo el mismo. 
                  Añadido de un parámetro en el Input.csv, que puede tomar valores "C" (colores) si se quiere usar la funcion 
                  Sphere_Quadrants, o "I" (Image) si se quiere usar la nueva función Background_Image. No está todavía operativa.
+
+    Version 1.4  Implementación completa de la nueva función Background_Image. Tanto en el ficher Shadow_Multiprocess.py como en el
+                 fichero Representation.py. Faltan de hacer pruebas con ella todavía para confirmar su correcto funcionamiento.

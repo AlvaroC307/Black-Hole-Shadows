@@ -4,6 +4,7 @@ import time
 import csv
 from playsound import playsound
 import os
+import sys
 
 
 from math import *
@@ -45,6 +46,11 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
 
     # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
     Back_Im=list_Input[7]
+
+    # Comprobar que Back_Im tiene uno de los dos valores posibles:
+    if (Back_Im!="C") and (Back_Im!="I"):
+        sys.exit("Hay un error, Back_im debe ser C o I, para colores o imagen respectivamente")
+
 
     # Parametros del Agujero Negro (Spin, Carga electrica y Magnetica, etc)
 

@@ -19,7 +19,6 @@ Opciones mejorar programa:
     -Momento_Temporal_Inicial.py:
 -Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada) y cambiarlo a lo correcto: poner dos menos diferentes
 -Volver a añadir la constante de carter?
--¿Cambiar los valores "Black", "Blue" por listas RGBA? Es mas claro de arreglar errores posibles con los colores. No se que hacer
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr

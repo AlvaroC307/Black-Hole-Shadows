@@ -6,6 +6,24 @@ import numpy as np # Esto es para los array al cambiar de los colores a valores 
 
 
 def matplot(N_pix):
+
+    #Abrir el fichero Input para saber si el usuario quiere con colores o con una imagen dada
+    # Leer el fichero de inputs
+    csv_Input = open('./Input/Input.csv', 'r')
+    Reader_Input = csv.reader(csv_Input)
+
+    list_Input = [] # Escribir el fichero de inputs en una lista
+    for row in Reader_Input:
+        content_input = row[1]
+        list_Input.append(content_input)
+
+    csv_Input.close()
+
+    # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
+    Back_Im=list_Input[7]
+
+
+
     # Abrir el fichero con los colores a lee
     file_Total = open('./Data/Geodesics_Total.csv', 'r')
     Reader_Total = csv.reader(file_Total)
@@ -16,12 +34,12 @@ def matplot(N_pix):
     for row in Reader_Total:
         content=row[2] # El color está en la tercera columna, el resto indican en que lugar está
 
-        """ if content=="Black":
-            content=[0,0,0]
-        else:
-            content=eval(content) """
+        if Back_Im=="I":
+            if content=="Black":
+                content=[0,0,0]
+            else:
+                content=eval(content) 
             
-
         Color_Line.append(content)
         k+=1
         if k==N_pix:
@@ -29,13 +47,14 @@ def matplot(N_pix):
             k=0
             Color_Line=[]
 
-    print(content)
-
 
     # Cambio de la lista de listas de colores en string a un array de colores como lista de numeros en RGBA para matplotlib
 
-    color_array = np.array([[mcolors.to_rgba(color) for color in row] for row in Color_Total])
-    #color_array = Color_Total
+    if Back_Im=="I":
+        color_array = Color_Total
+    elif Back_Im=="C":
+        color_array = np.array([[mcolors.to_rgb(color) for color in row] for row in Color_Total])
+    
 
     # Create a figure and plot the image
     fig, ax = plt.subplots(figsize=(5, 5)) # figsize habla sobre el tamaño de la imagen

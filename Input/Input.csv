@@ -3,7 +3,7 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2 
-N_pix,28
+N_pix,12
 Factor_Screen,3
 Back_Im,C
 a,0.99
