@@ -33,7 +33,7 @@ def Paso_adap(r, theta, M):
         h=0.01
     return h
 
-def Geodesic_Chris(Back_Im,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
+def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
 
     # Escribir los parámetros y coordenadas iniciales del problema en dos tuplas
     param=(M, a)
@@ -144,7 +144,7 @@ def Geodesic_Chris(Back_Im,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_th
             if Back_Im=="C":
                 Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7]) 
             elif Back_Im=="I":
-                Back_Colour=Backg.Background_Image(coord_act[5], coord_act[6], coord_act[7], r_limit)
+                Back_Colour=Backg.Background_Image(coord_act[5], coord_act[6], coord_act[7], r_limit, N_pix)
             else:
                 sys.exit("Hay un error, Back_im debe ser C o I, para colores o imagen respectivamente")
             return Back_Colour # Esto significa que se va al infinito

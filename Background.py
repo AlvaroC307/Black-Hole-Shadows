@@ -21,10 +21,8 @@ def Sphere_Quadrants(r, phi, theta):
         return "White" # z=0 or x=0
     
 
-def Background_Image(r, phi, theta, r_limit):
+def Background_Image(r, phi, theta, r_limit, N_pix):
 
-
-    N_pix=28
 
     N_I=N_pix
 
@@ -39,13 +37,12 @@ def Background_Image(r, phi, theta, r_limit):
     paso_z = N_pix / L_I
 
     Pix_x=(N_I/2)+int(paso_x*x)
-    Pix_z=(N_I/2)+int(paso_z*z)
-
+    Pix_z=(N_I/2)-int(paso_z*z) # imge.getpixel toma como pixel 0,0 el de la esquina superior izqa
 
 
     # Abrir la imagen y conseguir sus dimensiones
     current_dir = os.getcwd()
-    file_path = current_dir + '/Graphics/Background_Prueba.png'
+    file_path = current_dir + '/Graphics/Atrio.jpg'
 
     image=Image.open(file_path)
     width, height = image.size
@@ -55,12 +52,13 @@ def Background_Image(r, phi, theta, r_limit):
 
 
     # Get the pixel color 
-    pixel_color = image.getpixel((Pix_x, Pix_z))
+    pixel_color = image.getpixel((Pix_x*pixel_width, Pix_z*pixel_height))
+    pixel_color = pixel_color[:3]  # Discard the alpha channel if it exists
     Color= list(pixel_color) # Camiar una tupla  a una lista de tres elementos RGB    
 
     return Color
 
 
 
-Background_Image(10, math.pi/2, math.pi/2, 10)
+#Background_Image(10, math.pi/2, math.pi, 10)
 

@@ -64,3 +64,5 @@ Versiones Finales---------------------------
 
     Version 1.4  Implementación completa de la nueva función Background_Image. Tanto en el ficher Shadow_Multiprocess.py como en el
                  fichero Representation.py. Faltan de hacer pruebas con ella todavía para confirmar su correcto funcionamiento.
+    Version 1.41 Cambio de la funcion Background_Image porque representaba al revés el eje z, añadido del parametro N_pix a la funcion
+                 Geodesic_Chris y Background_Image.

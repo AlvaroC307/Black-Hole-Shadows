@@ -44,6 +44,10 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
     theta_0 = eval(list_Input[4])
     coords_0 = (t_0, r_0, phi_0, theta_0)
 
+    N_pix= eval(list_Input[5])
+    if (N_pix % 4) !=0:
+        N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
+
     # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
     Back_Im=list_Input[7]
 
@@ -81,7 +85,7 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
             y = y0+i*paso_y # Avance del eje y
             list_momentum = Screen_to_Momentum(x, y, *coords_0, *param) # Calculo de los momentos para dicho punto
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-            Pixel_Color = Geodesic_Chris(Back_Im, *coords_0, *tupla_momentum, *param) # Calculo del color en dicho pixel
+            Pixel_Color = Geodesic_Chris(Back_Im, N_pix, *coords_0, *tupla_momentum, *param) # Calculo del color en dicho pixel
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
