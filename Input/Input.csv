@@ -4,6 +4,6 @@ r_0,100*M
 phi_0,pi/2
 theta_0,pi/2 
 N_pix,50
-Factor_Screen,4
-Back_Im,I
+Factor_Screen,3
+Back_Im,C
 a,0.99

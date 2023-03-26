@@ -182,9 +182,10 @@ def main():
 
 
     current_dir = os.getcwd()
-    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3'
+    file_path = current_dir + '/Sounds/Terminado/Terminado_25.mp3'
 
     print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
+    playsound(file_path)
     playsound(file_path)
     file_Total.close() # Cerrar el fichero
 

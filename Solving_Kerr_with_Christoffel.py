@@ -42,6 +42,9 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
     # Datos extra necesarios para la resolucion numerica
     N =5000 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos
     r_limit=10*M # Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa
+    Dif_t_Horizon=10 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
+    Dif_r_Horizon=20 # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
+
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores 
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -71,8 +74,8 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
     coord_ant = []
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
-    file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager)
+    """ file_manager = open("./Data/Prueba.csv", "w", newline="")
+    csv_manager = csv.writer(file_manager) """
 
 
     # Método RK4 como tal, empieza aqui------------------------------------------------------
@@ -126,15 +129,15 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
         #    coord_act[3]=ps_theta_cambio
         #    veces_cambio_theta+=1
 
-        # Fin del hacer que las constantes del movimiento sigan cte--------------------------------------
+        # Fin del hacer que las constantes del movimiento sigan cte--------------------------------------------
 
 
         # Escribir en un fichero los momentos y coordenadas para comprobar un geodesica especifica
-        csv_manager.writerow(coord_act)
+        #csv_manager.writerow(coord_act)
 
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
-        if (abs(coord_act[4]-coord_ant[4])>=10) or abs(coord_act[5]-coord_ant[5])>=20:
+        if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon:
             return "Black" # Esto significa que cae al agujero negro
 
 
@@ -150,7 +153,7 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
             return Back_Colour # Esto significa que se va al infinito
 
 
-    file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
+    #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
     return "White" # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
 

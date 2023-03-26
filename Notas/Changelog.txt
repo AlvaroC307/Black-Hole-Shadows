@@ -66,3 +66,4 @@ Versiones Finales---------------------------
                  fichero Representation.py. Faltan de hacer pruebas con ella todavía para confirmar su correcto funcionamiento.
     Version 1.41 Cambio de la funcion Background_Image porque representaba al revés el eje z, añadido del parametro N_pix a la funcion
                  Geodesic_Chris y Background_Image.
+    Version 1.42 Añadido de los parametros Dif_t_Horizon y Dif_r_Horizon para cambiar más facil la definicion de Horizonte de Eventos

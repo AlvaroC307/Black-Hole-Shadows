@@ -42,7 +42,7 @@ def Background_Image(r, phi, theta, r_limit, N_pix):
 
     # Abrir la imagen y conseguir sus dimensiones
     current_dir = os.getcwd()
-    file_path = current_dir + '/Graphics/Atrio.jpg'
+    file_path = current_dir + '/Graphics/Creeper.jpg'
 
     image=Image.open(file_path)
     width, height = image.size

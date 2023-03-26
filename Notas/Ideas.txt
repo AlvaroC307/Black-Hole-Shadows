@@ -12,13 +12,15 @@ Opciones mejorar programa:
 -Generalizar Mom_Sup_Temp
 -Ejes del gráfico
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
--Definición de horizonte de eventos en una función propia
+-Funcion propia para horizonte de eventos?
+-Parametros de Horizon en función de M?
 -Hacer que el usuario pueda cambiar r_limit facilmente
 -Documentar:
     -Angle_to_Momentum.py:
     -Momento_Temporal_Inicial.py:
--Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada) y cambiarlo a lo correcto: poner dos menos diferentes
+    -Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada), lo correcto teóricamente: poner dos menos diferentes
 -Volver a añadir la constante de carter?
+-Hacer una imagen que sea como los colores de los cuadrantes pero con meridianos y paralelos
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
