@@ -128,6 +128,12 @@ def main():
     Factor_Screen=eval(list_Input[6]) # Factor multiplicativo para el tamaño de la pantalla
 
 
+
+
+    numero_ordenador=list_Input[9]
+
+
+
     # Definimos un fichero en el que escribir los resultados que nos interesen
     file_Total = open("./Data/Geodesics_Total.csv", "w", newline="")
     csv_Total = csv.writer(file_Total)
@@ -182,7 +188,7 @@ def main():
 
 
     current_dir = os.getcwd()
-    file_path = current_dir + '/Sounds/Terminado/Terminado_25.mp3'
+    file_path = current_dir + '/Sounds/Terminado/Terminado_'+ numero_ordenador+'.mp3'
 
     print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
     playsound(file_path)

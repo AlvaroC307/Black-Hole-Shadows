@@ -3,7 +3,8 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2 
-N_pix,50
+N_pix,100
 Factor_Screen,3
 Back_Im,C
 a,0.99
+numero_ordenador,32

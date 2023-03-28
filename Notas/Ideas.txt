@@ -13,7 +13,7 @@ Opciones mejorar programa:
 -Ejes del gráfico
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Funcion propia para horizonte de eventos?
--Parametros de Horizon en función de M?
+-Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Hacer que el usuario pueda cambiar r_limit facilmente
 -Documentar:
     -Angle_to_Momentum.py:
@@ -37,3 +37,4 @@ PRUEBAS QUE HACER:
 -Comprobar Factor_Screen (eso se puede con uno simple de 50, pero hacer con 100 si hhay ordenadores de sobra)
 -Ver como cambia al cambiar theta_0, es posible que haya problema con el background (revisar) (problema cuando cambia phi_0 hay fijo)
 -Ver que pasa con distintos valores de a>M
+-Probar el programa con varios valores de M, los parametros Horizon no estan en funcion de M

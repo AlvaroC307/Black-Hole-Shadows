@@ -174,9 +174,9 @@ x,y=0.07726121118594291,5.331023571830061
 
 list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-Pixel_Color = Geodesic_Chris(*coords_0, *tupla_momentum, *param)
-print(Pixel_Color)  """
-
+Pixel_Color = Geodesic_Chris("C", 50, *coords_0, *tupla_momentum, *param)
+print(Pixel_Color) 
+ """
 # Puebas con el momento puesto a mano---------------
 
 #p_r_0 = 1
