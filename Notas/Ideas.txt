@@ -15,12 +15,11 @@ Opciones mejorar programa:
 -Funcion propia para horizonte de eventos?
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Hacer que el usuario pueda cambiar r_limit facilmente
+-Cambiar el paso segun los datos de la prueba
 -Documentar:
     -Angle_to_Momentum.py:
     -Momento_Temporal_Inicial.py:
-    -Explicar porque he quitado el menos de la x en Angle_to_Momentum (imagen espejada), lo correcto teóricamente: poner dos menos diferentes
 -Volver a añadir la constante de carter?
--Hacer una imagen que sea como los colores de los cuadrantes pero con meridianos y paralelos
 --------------Version 1.x:
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
@@ -31,10 +30,5 @@ Opciones mejorar programa:
 
 
 PRUEBAS QUE HACER:
--Comprobar el r_limit
--Comprobar las definiciones de Horizonte de eventos
--Comprobar los valores del paso adaptativo
--Comprobar Factor_Screen (eso se puede con uno simple de 50, pero hacer con 100 si hhay ordenadores de sobra)
 -Ver como cambia al cambiar theta_0, es posible que haya problema con el background (revisar) (problema cuando cambia phi_0 hay fijo)
--Ver que pasa con distintos valores de a>M
 -Probar el programa con varios valores de M, los parametros Horizon no estan en funcion de M

@@ -5,6 +5,6 @@ phi_0,pi/2
 theta_0,pi/2 
 N_pix,100
 Factor_Screen,3
-Back_Im,C
+Back_Im,I
 a,0.99
-numero_ordenador,32
+numero_ordenador,1

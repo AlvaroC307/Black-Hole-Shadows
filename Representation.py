@@ -37,6 +37,8 @@ def matplot(N_pix):
         if Back_Im=="I":
             if content=="Black":
                 content=[0,0,0]
+            elif content=="Pink":
+                content=[255,105,180]
             else:
                 content=eval(content) 
             

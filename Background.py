@@ -31,10 +31,10 @@ def Background_Image(r, phi, theta, r_limit, N_pix):
     x=r*math.cos(phi)*math.sin(theta)
     z=r*math.cos(theta)
 
-    eps=1 # Esto quizá pueda cambiar al cambiar r_limit, mirar la función de paso adaptativo
-    L_I=2*r_limit #+ eps  
-    paso_x = N_pix / L_I
-    paso_z = N_pix / L_I
+    eps=1 # Para hacer L_I algo más grande y que el paso sea algo más pequeño, por si r>r_limit, tiene que ser del orden del paso en r_limit
+    L_Image=2*r_limit +eps 
+    paso_x = N_pix / L_Image
+    paso_z = N_pix / L_Image
 
     Pix_x=(N_I/2)+int(paso_x*x)
     Pix_z=(N_I/2)-int(paso_z*z) # imge.getpixel toma como pixel 0,0 el de la esquina superior izqa
@@ -42,7 +42,7 @@ def Background_Image(r, phi, theta, r_limit, N_pix):
 
     # Abrir la imagen y conseguir sus dimensiones
     current_dir = os.getcwd()
-    file_path = current_dir + '/Graphics/Creeper.jpg'
+    file_path = current_dir + '/Graphics/Colours.png'
 
     image=Image.open(file_path)
     width, height = image.size

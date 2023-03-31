@@ -155,7 +155,7 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
 
     #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
-    return "White" # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
+    return "Pink" # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
 
 
 # Para hacer pruebas de geodesicas especificas:--------------------------------------------------------

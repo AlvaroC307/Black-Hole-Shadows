@@ -67,3 +67,6 @@ Versiones Finales---------------------------
     Version 1.41 Cambio de la funcion Background_Image porque representaba al revés el eje z, añadido del parametro N_pix a la funcion
                  Geodesic_Chris y Background_Image.
     Version 1.42 Añadido de los parametros Dif_t_Horizon y Dif_r_Horizon para cambiar más facil la definicion de Horizonte de Eventos
+    Version 1.43 Hay un nuevo parametro eps en la funcion Background_Image, suma una cantidad a L_I porque existe una posibilidad que
+                 r>r_limit, y por tanto se pase del numero de pixeles de la imagen. Creacion de una imagen con meridianos, paralelos 
+                 y un circulo blanco en el centro. Cambio del color cuando se realiza el RK4 más de N veces a rosa.
