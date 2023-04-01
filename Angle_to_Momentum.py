@@ -8,9 +8,11 @@ import Momento_Temporal_Inicial as mti
 
 def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
 
-    coords_0=(t_0, r_0, phi_0, theta_0)
-    param=(M, a)
+    coords_0=(t_0, r_0, phi_0, theta_0) # Tupla de coordenadas iniciales
+    param=(M, a) # Tupla de parametros
 
+
+    # Calculo de los parametros para obtener x e y, sigue la notacion de Chaotic Shadows
     At=math.sqrt((G(2, 2, *coords_0, *param))/(G(2, 0, *coords_0, *param)**2-G(0, 0, *coords_0, *param)*G(2, 2, *coords_0, *param)))
     Ar=1/math.sqrt(G(1, 1, *coords_0, *param))
     Aphi=1/math.sqrt(G(2, 2, *coords_0, *param))
@@ -33,5 +35,5 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
     p_theta_0= ps_local_theta/Atheta
     p_t_0=mti.Mom_temp(*coords_0,p_r_0,p_phi_0,p_theta_0,*param)
 
-    list_momentos=[p_t_0, p_r_0, p_phi_0, p_theta_0]
-    return list_momentos
+    list_momentos=[p_t_0, p_r_0, p_phi_0, p_theta_0] # Lista de los momentos en las coordenadas de Boyer-Lindquist
+    return list_momentos 

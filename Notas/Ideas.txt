@@ -9,18 +9,15 @@ Opciones mejorar programa:
 
 
 --------------Version 1.0x:
--Generalizar Mom_Sup_Temp
+-Generalizar Mom_Sup_r 
 -Ejes del gráfico
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Funcion propia para horizonte de eventos?
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Hacer que el usuario pueda cambiar r_limit facilmente
--Cambiar el paso segun los datos de la prueba
--Documentar:
-    -Angle_to_Momentum.py:
-    -Momento_Temporal_Inicial.py:
 -Volver a añadir la constante de carter?
 --------------Version 1.x:
+-Barra de Progreso
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
 -Generalizar los parámetros 
@@ -31,4 +28,4 @@ Opciones mejorar programa:
 
 PRUEBAS QUE HACER:
 -Ver como cambia al cambiar theta_0, es posible que haya problema con el background (revisar) (problema cuando cambia phi_0 hay fijo)
--Probar el programa con varios valores de M, los parametros Horizon no estan en funcion de M
+-Probar el programa con varios valores de M, los parametros Horizon y el paso adaptativo no estan en funcion de M

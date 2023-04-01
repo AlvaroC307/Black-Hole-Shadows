@@ -16,7 +16,7 @@ from Angle_to_Momentum import * # Este solo es util para realizar las pruebas al
 
 # Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
 def Paso_adap(r, theta, M):
-    if (r>60*M):
+    """ if (r>60*M):
         h=5
     elif (r>20*M):
         h=2
@@ -31,7 +31,34 @@ def Paso_adap(r, theta, M):
     # el paso se vuelve mucho más lento
     if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
         h=0.01
+    return h """
+
+    if (r<10*M):
+        h=0.1
+    elif (r<20*M):
+        h=2.5
+    elif (r<60*M):
+        h=5
+    else:
+        h=10
+
+    """ 
+    if (r>60*M):
+        h=10
+    elif (r>20*M):
+        h=6 # Antes era 5
+    elif (r>10*M):
+        h=3 # Antes era 2.5
+    else:
+        h=0.1 """
+
+    # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
+    # el paso se vuelve mucho más lento
+    if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
+        h=0.01 # Antes era 0.01
     return h
+
+
 
 def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a):
 
@@ -42,9 +69,9 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
     # Datos extra necesarios para la resolucion numerica
     N =5000 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos
     r_limit=10*M # Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa
-    Dif_t_Horizon=10 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
-    Dif_r_Horizon=20 # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
-
+    
+    Dif_t_Horizon=15 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
+    Dif_r_Horizon=30 # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores 
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)

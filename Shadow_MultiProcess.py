@@ -4,7 +4,7 @@ import time
 import csv
 from playsound import playsound
 import os
-import sys
+
 
 
 from math import *
@@ -129,11 +129,6 @@ def main():
 
 
 
-
-    numero_ordenador=list_Input[9]
-
-
-
     # Definimos un fichero en el que escribir los resultados que nos interesen
     file_Total = open("./Data/Geodesics_Total.csv", "w", newline="")
     csv_Total = csv.writer(file_Total)
@@ -188,10 +183,9 @@ def main():
 
 
     current_dir = os.getcwd()
-    file_path = current_dir + '/Sounds/Terminado/Terminado_'+ numero_ordenador+'.mp3'
+    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3'
 
     print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
-    playsound(file_path)
     playsound(file_path)
     file_Total.close() # Cerrar el fichero
 

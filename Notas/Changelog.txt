@@ -70,3 +70,6 @@ Versiones Finales---------------------------
     Version 1.43 Hay un nuevo parametro eps en la funcion Background_Image, suma una cantidad a L_I porque existe una posibilidad que
                  r>r_limit, y por tanto se pase del numero de pixeles de la imagen. Creacion de una imagen con meridianos, paralelos 
                  y un circulo blanco en el centro. Cambio del color cuando se realiza el RK4 más de N veces a rosa.
+    Version 1.44 Comentarios en Angle_to_Momentum y algo de limpieza y comentarios en Momento_Temporal_Inicial. Cambio de la funcion 
+                 Paso_adap para que el progama vaya un 25% más rapido. Cambio de la funcion paso_adap para que mire antes si se 
+                 encuentra cerca del agujero negro, ya que se suele estar cerca y lejos pasa poco rato, asi evita comprobar muchos if.
