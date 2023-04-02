@@ -32,30 +32,22 @@ def Paso_adap(r, theta, M):
     if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
         h=0.01
     return h """
-
-    if (r<10*M):
-        h=0.1
-    elif (r<20*M):
-        h=2.5
-    elif (r<60*M):
-        h=5
-    else:
-        h=10
-
-    """ 
+    
     if (r>60*M):
         h=10
     elif (r>20*M):
-        h=6 # Antes era 5
+        h=5
     elif (r>10*M):
-        h=3 # Antes era 2.5
+        h=3
+    elif (r>5*M): # ¿Quitar esto y hacer que el anterior sea 2 y no 3?
+        h=1
     else:
-        h=0.1 """
+        h=0.07
 
     # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
     # el paso se vuelve mucho más lento
     if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
-        h=0.01 # Antes era 0.01
+        h=0.01 
     return h
 
 
@@ -101,8 +93,8 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
     coord_ant = []
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
-    """ file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager) """
+    file_manager = open("./Data/Prueba.csv", "w", newline="")
+    csv_manager = csv.writer(file_manager) 
 
 
     # Método RK4 como tal, empieza aqui------------------------------------------------------
@@ -160,7 +152,7 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
 
 
         # Escribir en un fichero los momentos y coordenadas para comprobar un geodesica especifica
-        #csv_manager.writerow(coord_act)
+        csv_manager.writerow(coord_act)
 
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
@@ -180,14 +172,14 @@ def Geodesic_Chris(Back_Im, N_pix ,t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi
             return Back_Colour # Esto significa que se va al infinito
 
 
-    #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
+    file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
     return "Pink" # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
 
 
 # Para hacer pruebas de geodesicas especificas:--------------------------------------------------------
-""" M=1
-a=0.9
+M=1
+a=0.99
 t_0=0
 r_0 = 100*M
 theta_0 = math.pi/2
@@ -197,13 +189,13 @@ param=(M, a)
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=0.07726121118594291,5.331023571830061
+x,y=0.23178363355782872,4.712933882342518
 
 list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-Pixel_Color = Geodesic_Chris("C", 50, *coords_0, *tupla_momentum, *param)
+Pixel_Color = Geodesic_Chris("C", 100, *coords_0, *tupla_momentum, *param)
 print(Pixel_Color) 
- """
+
 # Puebas con el momento puesto a mano---------------
 
 #p_r_0 = 1
