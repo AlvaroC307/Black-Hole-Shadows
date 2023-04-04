@@ -1,15 +1,7 @@
 # Importar Librerias utiles
 from math import * #Se debe importar entera para evitar problemas con el eval()
 import csv
-
-
-# Definiciones de las funciones Delta y rho^2
-def Delta(r, M, a):
-    return r**2+a**2-2*M*r
-
-
-def rho2(r, theta, a):
-    return r**2+(a*cos(theta))**2
+from Initial_Values import M, constantes
 
 
 # Lectura de los ficheros Metric, Inverse_Metric y Christoffel_symbols
@@ -18,6 +10,8 @@ csv_Metric= open('./Data/Metric.csv', 'r')
 Reader_Metric = csv.reader(csv_Metric)
 csv_Inv_Metric= open('./Data/Inverse_Metric.csv', 'r')
 Reader_Inv_Metric = csv.reader(csv_Inv_Metric)
+csv_Chris= open('./Data/Christoffel_symbols.csv', 'r')
+Reader_Chris = csv.reader(csv_Chris)
 
 
 n=0
@@ -32,7 +26,6 @@ for row in Reader_Metric:
         Matrix_Metric.append(list_Metric)
         list_Metric=[]
         n=0
-
 
 csv_Metric.close()
 
@@ -49,14 +42,9 @@ for row in Reader_Inv_Metric:
         list_Inv_Metric=[]
         n=0
 
-
 csv_Inv_Metric.close()
 
-
 # Eso era para la lectura de Metric y Inverse Metric, ahora toca Christoffel symbols 
-
-csv_Chris= open('./Data/Christoffel_symbols.csv', 'r')
-Reader_Chris = csv.reader(csv_Chris)
 
 
 n=0 # Se usa el mismo metodo que antes pero ahora se requieren de una lista, una lista de listas para pasarlas a la total
@@ -78,7 +66,6 @@ for row in Reader_Chris:
             Matrix_Chris=[]
             m=0
 
-
 csv_Chris.close()
 
 #-------------------Definicion de las funciones Metric, Inverse Metric y Christoffel Symbols 
@@ -86,15 +73,15 @@ csv_Chris.close()
 # Cada elemento de estos tensores es un string creado por Sympy, al evaluar pasa a ser un numero en funcion de las coord o constantes
 # que se le hayan pasado
 
-def G(i, j, t, r, phi, theta, M, a):
-    return eval(Matrix_Metric[i][j]) 
+def G(i, j, t, r, phi, theta):
+    return eval(Matrix_Metric[i][j], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes}) 
 
 
-def Inv_G(i, j, t, r, phi, theta, M, a):
-    return eval(Matrix_Inv_Metric[i][j])
+def Inv_G(i, j, t, r, phi, theta):
+    return eval(Matrix_Inv_Metric[i][j], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes})
 
 
 # i hace referencia al superindice, j y k son los subindices
 
-def Christoffel(i, j, k, t, r, phi, theta, M, a):
-    return eval(Tri_Matrix_Chris[i][j][k])
+def Christoffel(i, j, k, t, r, phi, theta):
+    return eval(Tri_Matrix_Chris[i][j][k], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes})

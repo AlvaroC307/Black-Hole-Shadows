@@ -14,13 +14,13 @@ Opciones mejorar programa:
 -Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Funcion propia para horizonte de eventos?
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
--Hacer que el usuario pueda cambiar r_limit facilmente
 -Volver a añadir la constante de carter?
+-Exigir el tipo de variable en las funciones
+-Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
 --------------Version 1.x:
 -Barra de Progreso
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
--Generalizar los parámetros 
 -Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir)
 --------------Version x.0:
 -Aceptar métricas numéricas 

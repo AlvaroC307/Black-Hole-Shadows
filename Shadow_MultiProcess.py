@@ -4,8 +4,7 @@ import time
 import csv
 from playsound import playsound
 import os
-
-
+from Initial_Values import M, r_0, Factor_Screen, N_pix
 
 from math import *
 
@@ -15,7 +14,7 @@ from Angle_to_Momentum import *
 from Solving_Kerr_with_Christoffel import *
 
 
-def Screen(Factor_Screen, r_0, M):  # Calculo del tamaño de la pantalla
+def Screen():  # Calculo del tamaño de la pantalla
     rho2_Schwarzschild = r_0/2*M
 
     # Angulo de la sombra para un agujero negro de Schwarzschild con la misma masa
@@ -31,35 +30,8 @@ def Screen(Factor_Screen, r_0, M):  # Calculo del tamaño de la pantalla
 
 
 # Funcion para dar a cada worker una cantidad de pantalla y que calcule los colores de cada pixel en su apartado
-def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
+def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, worker):
     #worker es el nombre del trabajador
-
-    # Masa del agujero negro
-    M = eval(list_Input[0])
-
-    # Posicion del Observador y Condiciones Iniciales
-    t_0 = eval(list_Input[1])
-    r_0 = eval(list_Input[2])
-    phi_0 = eval(list_Input[3])
-    theta_0 = eval(list_Input[4])
-    coords_0 = (t_0, r_0, phi_0, theta_0)
-
-    N_pix= eval(list_Input[5])
-    if (N_pix % 4) !=0:
-        N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
-
-    # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
-    Back_Im=list_Input[7]
-
-    # Comprobar que Back_Im tiene uno de los dos valores posibles:
-    if (Back_Im!="C") and (Back_Im!="I"):
-        sys.exit("Hay un error, Back_im debe ser C o I, para colores o imagen respectivamente")
-
-
-    # Parametros del Agujero Negro (Spin, Carga electrica y Magnetica, etc)
-
-    a = eval(list_Input[8])
-    param = (M, a)
 
     # Porcentaje para la Barra de Progreso
     Porc_Avance = 100/(N_pix_x*N_pix_y)
@@ -70,7 +42,6 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
     paso_x = Lx/N_pix_x # Paso entre cada centro de cada pixel en el eje horizontal
     paso_y = Ly/N_pix_y # Paso entre cada centro de cada pixel en el eje vertical
     # Aunque no lo parezca a primera vista paso_x=paso_y porque L_y es más grande pero también tiene más pixeles. Es importante el equilibrio
-
 
     # Esto es para que luego se pongan en el centro del pixel y no en una esquina
     x0 = x0+paso_x/2 
@@ -83,9 +54,9 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, list_Input, worker):
         for j in range(N_pix_x):
             x = x0+j*paso_x # Avance del eje x
             y = y0+i*paso_y # Avance del eje y
-            list_momentum = Screen_to_Momentum(x, y, *coords_0, *param) # Calculo de los momentos para dicho punto
+            list_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-            Pixel_Color = Geodesic_Chris(Back_Im, N_pix, *coords_0, *tupla_momentum, *param) # Calculo del color en dicho pixel
+            Pixel_Color = Geodesic_Chris(*tupla_momentum) # Calculo del color en dicho pixel
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
@@ -103,32 +74,6 @@ def main():
     # Comienzo del tiempo para saber cuanto tarda el programa en total
     start_time = time.time()
 
-    # Leer el fichero de inputs
-    csv_Input = open('./Input/Input.csv', 'r')
-    Reader_Input = csv.reader(csv_Input)
-
-    list_Input = [] # Escribir el fichero de inputs en una lista
-    for row in Reader_Input:
-        content_input = row[1]
-        list_Input.append(content_input)
-
-    csv_Input.close()
-
-    # Masa del agujero negro
-    M = eval(list_Input[0])
-
-    # Posicion radial del Observador 
-    r_0 = eval(list_Input[2])
-
-    # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
-    N_pix = eval(list_Input[5])
-    if (N_pix % 4) !=0:
-        N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
-
-    Factor_Screen=eval(list_Input[6]) # Factor multiplicativo para el tamaño de la pantalla
-
-
-
     # Definimos un fichero en el que escribir los resultados que nos interesen
     file_Total = open("./Data/Geodesics_Total.csv", "w", newline="")
     csv_Total = csv.writer(file_Total)
@@ -137,27 +82,27 @@ def main():
     # Numero de pixeles en el eje x y en el eje y
     N_pix_x = int(N_pix/4)
     N_pix_y = int(N_pix/2)
-    L_screen = Screen(Factor_Screen, r_0, M)  # Tamaño de la pantalla total
+    L_screen = Screen()  # Tamaño de la pantalla total
 
     executor = ProcessPoolExecutor(max_workers=8) # Numero de trabajadores que se utilizan
 
     #Asignar a cada trabajador su parte de la pantalla total, no todos tardan lo mismo
     work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
-                        -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, list_Input, "a")
+                        -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, "a")
     work_b = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
-                        L_screen/2, 0, N_pix_x, N_pix_y, list_Input, "b")
+                        L_screen/2, 0, N_pix_x, N_pix_y, "b")
     work_c = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
-                        L_screen/2, 0, N_pix_x, N_pix_y, list_Input, "c")
+                        L_screen/2, 0, N_pix_x, N_pix_y, "c")
     work_d = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
-                        L_screen/2, 0, N_pix_x, N_pix_y, list_Input, "d")
+                        L_screen/2, 0, N_pix_x, N_pix_y, "d")
     work_e = executor.submit(Black_Hole_Geodesic, -L_screen/2,
-                        -L_screen/4, 0, -L_screen/2, N_pix_x, N_pix_y, list_Input, "e")
+                        -L_screen/4, 0, -L_screen/2, N_pix_x, N_pix_y, "e")
     work_f = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
-                        0, -L_screen/2, N_pix_x, N_pix_y, list_Input, "f")
+                        0, -L_screen/2, N_pix_x, N_pix_y, "f")
     work_g = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
-                        0, -L_screen/2, N_pix_x, N_pix_y, list_Input, "g")
+                        0, -L_screen/2, N_pix_x, N_pix_y, "g")
     work_h = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
-                        0, -L_screen/2, N_pix_x, N_pix_y, list_Input, "h") 
+                        0, -L_screen/2, N_pix_x, N_pix_y, "h") 
 
 
     # Escritura de todos los resultados de tal manera que toda una linea horizontal este junta y cada N_pix se cambia de vertical

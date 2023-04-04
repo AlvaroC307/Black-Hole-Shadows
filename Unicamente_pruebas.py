@@ -1,24 +1,8 @@
 # Importar Librerias utiles
 
-import time
-import csv
-from concurrent.futures import ProcessPoolExecutor
-from tqdm import tqdm
+from Initial_Values import M, t_0, r_0, phi_0, theta_0, N_pix, Factor_Screen, Back_Im, constantes
 
-def worker(task):
-    result = []
-    with tqdm(total=len(task)) as pbar:  # initialize progress bar
-        for item in task:
-            # do some work on the item
-            result.append(item ** 2)
-            # update progress bar
-            pbar.update(1)
-    return result
-
-if __name__ == '__main__':
-    tasks = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
-    with ProcessPoolExecutor(max_workers=4) as executor:
-        results = list(executor.map(worker, tasks))
-    print(results)
-
-
+print(M, t_0, r_0, phi_0, theta_0, N_pix, Factor_Screen, Back_Im, constantes)
+param={'M':M, **constantes}
+print(param)
+print(Back_Im)

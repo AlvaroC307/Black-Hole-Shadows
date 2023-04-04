@@ -1,6 +1,7 @@
 import math
 import os
 from PIL import Image
+from Initial_Values import r_limit, N_pix
 
 def Sphere_Quadrants(r, phi, theta):
     # Cambio de coordenadas esfericas a cartesianas (la coordenada y no afecta en nada, ya que z es la altura, x es izqa o derecha)
@@ -21,7 +22,7 @@ def Sphere_Quadrants(r, phi, theta):
         return "White" # z=0 or x=0
     
 
-def Background_Image(r, phi, theta, r_limit, N_pix):
+def Background_Image(r, phi, theta):
 
 
     N_I=N_pix

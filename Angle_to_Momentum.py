@@ -2,22 +2,22 @@
 import math
 from Function_Metric import *
 import Momento_Temporal_Inicial as mti
+from Initial_Values import t_0, r_0, phi_0, theta_0
 
 # Ahora mismo será especifico a un agujero negro tipo Kerr, es decir: métrica diagonal excepto en los términos t-phi
 # la matriz de transformación de la base del observador a la base coordenadas, calculamos los 5 elementos primero
 
-def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
+def Screen_to_Momentum(x, y):
 
     coords_0=(t_0, r_0, phi_0, theta_0) # Tupla de coordenadas iniciales
-    param=(M, a) # Tupla de parametros
 
 
     # Calculo de los parametros para obtener x e y, sigue la notacion de Chaotic Shadows
-    At=math.sqrt((G(2, 2, *coords_0, *param))/(G(2, 0, *coords_0, *param)**2-G(0, 0, *coords_0, *param)*G(2, 2, *coords_0, *param)))
-    Ar=1/math.sqrt(G(1, 1, *coords_0, *param))
-    Aphi=1/math.sqrt(G(2, 2, *coords_0, *param))
-    Atheta=1/math.sqrt(G(3, 3, *coords_0, *param))
-    Gamma=-((G(2, 0, *coords_0, *param))/(G(2, 2, *coords_0, *param)))*At  
+    At=math.sqrt((G(2, 2, *coords_0))/(G(2, 0, *coords_0)**2-G(0, 0, *coords_0)*G(2, 2, *coords_0)))
+    Ar=1/math.sqrt(G(1, 1, *coords_0))
+    Aphi=1/math.sqrt(G(2, 2, *coords_0))
+    Atheta=1/math.sqrt(G(3, 3, *coords_0))
+    Gamma=-((G(2, 0, *coords_0))/(G(2, 2, *coords_0)))*At  
 
     # Tenemos las siguientes dos ecuaciones: x=(-r*ps_local_phi)/(ps_local_r), y=(r*ps_local_theta)/(ps_local_r) en los puntos iniciales
     # Para calcular los momentos iniciales locales, asumiremos que ps_local_r=1, ya que ademas, si estamos lejos del agujero negro,
@@ -33,7 +33,7 @@ def Screen_to_Momentum(x, y, t_0, r_0, phi_0, theta_0, M, a):
     p_r_0= ps_local_r/Ar
     p_phi_0= ps_local_phi/Aphi 
     p_theta_0= ps_local_theta/Atheta
-    p_t_0=mti.Mom_temp(*coords_0,p_r_0,p_phi_0,p_theta_0,*param)
+    p_t_0=mti.Mom_temp(*coords_0, p_r_0, p_phi_0, p_theta_0)
 
     list_momentos=[p_t_0, p_r_0, p_phi_0, p_theta_0] # Lista de los momentos en las coordenadas de Boyer-Lindquist
     return list_momentos 

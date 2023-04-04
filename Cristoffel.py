@@ -7,8 +7,8 @@ import csv
 from Metric import*
 
 # Definir los simbolos en sympy a usar y la lista de las coordenadas
-M,a=sp.symbols("M,a")
-t,r,phi,theta=sp.symbols("t,r,phi,theta")
+M, a=sp.symbols("M, a")
+t, r, phi, theta=sp.symbols("t, r, phi, theta")
 coord=[t,r,phi,theta]
 
 # Definicion de una funcion para calcular las parciales de la metrica,

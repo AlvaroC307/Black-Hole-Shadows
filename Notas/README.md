@@ -9,6 +9,10 @@ Metric.py utiliza Sympy para escribir una metrica y su inversa de manera analiti
 
 Cristoffel.py (si, esta mal escrito, falta una h), utiliza dicha metrica analitica y la utiliza para obtener los simbolos de christoffel, ya que estos son necesarios para resolver la ecuacion de las geodesicas general. A veces, tarda en compilar. 
 
+Initial_Values.py lee los ficheros de entrada, Input.csv y Extra_Constants.csv y almacena los datos en unas constantes que luego
+se pueden referenciar directamente. Como las constantes pueden ser un numero arbitrario con nombre dado por el usuario se
+almacenan en un diccionario.
+
 Function_Metric.py define la metrica y la metrica inversa como funciones, para poder estar usandolas en otros ficheros sin problema. También define una funcion para los simbolos de Christoffel. 
 
 Momento_Temporal_Inicial.py es simplemente una funcion para obligar que la geodésica sea luminica, forzando un momento temporal inicial, u otros momentos que puedan ser necesarios.

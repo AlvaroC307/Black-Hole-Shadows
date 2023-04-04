@@ -3,9 +3,9 @@ import csv
 import matplotlib.pyplot as plt # Esto es para el plot
 import matplotlib.colors as mcolors # Esto es para cambiar los colores a valores numéricos
 import numpy as np # Esto es para los array al cambiar de los colores a valores numericos
+from Initial_Values import N_pix
 
-
-def matplot(N_pix):
+def matplot():
 
     #Abrir el fichero Input para saber si el usuario quiere con colores o con una imagen dada
     # Leer el fichero de inputs
@@ -71,22 +71,7 @@ def matplot(N_pix):
    
 
 def main():
-    csv_Input = open('./Input/Input.csv', 'r')
-    Reader_Input = csv.reader(csv_Input)
-
-    list_Input = []
-    for row in Reader_Input:
-        content_input = row[1]
-        list_Input.append(content_input)
-
-    csv_Input.close()
-
-    # Numero de Pixeles en un lado, el numero de pixeles total será, N_pix * N_pix
-    N_pix = eval(list_Input[5])
-    if (N_pix % 4) !=0:
-        N_pix = N_pix + 4 - (N_pix % 4) # Para que sea facil de dividir por 4 el numero de pixeles
-
-    matplot(N_pix)
+    matplot()
 
 if __name__ == '__main__':
     main()
