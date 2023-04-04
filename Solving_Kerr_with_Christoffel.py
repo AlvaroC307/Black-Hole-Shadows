@@ -1,12 +1,10 @@
 # Importar Librerias utiles
 import math
 import csv
-#import time
-
 
 # Importar otros ficheros de la carpeta
 from Function_Metric import Inv_G
-from Momento_Temporal_Inicial import *
+import Momento_Temporal_Inicial as mti
 from Equations_to_Solve_Christoffel import Switch_punto
 import Background as Backg
 from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_limit
@@ -119,7 +117,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
-        ps_r_cambio=Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3])
+        ps_r_cambio=mti.Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3])
         if ps_r_cambio=="Imaginary":
             ps_r_cambio="Imaginary"# Esto es estupido hay que quitarlo
         #   return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
@@ -129,7 +127,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
                 coord_act[1]=ps_r_cambio
         
 
-        #ps_theta_cambio=Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, C)
+        #ps_theta_cambio=mti.Mom_Sup_theta(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[3], M, a, E, L_z, C)
         #cambio_porc_theta=abs(ps_theta_cambio-coord_act[3])/abs(coord_act[3])
 
         #if  cambio_porc_theta<0.01:

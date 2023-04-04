@@ -1,6 +1,6 @@
 # Importar ficheros útiles
 import math
-from Function_Metric import *
+from Function_Metric import G
 import Momento_Temporal_Inicial as mti
 from Initial_Values import t_0, r_0, phi_0, theta_0
 

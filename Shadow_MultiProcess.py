@@ -4,14 +4,10 @@ import time
 import csv
 from playsound import playsound
 import os
+import concurrent.futures as cf
+from Angle_to_Momentum import Screen_to_Momentum
+from Solving_Kerr_with_Christoffel import Geodesic_Chris
 from Initial_Values import M, r_0, Factor_Screen, N_pix
-
-from math import *
-
-from concurrent.futures import *
-
-from Angle_to_Momentum import *
-from Solving_Kerr_with_Christoffel import *
 
 
 def Screen()->float:  # Calculo del tamaño de la pantalla
@@ -84,7 +80,7 @@ def main()->None:
     N_pix_y = int(N_pix/2)
     L_screen = Screen()  # Tamaño de la pantalla total
 
-    executor = ProcessPoolExecutor(max_workers=8) # Numero de trabajadores que se utilizan
+    executor = cf.ProcessPoolExecutor(max_workers=8) # Numero de trabajadores que se utilizan
 
     #Asignar a cada trabajador su parte de la pantalla total, no todos tardan lo mismo
     work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
