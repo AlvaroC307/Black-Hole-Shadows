@@ -15,8 +15,8 @@ Opciones mejorar programa:
 -Funcion propia para horizonte de eventos?
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Volver a añadir la constante de carter?
--Exigir el tipo de variable en las funciones
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
+-comprobar la fucion del paso
 --------------Version 1.x:
 -Barra de Progreso
 -Añadir Disco de Acrección  

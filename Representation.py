@@ -5,7 +5,7 @@ import matplotlib.colors as mcolors # Esto es para cambiar los colores a valores
 import numpy as np # Esto es para los array al cambiar de los colores a valores numericos
 from Initial_Values import N_pix
 
-def matplot():
+def matplot()->None:
 
     #Abrir el fichero Input para saber si el usuario quiere con colores o con una imagen dada
     # Leer el fichero de inputs
@@ -70,7 +70,7 @@ def matplot():
 
    
 
-def main():
+def main()->None:
     matplot()
 
 if __name__ == '__main__':

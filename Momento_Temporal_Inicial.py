@@ -8,7 +8,7 @@ from Function_Metric import G, Inv_G
 # Solucionar la ecuación cuadrática general (Aplicado ya las simplificaciones de la metrica debidas a estar en Kerr(Mom_temp no simplificado))
 # a*p_t^2+b*p_t+c, a=g^tt, b=2*g^{tphi}*p_phi, c=...
     
-def Mom_temp(t, r, phi, theta, p_r, p_phi, p_theta): # General
+def Mom_temp(t:float, r:float, phi:float, theta:float, p_r:float, p_phi:float, p_theta:float)->float: # General
 
     coords=(t, r, phi, theta)
 
@@ -28,27 +28,10 @@ def Mom_temp(t, r, phi, theta, p_r, p_phi, p_theta): # General
 
     return p_t
 
-""" 
-def Mom_Sup_temp(t,r,phi,theta,ps_r,ps_phi,ps_theta,M,a): # Especifico de Kerr 
-
-    coord=(t, r, phi, theta)
-    param=(M, a)
-    A=G(0, 0, *coord, *param)
-    B=2*ps_phi*G(0, 2, *coord, *param)
-    C=ps_r**2*G(1, 1, *coord, *param) +ps_phi**2*G(2, 2, *coord, *param) +ps_theta**2*G(3, 3, *coord, *param)
-    p_t_positivo=(-B+math.sqrt(B**2-4*A*C))/(2*A)
-    
-    if p_t_positivo<0:
-        p_t=(-B-math.sqrt(B**2-4*A*C))/(2*A)
-    else:
-        p_t=p_t_positivo
-
-    return p_t """
-
 
 # En este caso es para cambiar p^r, para ello, comprobamos el signo con el p^r calculado con el RK4
 # Esta ecuacion es de la forma A*p^r**2+C=0, A=g_tt, C=...
-def Mom_Sup_r(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta): # ESPECIFICO DE TIPO KERR
+def Mom_Sup_r(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float|str: # ESPECIFICO DE TIPO KERR
     coords=(t, r, phi, theta)
 
     # Calculo de las constantes a,b,c para calcular p^r mediante la constante m^2=0
@@ -70,7 +53,7 @@ def Mom_Sup_r(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta): # ESPECIFICO DE T
 
 # ESTA ECUACIÓN REQUIERE DE LA EXISTENCIA DE LA CONSTANTE DE CARTER, POR LO QUE SE DEBE QUEDAR UNICAMENTE PARA KERR
 # En este caso es para cambiar p^theta, para ello, comprobamos el signo con el p^theta calculado con el RK4
-def Mom_Sup_theta(t, r, phi, theta, ps_theta, E, L_z, C): 
+def Mom_Sup_theta(t:float, r:float, phi:float, theta:float, ps_theta:float, E:float, L_z:float, C:float)->float|str: 
     coords=(t, r, phi, theta)
     
     # Calculo de p_theta mediante la constante de Carter

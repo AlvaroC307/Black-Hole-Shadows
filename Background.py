@@ -3,7 +3,7 @@ import os
 from PIL import Image
 from Initial_Values import r_limit, N_pix
 
-def Sphere_Quadrants(r, phi, theta):
+def Sphere_Quadrants(r:float, phi:float, theta:float)-> str:
     # Cambio de coordenadas esfericas a cartesianas (la coordenada y no afecta en nada, ya que z es la altura, x es izqa o derecha)
     # Se usa esfericas en vez de oblatas porque esto se evalua en r->10M, por lo que son aproximadamente esfericas
     x=r*math.cos(phi)*math.sin(theta) #el sin(theta) no sirve de nada aqui¿?¿?¿?¿?
@@ -22,7 +22,7 @@ def Sphere_Quadrants(r, phi, theta):
         return "White" # z=0 or x=0
     
 
-def Background_Image(r, phi, theta):
+def Background_Image(r:float, phi:float, theta:float)->list:
 
 
     N_I=N_pix

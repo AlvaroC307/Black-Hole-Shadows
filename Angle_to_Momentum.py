@@ -7,7 +7,7 @@ from Initial_Values import t_0, r_0, phi_0, theta_0
 # Ahora mismo será especifico a un agujero negro tipo Kerr, es decir: métrica diagonal excepto en los términos t-phi
 # la matriz de transformación de la base del observador a la base coordenadas, calculamos los 5 elementos primero
 
-def Screen_to_Momentum(x, y):
+def Screen_to_Momentum(x:float, y:float)->list:
 
     coords_0=(t_0, r_0, phi_0, theta_0) # Tupla de coordenadas iniciales
 

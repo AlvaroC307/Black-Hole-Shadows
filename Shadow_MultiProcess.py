@@ -14,7 +14,7 @@ from Angle_to_Momentum import *
 from Solving_Kerr_with_Christoffel import *
 
 
-def Screen():  # Calculo del tamaño de la pantalla
+def Screen()->float:  # Calculo del tamaño de la pantalla
     rho2_Schwarzschild = r_0/2*M
 
     # Angulo de la sombra para un agujero negro de Schwarzschild con la misma masa
@@ -30,7 +30,7 @@ def Screen():  # Calculo del tamaño de la pantalla
 
 
 # Funcion para dar a cada worker una cantidad de pantalla y que calcule los colores de cada pixel en su apartado
-def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, worker):
+def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_pix_y:int, worker:str)->list:
     #worker es el nombre del trabajador
 
     # Porcentaje para la Barra de Progreso
@@ -70,7 +70,7 @@ def Black_Hole_Geodesic(x0, x1, y0, y1, N_pix_x, N_pix_y, worker):
     return All_data_Quadrant
 
 
-def main():
+def main()->None:
     # Comienzo del tiempo para saber cuanto tarda el programa en total
     start_time = time.time()
 

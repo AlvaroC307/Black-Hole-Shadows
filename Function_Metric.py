@@ -73,15 +73,15 @@ csv_Chris.close()
 # Cada elemento de estos tensores es un string creado por Sympy, al evaluar pasa a ser un numero en funcion de las coord o constantes
 # que se le hayan pasado
 
-def G(i, j, t, r, phi, theta):
+def G(i:int, j:int, t:float, r:float, phi:float, theta:float) -> float:
     return eval(Matrix_Metric[i][j], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes}) 
 
 
-def Inv_G(i, j, t, r, phi, theta):
+def Inv_G(i:int, j:int, t:float, r:float, phi:float, theta:float):
     return eval(Matrix_Inv_Metric[i][j], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes})
 
 
 # i hace referencia al superindice, j y k son los subindices
 
-def Christoffel(i, j, k, t, r, phi, theta):
+def Christoffel(i:int, j:int, k:int, t:float, r:float, phi:float, theta:float):
     return eval(Tri_Matrix_Chris[i][j][k], None, {'t': t, 'r': r, 'phi': phi, 'theta': theta, 'M':M, **constantes})

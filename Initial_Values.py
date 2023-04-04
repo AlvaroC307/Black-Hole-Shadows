@@ -3,7 +3,7 @@ from math import pi
 import sys
 
 
-def Read_Input():
+def Read_Input()->list:
     # Leer el fichero de inputs y de constantes
     csv_Input = open('./Input/Input.csv', 'r')
     Reader_Input = csv.reader(csv_Input)
@@ -19,7 +19,7 @@ def Read_Input():
     return list_Input
 
 
-def Read_Cte():
+def Read_Cte()->dict:
     csv_cte = open('./Input/Extra_Constants.csv', 'r')
     Reader_cte = csv.reader(csv_cte)
 

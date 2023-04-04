@@ -13,23 +13,8 @@ from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_l
 # Este codigo se tiene que ejecutar mucho, para cada resolucion de las ecuaciones
 
 # Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
-def Paso_adap(r, theta):
-    """ if (r>60*M):
-        h=5
-    elif (r>20*M):
-        h=2
-    elif (r>10*M):
-        h=1
-    elif (r>4*M):
-        h=0.1
-    else:
-        h=0.05
-
-    # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
-    # el paso se vuelve mucho más lento
-    if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
-        h=0.01
-    return h """
+def Paso_adap(r:float, theta:float)->int|float:
+    
 
     if (r<10*M):
         h=0.1
@@ -58,7 +43,7 @@ def Paso_adap(r, theta):
 
 
 
-def Geodesic_Chris(p_t_0, p_r_0, p_phi_0, p_theta_0):
+def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str|list:
 
     # Escribir los parámetros y coordenadas iniciales del problema en dos tuplas
     coords_0=(t_0, r_0, phi_0, theta_0)

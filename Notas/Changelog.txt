@@ -78,3 +78,4 @@ Versiones Finales---------------------------
                  Nuevo fichero Initial_Values.py donde se lee Input y Extra_Constants para obtener
                  todos los parametros necesarios para el codigo. Ahora en vez de mandar las constantes en las funciones las llama a especifico
                  fichero. Facilidad de cambio de r_limit. Cambio de nombre a la cte de Carter. Limpieza de las funciones importadas.
+    Version 1.51 Añadido el typing a las funciones del programa principal, falta el calculo de los simbolos de Christoffel.
