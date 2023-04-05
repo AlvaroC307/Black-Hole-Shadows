@@ -14,34 +14,25 @@ from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_l
 # Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
 def Paso_adap(r:float, theta:float)->int|float:
     
-
-    if (r<7*M):
+    if (r<6*M):
         h=0.1
     elif (r<10*M):
-        h=0.4
+        h=0.2
+    elif (r<15*M):
+        h=1
     elif (r<20*M):
-        h=2
+        h=2.5
     elif (r<60*M):
         h=5
     else:
         h=10
 
-    """ 
-    if (r>60*M):
-        h=10
-    elif (r>20*M):
-        h=6 # Antes era 5
-    elif (r>10*M):
-        h=3 # Antes era 2.5
-    else:
-        h=0.1 """
-
     # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
     # el paso se vuelve mucho más lento
-    if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
-        h=0.01 # Antes era 0.01
+    #if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
+    if (abs(math.sin(theta))<0.05):
+        h=0.01 
     return h
-
 
 
 def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str|list:
@@ -83,7 +74,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
     """ file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager) """
+    csv_manager = csv.writer(file_manager)  """
 
 
     # Método RK4 como tal, empieza aqui------------------------------------------------------
@@ -171,26 +162,18 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
 
 # Para hacer pruebas de geodesicas especificas:--------------------------------------------------------
-"""
-from Angle_to_Momentum import * # Este solo es util para realizar las pruebas al final en caso de error y querer ver una unica geodesica
-M=1
-a=0.9
-t_0=0
-r_0 = 100*M
-theta_0 = math.pi/2
-phi_0 = math.pi/2
-coords_0=(t_0, r_0, phi_0, theta_0)
-param=(M, a)
+
+""" from Angle_to_Momentum import * # Este solo es util para realizar las pruebas al final en caso de error y querer ver una unica geodesica
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=0.07726121118594291,5.331023571830061
+x,y=0.23178363355782872,4.558411459970632
 
-list_momentum = Screen_to_Momentum(x, y, *coords_0, *param)
+list_momentum = Screen_to_Momentum(x, y)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-Pixel_Color = Geodesic_Chris("C", 50, *coords_0, *tupla_momentum, *param)
-print(Pixel_Color) 
- """
+Pixel_Color = Geodesic_Chris(*tupla_momentum)
+print(Pixel_Color)  """
+
 # Puebas con el momento puesto a mano---------------
 
 """ p_r_0 = 1
