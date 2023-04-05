@@ -17,7 +17,6 @@ Opciones mejorar programa:
 -Volver a añadir la constante de carter?
 -Funcion subir y bajar indices?
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
--Comproacion del paso_adap en el eje sin(theta)=0 con el seno y no en funcion de 0 o pi
 --------------Version 1.x:
 -Barra de Progreso
 -Añadir Disco de Acrección  

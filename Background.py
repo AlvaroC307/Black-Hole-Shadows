@@ -32,7 +32,7 @@ def Background_Image(r:float, phi:float, theta:float)->list:
     x=r*math.cos(phi)*math.sin(theta)
     z=r*math.cos(theta)
 
-    eps=1 # Para hacer L_I algo más grande y que el paso sea algo más pequeño, por si r>r_limit, tiene que ser del orden del paso en r_limit
+    eps=0.5 # Para hacer L_I algo más grande y que el paso sea algo más pequeño, por si r>r_limit, tiene que ser del orden del paso en r_limit
     L_Image=2*r_limit +eps 
     paso_x = N_pix / L_Image
     paso_z = N_pix / L_Image
@@ -43,7 +43,7 @@ def Background_Image(r:float, phi:float, theta:float)->list:
 
     # Abrir la imagen y conseguir sus dimensiones
     current_dir = os.getcwd()
-    file_path = current_dir + '/Graphics/Colours.png'
+    file_path = current_dir + '/Graphics/Pleiades.png'
 
     image=Image.open(file_path)
     width, height = image.size

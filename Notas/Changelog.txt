@@ -83,3 +83,4 @@ Versiones Finales---------------------------
                  paso_adap para que vaya bastante más rapido.
     Version 1.53 Cambios pequeños y comprobacion del paso adaptativo, ahora en el eje sin(theta)=0 hace la comprobacion con el seno
                  y no theta o theta-pi.
+    Version 1.54 Ahora tiene más tamaño la comprobacion en el eje para evitar ciertos errores puntuales. Primera imagen 200x200
