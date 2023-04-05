@@ -79,3 +79,5 @@ Versiones Finales---------------------------
                  todos los parametros necesarios para el codigo. Ahora en vez de mandar las constantes en las funciones las llama a especifico
                  fichero. Facilidad de cambio de r_limit. Cambio de nombre a la cte de Carter. Limpieza de las funciones importadas.
     Version 1.51 Añadido el typing a las funciones del programa principal, falta el calculo de los simbolos de Christoffel.
+    Version 1.52 Añadido de numpy en ciertas partes de Solving_Kerr_with_Chritoffel aunque no gana nada de tiempo. Cambio de la funcion 
+                 paso_adap para que vaya bastante más rapido.

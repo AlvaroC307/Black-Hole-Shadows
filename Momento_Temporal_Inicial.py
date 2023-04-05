@@ -31,9 +31,8 @@ def Mom_temp(t:float, r:float, phi:float, theta:float, p_r:float, p_phi:float, p
 
 # En este caso es para cambiar p^r, para ello, comprobamos el signo con el p^r calculado con el RK4
 # Esta ecuacion es de la forma A*p^r**2+C=0, A=g_tt, C=...
-def Mom_Sup_r(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float|str: # ESPECIFICO DE TIPO KERR
-    coords=(t, r, phi, theta)
-
+def Mom_Sup_r(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float|str: # ESPECIFICO DE TIPO KERR
+    
     # Calculo de las constantes a,b,c para calcular p^r mediante la constante m^2=0
     A=G(1, 1, *coords)
     C=ps_t**2*G(0, 0, *coords) +ps_phi**2*G(2, 2, *coords) +2*ps_phi*ps_t*G(0, 2, *coords) +ps_theta**2*G(3, 3, *coords)

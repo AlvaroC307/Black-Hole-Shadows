@@ -1,6 +1,7 @@
 # Importar otros ficheros de la carpeta
 
 from Function_Metric import Christoffel
+import numpy as np
 
 # Definir las 8 funciones que se van a integrar con los simbolos de christoffel
 
@@ -25,9 +26,8 @@ def theta_punto(ps_theta:float)->float:
 
 # la ecuacion seria: dot(p^mu)=-sum(p^alpha*sum(p^beta*chris(mu,alpha,beta))), la ecuacion de la geodesica donde dot(x^mu)=p^mu
 
-def ps_t_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float:
-    coords=(t,r,phi,theta)
-    moms=[ps_t, ps_r, ps_phi, ps_theta]
+def ps_t_punto(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float:
+    moms=np.array([ps_t, ps_r, ps_phi, ps_theta])
     suma_alpha=0
     for alpha in range(4):
         suma_beta=0
@@ -37,9 +37,8 @@ def ps_t_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float,
     return -suma_alpha
 
 
-def ps_r_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float:
-    coords=(t,r,phi,theta)
-    moms=[ps_t, ps_r, ps_phi, ps_theta]
+def ps_r_punto(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float:
+    moms=np.array([ps_t, ps_r, ps_phi, ps_theta])
     suma_alpha=0
     for alpha in range(4):
         suma_beta=0
@@ -49,9 +48,8 @@ def ps_r_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float,
     return -suma_alpha
 
 
-def ps_phi_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float:
-    coords=(t,r,phi,theta)
-    moms=[ps_t, ps_r, ps_phi, ps_theta]
+def ps_phi_punto(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float:
+    moms=np.array([ps_t, ps_r, ps_phi, ps_theta])
     suma_alpha=0
     for alpha in range(4):
         suma_beta=0
@@ -61,9 +59,8 @@ def ps_phi_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:floa
     return -suma_alpha
 
 
-def ps_theta_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float:
-    coords=(t,r,phi,theta)
-    moms=[ps_t, ps_r, ps_phi, ps_theta]
+def ps_theta_punto(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float:
+    moms=np.array([ps_t, ps_r, ps_phi, ps_theta])
     suma_alpha=0
     for alpha in range(4):
         suma_beta=0
@@ -75,15 +72,15 @@ def ps_theta_punto(t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:fl
 
 # El menos se debe a que estamos integrando la ecuacion hacia atras en la curva geodesica, por lo que se añade un menos al parámetro
 
-def Switch_punto(i:int, t:float, r:float, phi:float, theta:float, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float)->float:
+def Switch_punto(i:int, ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple)->float:
     if i == 0:
-        return -ps_t_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_t_punto(ps_t, ps_r, ps_phi, ps_theta, coords)
     elif i == 1:
-        return -ps_r_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_r_punto(ps_t, ps_r, ps_phi, ps_theta, coords)
     elif i == 2:
-        return -ps_phi_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_phi_punto(ps_t, ps_r, ps_phi, ps_theta, coords)
     elif i == 3:
-        return -ps_theta_punto(t, r, phi, theta, ps_t, ps_r, ps_phi, ps_theta)
+        return -ps_theta_punto(ps_t, ps_r, ps_phi, ps_theta, coords)
     elif i == 4:
         return -t_punto(ps_t)
     elif i == 5:

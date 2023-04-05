@@ -1,6 +1,7 @@
 # Importar Librerias utiles
 import math
 import csv
+import numpy as np
 
 # Importar otros ficheros de la carpeta
 from Function_Metric import Inv_G
@@ -14,10 +15,12 @@ from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_l
 def Paso_adap(r:float, theta:float)->int|float:
     
 
-    if (r<10*M):
+    if (r<7*M):
         h=0.1
+    elif (r<10*M):
+        h=0.4
     elif (r<20*M):
-        h=2.5
+        h=2
     elif (r<60*M):
         h=5
     else:
@@ -55,7 +58,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
     ps_t_0, ps_r_0, ps_phi_0, ps_theta_0 = 0, 0, 0, 0 #IMPORTANTE: (ps_x=p^x)
 
-    momento_sub_0=[p_t_0, p_r_0, p_phi_0, p_theta_0] # Lista de los momentos iniciales con SUBindices
+    momento_sub_0=np.array([p_t_0, p_r_0, p_phi_0, p_theta_0]) # Lista de los momentos iniciales con SUBindices
     for i in range(4):
         ps_t_0+=Inv_G(0, i, *coords_0)*momento_sub_0[i]
         ps_r_0+=Inv_G(1, i, *coords_0)*momento_sub_0[i]
@@ -75,8 +78,8 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
     # Inicializar Vectores con las coordenadas y sus momentos.
     # IMPORTANTE: coord_act hace referencia a los actuales y coord_ant a los anteriores
 
-    coord_act = [ps_t_0, ps_r_0, ps_phi_0, ps_theta_0, t_0, r_0, phi_0, theta_0]
-    coord_ant = []
+    coord_act = np.array([ps_t_0, ps_r_0, ps_phi_0, ps_theta_0, t_0, r_0, phi_0, theta_0])
+    
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
     """ file_manager = open("./Data/Prueba.csv", "w", newline="")
@@ -90,34 +93,40 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
         # 4 listas 1x8, que simbolizan los valores de K_ij para el metodo RK4, en el siguiente orden: ps_mu---x_mu
         # Donde el eje mu va en el orden t-r-phi-theta
-        K1 = []
-        K2 = []
-        K3 = []
-        K4 = []
+        K1 = np.empty(8)
+        K2 = np.empty(8)
+        K3 = np.empty(8)
+        K4 = np.empty(8)
 
-        h=Paso_adap(coord_act[5], coord_act[7]) # Se elige el paso para cada iteracion
+        h=Paso_adap(coord_ant[5], coord_ant[7]) # Se elige el paso para cada iteracion
 
         # Obtener los valores K_ij del metodo RK4
         for j in range(8):
-            K1.append(Switch_punto(j, coord_ant[4], coord_ant[5], coord_ant[6], coord_ant[7], coord_ant[0], coord_ant[1], coord_ant[2], coord_ant[3]))
+            K1[j]=Switch_punto(j, coord_ant[0], coord_ant[1], coord_ant[2], coord_ant[3],
+            (coord_ant[4], coord_ant[5], coord_ant[6], coord_ant[7]))
+        coord_ant_for_K2=coord_ant+((h/2)*K1)
+
         for j in range(8):
-            K2.append(Switch_punto(j, coord_ant[4]+(h/2)*K1[4], coord_ant[5]+(h/2)*K1[5], coord_ant[6]+(h/2)*K1[6], coord_ant[7]+(h/2)*K1[7],
-            coord_ant[0]+(h/2)*K1[0], coord_ant[1]+(h/2)*K1[1], coord_ant[2]+(h/2)*K1[2], coord_ant[3]+(h/2)*K1[3]))
+            K2[j]=Switch_punto(j, coord_ant_for_K2[0], coord_ant_for_K2[1], coord_ant_for_K2[2], coord_ant_for_K2[3], 
+            (coord_ant_for_K2[4], coord_ant_for_K2[5], coord_ant_for_K2[6], coord_ant_for_K2[7]))
+        coord_ant_for_K3=coord_ant+((h/2)*K2)
+
         for j in range(8):
-            K3.append(Switch_punto(j, coord_ant[4]+(h/2)*K2[4], coord_ant[5]+(h/2)*K2[5], coord_ant[6]+(h/2)*K2[6], coord_ant[7]+(h/2)*K2[7],
-            coord_ant[0]+(h/2)*K2[0], coord_ant[1]+(h/2)*K2[1], coord_ant[2]+(h/2)*K2[2], coord_ant[3]+(h/2)*K2[3]))
+            K3[j]=Switch_punto(j, coord_ant_for_K3[0], coord_ant_for_K3[1], coord_ant_for_K3[2], coord_ant_for_K3[3], 
+            (coord_ant_for_K3[4], coord_ant_for_K3[5], coord_ant_for_K3[6], coord_ant_for_K3[7]))
+        coord_ant_for_K4=coord_ant+(h*K3)
+
         for j in range(8):
-            K4.append(Switch_punto(j, coord_ant[4]+(h)*K3[4], coord_ant[5]+(h)*K3[5], coord_ant[6]+(h)*K3[6], coord_ant[7]+(h)*K3[7],
-            coord_ant[0]+(h)*K3[0], coord_ant[1]+(h)*K3[1], coord_ant[2]+(h)*K3[2], coord_ant[3]+(h)*K3[3]))
+            K4[j]=Switch_punto(j, coord_ant_for_K4[0], coord_ant_for_K4[1], coord_ant_for_K4[2], coord_ant_for_K4[3],
+            (coord_ant_for_K4[4], coord_ant_for_K4[5], coord_ant_for_K4[6], coord_ant_for_K4[7]))
 
         # Obtener las coordenadas actuales gracias a los valores K_ij
-        for j in range(8):
-            coord_act[j] = coord_ant[j]+(h/6)*(K1[j]+2*K2[j]+2*K3[j]+K4[j])
+        coord_act = coord_ant+(h/6)*(K1+2*K2+2*K3+K4)
 
 
         # Hacer que las constantes sigan siendo constantes, p^r y p^theta----------------------
 
-        ps_r_cambio=mti.Mom_Sup_r(coord_act[4], coord_act[5], coord_act[6], coord_act[7], coord_act[0], coord_act[1], coord_act[2], coord_act[3])
+        ps_r_cambio=mti.Mom_Sup_r(coord_act[0], coord_act[1], coord_act[2], coord_act[3], (coord_act[4], coord_act[5], coord_act[6], coord_act[7]))
         if ps_r_cambio=="Imaginary":
             ps_r_cambio="Imaginary"# Esto es estupido hay que quitarlo
         #   return "Black" # Esto significa que cae al agujero negro (COMPROBAR VERACIDAD DEL CLAIM)(QUIZÁ HASTA SEA IMPOSIBLE)
@@ -184,8 +193,8 @@ print(Pixel_Color)
  """
 # Puebas con el momento puesto a mano---------------
 
-#p_r_0 = 1
-#p_theta_0 = 0
-#p_phi_0 = 0
-#p_t_0=Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0,M,a)
-#Geodesic_Chris(t_0, r_0, phi_0, theta_0, p_t_0, p_r_0, p_phi_0, p_theta_0, M, a)
+""" p_r_0 = 1
+p_theta_0 = 0
+p_phi_0 = 0
+p_t_0=mti.Mom_temp(t_0,r_0,phi_0,theta_0,p_r_0,p_phi_0,p_theta_0)
+Geodesic_Chris(p_t_0, p_r_0, p_phi_0, p_theta_0) """
