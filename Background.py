@@ -43,7 +43,7 @@ def Background_Image(r:float, phi:float, theta:float)->list:
 
     # Abrir la imagen y conseguir sus dimensiones
     current_dir = os.getcwd()
-    file_path = current_dir + '/Graphics/Pleiades.png'
+    file_path = current_dir + '/Graphics/Colours.png'
 
     image=Image.open(file_path)
     width, height = image.size

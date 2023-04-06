@@ -21,16 +21,16 @@ def Paso_adap(r:float, theta:float)->int|float:
     elif (r<15*M):
         h=1
     elif (r<20*M):
-        h=2.5
-    elif (r<60*M):
-        h=5
+        h=2 # Antes era 2.5
+    elif (r<50*M): #Antes era 60*M
+        h=5 
     else:
         h=10
 
     # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
     # el paso se vuelve mucho más lento
     #if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
-    if (abs(math.sin(theta))<0.075):
+    if (abs(math.sin(theta))<0.09): #Antes era 0.07
         h=0.01 
     return h
 
@@ -167,12 +167,12 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=4.056213587262002,4.674303276749546
+x,y=-1.8027615943386675,3.0389409733137542
 
 list_momentum = Screen_to_Momentum(x, y)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
 Pixel_Color = Geodesic_Chris(*tupla_momentum)
-print(Pixel_Color)   """
+print(Pixel_Color)    """
 
 # Puebas con el momento puesto a mano---------------
 
