@@ -35,7 +35,7 @@ def Paso_adap(r:float, theta:float)->int|float:
     return h
 
 
-def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str|list:
+def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->list:
 
     # Escribir los parámetros y coordenadas iniciales del problema en dos tuplas
     coords_0=(t_0, r_0, phi_0, theta_0)
@@ -143,7 +143,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
         if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon:
-            return "Black" # Esto significa que cae al agujero negro
+            return ["Black", ["Inside", "Inside", "Inside"]] # Esto significa que cae al agujero negro
 
 
         #Si la coordenada radial es mayor que r_limit y aumentando se considera que se va al infinito y no cae al Agujero Negro
@@ -153,12 +153,12 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->st
                 Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7]) 
             elif Back_Im=="I":
                 Back_Colour=Backg.Background_Image(coord_act[5], coord_act[6], coord_act[7])
-            return Back_Colour # Esto significa que se va al infinito
+            return [Back_Colour, [coord_act[5], coord_act[6], coord_act[7]]] # Esto significa que se va al infinito
 
 
     #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
-    return "Pink" # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
+    return ["Pink", ["Orbit", "Orbit", "Orbit"]] # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
 
 
 # Para hacer pruebas de geodesicas especificas:--------------------------------------------------------

@@ -2,8 +2,8 @@ M,1
 t_0,0
 r_0,100*M
 phi_0,pi/2
-theta_0,pi/2 
-N_pix,200
+theta_0,pi/2
+N_pix,24
 Factor_Screen,4
-Back_Im,I
+Back_Im,C
 r_limit,10*M

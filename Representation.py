@@ -25,7 +25,7 @@ def matplot()->None:
 
 
     # Abrir el fichero con los colores a lee
-    file_Total = open('./Data/Geodesics_Total.csv', 'r')
+    file_Total = open('./Data/Geodesics_Color.csv', 'r')
     Reader_Total = csv.reader(file_Total)
 
     Color_Line=[] # Lista donde se apuntan los colores de una linea en el eje x entera antes de pasarla a Color_Total

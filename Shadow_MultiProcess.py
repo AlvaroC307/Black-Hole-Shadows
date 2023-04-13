@@ -32,7 +32,8 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
     # Porcentaje para la Barra de Progreso
     Porc_Avance = 100/(N_pix_x*N_pix_y)
 
-    All_data_Quadrant = [] # Lista donde estarán todos los colores de cada pixel
+    All_color_Quadrant = [] # Lista donde estarán todos los colores de cada pixel
+    All_position_Quadrant = [] # Lista donde estarán todos los colores de cada pixel
     Lx = x1-x0 # Tamaño de la pantalla en el eje horizontal
     Ly = y1-y0 # Tamaño de la pantalla en el eje vertical
     paso_x = Lx/N_pix_x # Paso entre cada centro de cada pixel en el eje horizontal
@@ -45,25 +46,30 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
 
     k = 0
     for i in range(N_pix_y):
-        One_line_data_quadrant = []
+        One_line_color_quadrant = []
+        One_line_position_quadrant = []
 
         for j in range(N_pix_x):
             x = x0+j*paso_x # Avance del eje x
             y = y0+i*paso_y # Avance del eje y
             list_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-            Pixel_Color = Geodesic_Chris(*tupla_momentum) # Calculo del color en dicho pixel
+            Pixel_Data= Geodesic_Chris(*tupla_momentum)
+            Pixel_Color = Pixel_Data[0] # Calculo del color en dicho pixel
+            Pixel_Position= Pixel_Data[1]
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
 
-            Data_Quadrant = [i, j, Pixel_Color, x, y]
-            One_line_data_quadrant.append(Data_Quadrant)
+            Color_Quadrant = [i, j, Pixel_Color, x, y]
+            One_line_color_quadrant.append(Color_Quadrant)
+            One_line_position_quadrant.append(Pixel_Position)
             if (j+1 == N_pix_x):
-                All_data_Quadrant.append(One_line_data_quadrant) # Escritura de los colores en una lista de listas
+                All_color_Quadrant.append(One_line_color_quadrant) # Escritura de los colores en una lista de listas
+                All_position_Quadrant.append(One_line_position_quadrant) # Escritura de las posiciones en una lista de listas
 
             # El tercer elemento es el color que tiene el pixel, si pone "White" es que es el eje x o z
-    return All_data_Quadrant
+    return [All_color_Quadrant, All_position_Quadrant]
 
 
 def main()->None:
@@ -71,8 +77,10 @@ def main()->None:
     start_time = time.time()
 
     # Definimos un fichero en el que escribir los resultados que nos interesen
-    file_Total = open("./Data/Geodesics_Total.csv", "w", newline="")
-    csv_Total = csv.writer(file_Total)
+    file_Color = open("./Data/Geodesics_Color.csv", "w", newline="")
+    csv_Color = csv.writer(file_Color)
+    file_Position = open("./Data/Geodesics_Position_Total.csv", "w", newline="")
+    csv_Position = csv.writer(file_Position)
 
 
     # Numero de pixeles en el eje x y en el eje y
@@ -104,23 +112,31 @@ def main()->None:
     # Escritura de todos los resultados de tal manera que toda una linea horizontal este junta y cada N_pix se cambia de vertical
     for j in range(N_pix_y):
         for i in range(N_pix_x):
-            csv_Total.writerow(work_a.result()[j][i])
+            csv_Color.writerow(work_a.result()[0][j][i])
+            csv_Position.writerow(work_a.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_b.result()[j][i])
+            csv_Color.writerow(work_b.result()[0][j][i])
+            csv_Position.writerow(work_b.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_c.result()[j][i])
+            csv_Color.writerow(work_c.result()[0][j][i])
+            csv_Position.writerow(work_c.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_d.result()[j][i])
+            csv_Color.writerow(work_d.result()[0][j][i])
+            csv_Position.writerow(work_d.result()[1][j][i])
 
     for j in range(N_pix_y):
         for i in range(N_pix_x):
-            csv_Total.writerow(work_e.result()[j][i])
+            csv_Color.writerow(work_e.result()[0][j][i])
+            csv_Position.writerow(work_e.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_f.result()[j][i])
+            csv_Color.writerow(work_f.result()[0][j][i])
+            csv_Position.writerow(work_f.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_g.result()[j][i])
+            csv_Color.writerow(work_g.result()[0][j][i])
+            csv_Position.writerow(work_g.result()[1][j][i])
         for i in range(N_pix_x):
-            csv_Total.writerow(work_h.result()[j][i])
+            csv_Color.writerow(work_h.result()[0][j][i])
+            csv_Position.writerow(work_h.result()[1][j][i])
 
 
     current_dir = os.getcwd()
@@ -128,7 +144,8 @@ def main()->None:
 
     print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
     playsound(file_path)
-    file_Total.close() # Cerrar el fichero
+    file_Color.close() # Cerrar el fichero
+    file_Position.close()
 
 
 if __name__ == '__main__': #Llamar al main()
