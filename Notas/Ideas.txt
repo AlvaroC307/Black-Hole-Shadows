@@ -11,17 +11,13 @@ Opciones mejorar programa:
 --------------Version 1.0x:
 -Generalizar Mom_Sup_r 
 -Ejes del gráfico
--Que guarde el dibujo cambiando el nombre en funcion de parametros?
 -Funcion propia para horizonte de eventos?
--Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
--Volver a añadir la constante de carter?
 -Funcion subir y bajar indices?
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
 --------------Version 1.x:
--Barra de Progreso
+-Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
--Montecarlo (Hacer dos funciones, una la que está y la otra el montecarlo así se puede elegir)
 --------------Version x.0:
 -Aceptar métricas numéricas 
 

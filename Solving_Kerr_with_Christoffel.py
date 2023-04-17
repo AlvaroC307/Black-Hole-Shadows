@@ -14,7 +14,9 @@ from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_l
 # Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
 def Paso_adap(r:float, theta:float)->int|float:
     
-    if (r<6*M):
+    if (r<3*M):
+        h=0.05
+    elif (r<6*M):
         h=0.1
     elif (r<10*M):
         h=0.2
@@ -167,7 +169,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=-1.8027615943386675,3.0389409733137542
+x,y=1.512521065544914,-3.3111947651118387
 
 list_momentum = Screen_to_Momentum(x, y)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
