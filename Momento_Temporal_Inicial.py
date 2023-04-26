@@ -35,18 +35,31 @@ def Mom_Sup_r(ps_t:float, ps_r:float, ps_phi:float, ps_theta:float, coords:tuple
     
     # Calculo de las constantes a,b,c para calcular p^r mediante la constante m^2=0
     A=G(1, 1, *coords)
-    C=ps_t**2*G(0, 0, *coords) +ps_phi**2*G(2, 2, *coords) +2*ps_phi*ps_t*G(0, 2, *coords) +ps_theta**2*G(3, 3, *coords)
+    B=2*(ps_t*G(1, 0, *coords)+ps_phi*G(1, 2, *coords)+ps_theta*G(1, 3, *coords))
+    C1=ps_t**2*G(0, 0, *coords) +ps_phi**2*G(2, 2, *coords) +ps_theta**2*G(3, 3, *coords)
+    C2=2*(ps_phi*ps_t*G(0, 2, *coords)+2*ps_t*ps_theta*G(0, 3, *coords)+2*ps_phi*ps_theta*G(2, 3, *coords))
+    C=C1+C2
 
     # Si el valor es negativo dará un resultado imaginario, por lo que hay que decirselo a Solving_Kerr_with_Christoffel
-    if (C/A>0):
+    Discriminante=B**2-4*A*C
+    if (Discriminante<0):
         return "Imaginary"
 
-    if ps_r<0: # Comprobación del signo de p^r obtenido mediante el RK4 para que eso se siga manteniendo
-        ps_r_final=-math.sqrt(-C/A)
-    else:
-        ps_r_final=math.sqrt(-C/A)
+    ps_r_cambio_positivo=(-B+math.sqrt(Discriminante))/(2*A)
+    ps_r_cambio_negativo=(-B-math.sqrt(Discriminante))/(2*A)
 
-    return ps_r_final
+
+    if ps_r>0: # Comprobación del signo de p^r obtenido mediante el RK4 para que eso se siga manteniendo
+        if ps_r_cambio_negativo>0:
+            return ps_r_cambio_negativo
+        else:
+            return ps_r_cambio_positivo
+    else:
+        if ps_r_cambio_positivo<0:
+            return ps_r_cambio_positivo
+        else:
+            return ps_r_cambio_negativo
+
 
 
 

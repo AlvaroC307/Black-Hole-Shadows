@@ -9,13 +9,13 @@ Opciones mejorar programa:
 
 
 --------------Version 1.0x:
--Generalizar Mom_Sup_r 
 -Ejes del gráfico
 -Funcion propia para horizonte de eventos?
 -Funcion subir y bajar indices?
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
 --------------Version 1.x:
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
+-Si es un ordenador con más de 8 nucleos, que se divida en mas trabajadores
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
 --------------Version x.0:

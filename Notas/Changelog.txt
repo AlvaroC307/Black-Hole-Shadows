@@ -88,3 +88,4 @@ Versiones Finales---------------------------
     Version 1.6  Ahora se guardan las coordenadas r, theta y phi de las geodesicas que se van a infinito. Para poder ejecutar el nuevo
                  fichero Change_BackGround y poder cambiar el fondo de la imagen sin necesidad de ejecutar de nuevo Shadow_Multiprocess.
     Version 1.61 Pequeño ajuste del paso adaptativo
+    Version 1.62 Generalizacion de la funcion Mom_Sum_r

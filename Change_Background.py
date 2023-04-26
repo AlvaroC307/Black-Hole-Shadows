@@ -1,5 +1,6 @@
 import Background as bg
 import csv
+from Initial_Values import N_pix
 
 # Leer la x y la y del fichero de colores
 # Abrir el fichero con los colores a lee
@@ -22,6 +23,8 @@ csv_Position = csv.reader(file_Position)
 file_Color = open("./Data/Geodesics_Color.csv", "w", newline="")
 csv_Color = csv.writer(file_Color)
 
+
+progreso=100/(N_pix**2)
 k=0
 for row in csv_Position:
     if (row[0]=="Inside"):
@@ -33,4 +36,5 @@ for row in csv_Position:
 
     csv_Color.writerow([ijxy_Total[k][0], ijxy_Total[k][1], Pixel_Color, ijxy_Total[k][2], ijxy_Total[k][3]])
     k+=1
+    print(k*progreso)
 
