@@ -18,7 +18,8 @@ Cuarto paso: Introducir en el fichero Input los datos referentes al agujero negr
              El factor Factor_Screen es el factor multiplicativo a una pantalla que mida exactamente el tamaño de la sombra de Schwarzschild
              se recomienda un Factor_Screen de 3 o 4. Back_Im toma valor C si quiere usar la funcion que define cada cuadrante de la
              esfera de un color, y toma valor I si quieres proporcionar una imagen para usar de fondo. Introducir tambien los parametros
-             del espacio tiempo en Extra_Constants.csv (a, Q, Lambda,....).
+             del espacio tiempo en Extra_Constants.csv (a, Q, Lambda,....). name pide el nombre de la métrica para utilizar los simbolos
+             directamente de la base de datos.
              
 Quinto paso: Ejecutar el fichero Shadow_Multiprocess.py que devuelve los datos del color del pixel y su posición en
              la carpeta Data para realizar comprobaciones.
