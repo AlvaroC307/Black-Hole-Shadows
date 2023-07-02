@@ -76,7 +76,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
     """ file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager) """  
+    csv_manager = csv.writer(file_manager)     """
 
 
     # Método RK4 como tal, empieza aqui------------------------------------------------------
@@ -144,7 +144,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
 
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
-        if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon:
+        if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or (abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon):
             return ["Black", ["Inside", "Inside", "Inside"]] # Esto significa que cae al agujero negro
 
 
@@ -169,12 +169,12 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=1.512521065544914,-3.3111947651118387
+x,y=0.8584579020660326, -0.8584579020660321
 
 list_momentum = Screen_to_Momentum(x, y)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
 Pixel_Color = Geodesic_Chris(*tupla_momentum)
-print(Pixel_Color)    """
+print(Pixel_Color)   """
 
 # Puebas con el momento puesto a mano---------------
 

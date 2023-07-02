@@ -54,9 +54,15 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
             y = y0+i*paso_y # Avance del eje y
             list_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
             tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
-            Pixel_Data= Geodesic_Chris(*tupla_momentum)
-            Pixel_Color = Pixel_Data[0] # Calculo del color en dicho pixel
-            Pixel_Position= Pixel_Data[1]
+            try:
+                Pixel_Data= Geodesic_Chris(*tupla_momentum)
+                Pixel_Color = Pixel_Data[0] # Calculo del color en dicho pixel
+                Pixel_Position= Pixel_Data[1]
+
+            except Exception as e:
+                # code to handle the error
+                print("An error occurred", e)
+                print("In the points:", x, y)
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
@@ -91,6 +97,23 @@ def main()->None:
     executor = cf.ProcessPoolExecutor(max_workers=8) # Numero de trabajadores que se utilizan
 
     #Asignar a cada trabajador su parte de la pantalla total, no todos tardan lo mismo
+    """ work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
+                        -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, "a")
+    work_b = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
+                        L_screen/2, 0, N_pix_x, N_pix_y, "b")
+    work_c = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
+                        L_screen/2, 0, N_pix_x, N_pix_y, "c")
+    work_d = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
+                        L_screen/2, 0, N_pix_x, N_pix_y, "d")
+    work_e = executor.submit(Black_Hole_Geodesic, -L_screen/2,
+                        -L_screen/4, 0, -L_screen/2, N_pix_x, N_pix_y, "e")
+    work_f = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
+                        0, -L_screen/2, N_pix_x, N_pix_y, "f")
+    work_g = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
+                        0, -L_screen/2, N_pix_x, N_pix_y, "g")
+    work_h = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
+                        0, -L_screen/2, N_pix_x, N_pix_y, "h")  """
+    
     work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
                         -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, "a")
     work_b = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,

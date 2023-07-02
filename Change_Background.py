@@ -35,6 +35,7 @@ for row in csv_Position:
         Pixel_Color=bg.Background_Image(eval(row[0]), eval(row[1]), eval(row[2]))
 
     csv_Color.writerow([ijxy_Total[k][0], ijxy_Total[k][1], Pixel_Color, ijxy_Total[k][2], ijxy_Total[k][3]])
+    print(k)
     k+=1
     print(k*progreso)
 

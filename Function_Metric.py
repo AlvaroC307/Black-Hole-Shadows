@@ -2,16 +2,16 @@
 from math import * #Se debe importar entera para evitar problemas con el eval()
 import csv
 import numpy as np
-from Initial_Values import M, constantes
+from Initial_Values import M, constantes, name
 
 
 # Lectura de los ficheros Metric, Inverse_Metric y Christoffel_symbols
 # Empezamos leyendo Metric y Inverse_Metric
-csv_Metric= open('./Data/Metric.csv', 'r')
+csv_Metric= open('./Data/Data_Base_Metrics/' + name + '/Metric.csv', 'r')
 Reader_Metric = csv.reader(csv_Metric)
-csv_Inv_Metric= open('./Data/Inverse_Metric.csv', 'r')
+csv_Inv_Metric= open('./Data/Data_Base_Metrics/' + name + '/Inverse_Metric.csv', 'r')
 Reader_Inv_Metric = csv.reader(csv_Inv_Metric)
-csv_Chris= open('./Data/Christoffel_symbols.csv', 'r')
+csv_Chris= open('./Data/Data_Base_Metrics/' + name + '/Christoffel_symbols.csv', 'r')
 Reader_Chris = csv.reader(csv_Chris)
 
 

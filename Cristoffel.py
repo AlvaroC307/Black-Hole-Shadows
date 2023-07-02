@@ -7,7 +7,7 @@ import csv
 from Metric import*
 
 # Definir los simbolos en sympy a usar y la lista de las coordenadas
-M, a=sp.symbols("M, a")
+M, a, Q_e=sp.symbols("M, a, Q_e")
 t, r, phi, theta=sp.symbols("t, r, phi, theta")
 coord=[t,r,phi,theta]
 

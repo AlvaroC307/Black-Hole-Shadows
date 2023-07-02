@@ -3,11 +3,12 @@ import sympy as sp # Sympy es necesario en las métricas análiticas para que tr
 import csv
 
 # Definir los simbolos en sympy que se van a utilizar
-M, a = sp.symbols("M,a")
+M, a, Q_e = sp.symbols("M,a,Q_e")
 t, r, phi, theta = sp.symbols("t,r,phi,theta")
 
 # Definicion de cada componente de la metrica
-g00 = -(1-(2*M*r)/(r**2+(a*sp.cos(theta))**2))
+#KERR
+""" g00 = -(1-(2*M*r)/(r**2+(a*sp.cos(theta))**2))
 g01 = 0
 g02 = -(2*M*r*a*(sp.sin(theta))**2)/(r**2+(a*sp.cos(theta))**2)
 g03 = 0
@@ -23,7 +24,50 @@ g23 = 0
 g30 = 0
 g31 = 0
 g32 = 0
-g33 = r**2+(a*sp.cos(theta))**2
+g33 = r**2+(a*sp.cos(theta))**2 """
+
+
+# Definicion de cada componente de la metrica
+#KERR-NEWMAN
+
+""" g00 = -(1-(2*M*r-Q_e**2)/(r**2+(a*sp.cos(theta))**2))
+g01 = 0
+g02 = -((2*M*r-Q_e**2)*a*(sp.sin(theta))**2)/(r**2+(a*sp.cos(theta))**2)
+g03 = 0
+g10 = 0
+g11 = (r**2+(a*sp.cos(theta))**2)/(r**2+a**2+Q_e**2-2*M*r)
+g12 = 0
+g13 = 0
+g20 = -((2*M*r-Q_e**2)*a*(sp.sin(theta))**2)/(r**2+(a*sp.cos(theta))**2)
+g21 = 0
+frac_g22= ((2*M*r-Q_e**2)*(a*sp.sin(theta))**2)/(r**2+(a*sp.cos(theta))**2)
+g22 = ((r**2+a**2+frac_g22))*(sp.sin(theta))**2
+g23 = 0
+g30 = 0
+g31 = 0
+g32 = 0
+g33 = r**2+(a*sp.cos(theta))**2  """
+
+
+# Definicion de cada componente de la metrica
+#MINKOSKI
+
+g00 = -1
+g01 = 0
+g02 = 0
+g03 = 0
+g10 = 0
+g11 = 1
+g12 = 0
+g13 = 0
+g20 = 0
+g21 = 0
+g22 = (r*sp.sin(theta))**2
+g23 = 0
+g30 = 0
+g31 = 0
+g32 = 0
+g33 = r**2 
 
 
 # Metrica en forma matricial y cálculo de su inversa mediante el método LU

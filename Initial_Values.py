@@ -69,3 +69,6 @@ if (Back_Im!="C") and (Back_Im!="I"):     # Comprobar que Back_Im tiene uno de l
 
 # Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa
 r_limit = eval(list_Input[8])
+
+# Nombre de la métrica que se va a elegir en la base de datos
+name=list_Input[9]
