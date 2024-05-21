@@ -165,16 +165,16 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
 # Para hacer pruebas de geodesicas especificas:--------------------------------------------------------
 
-""" from Angle_to_Momentum import * # Este solo es util para realizar las pruebas al final en caso de error y querer ver una unica geodesica
+from Angle_to_Momentum import * # Este solo es util para realizar las pruebas al final en caso de error y querer ver una unica geodesica
 
 #Pruebas con el momento puesto con las coordenadas x, y--------------
 
-x,y=0.8584579020660326, -0.8584579020660321
+""" x,y=0.1,12
 
 list_momentum = Screen_to_Momentum(x, y)
 tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
 Pixel_Color = Geodesic_Chris(*tupla_momentum)
-print(Pixel_Color)   """
+print(Pixel_Color)   """ 
 
 # Puebas con el momento puesto a mano---------------
 

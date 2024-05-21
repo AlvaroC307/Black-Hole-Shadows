@@ -72,3 +72,6 @@ r_limit = eval(list_Input[8])
 
 # Nombre de la métrica que se va a elegir en la base de datos
 name=list_Input[9]
+
+# Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
+Image_name=list_Input[10]

@@ -13,13 +13,14 @@ Opciones mejorar programa:
 -Funcion propia para horizonte de eventos?
 -Funcion subir y bajar indices?
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
+-la metrica de Kerr-Newman de la base de datos está mal.      Yo del futuro:¿en serio?
+-Base de Datos de geodesic colors y position total para que change_background vaya bien siempre y evitar problemas
 --------------Version 1.x:
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 -Si es un ordenador con más de 8 nucleos, que se divida en mas trabajadores
 -Añadir Disco de Acrección  
 -Cambio de angulo a x,y genérico no solo para tipo Kerr
--Base de datos. Elige el file path y pilla los simbolos de chritoffel y las metricas de una carpeta. se puede llamar Metric_Chris y que
-si se quiere hacer kerr-Newman o Minkowski se pueda elegir directamente.
+-Que reciba la métrica desde un fichero metric.csv en la carpeta Input
 --------------Version x.0:
 -Aceptar métricas numéricas 
 

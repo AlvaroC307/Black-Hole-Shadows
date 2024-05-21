@@ -93,3 +93,4 @@ Versiones Finales---------------------------
     Version 2.0  Terminado el funcionamiento para métricas analíticas arbitrarias. Acepta Kerr Newman y sale correctamente. 
                  Creada una base de datos de simbolos de Christoffel y de las propias métricas y sus inversas. Creado el parámetro name,
                  es un string con el nombre de la carpeta de la base de datos que se vaya a usar. 
+    Version 2.0.1 Cambio del fichero background.py para que el nombre de la imagen de fondo se introduzca en Input

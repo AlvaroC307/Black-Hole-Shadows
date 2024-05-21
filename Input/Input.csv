@@ -3,8 +3,9 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2
-N_pix,100
+N_pix,250
 Factor_Screen,4
 Back_Im,I
 r_limit,10*M
 name,Kerr_Newman
+image_name,Among_Us.png

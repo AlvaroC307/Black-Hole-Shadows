@@ -46,18 +46,38 @@ g23 = 0
 g30 = 0
 g31 = 0
 g32 = 0
-g33 = r**2+(a*sp.cos(theta))**2  """
+g33 = r**2+(a*sp.cos(theta))**2 """
 
 
 # Definicion de cada componente de la metrica
 #MINKOSKI
 
-g00 = -1
+""" g00 = -1
 g01 = 0
 g02 = 0
 g03 = 0
 g10 = 0
 g11 = 1
+g12 = 0
+g13 = 0
+g20 = 0
+g21 = 0
+g22 = (r*sp.sin(theta))**2
+g23 = 0
+g30 = 0
+g31 = 0
+g32 = 0
+g33 = r**2  """
+
+# Definicion de cada componente de la metrica
+#MINKOSKI-Eddington-Finkelstein (no es para este trabajo)
+
+g00 = -(1-(2*M/r))
+g01 = +1
+g02 = 0
+g03 = 0
+g10 = +1
+g11 = 0
 g12 = 0
 g13 = 0
 g20 = 0
