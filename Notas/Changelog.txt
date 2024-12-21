@@ -94,3 +94,6 @@ Versiones Finales---------------------------
                  Creada una base de datos de simbolos de Christoffel y de las propias métricas y sus inversas. Creado el parámetro name,
                  es un string con el nombre de la carpeta de la base de datos que se vaya a usar. 
     Version 2.0.1 Cambio del fichero background.py para que el nombre de la imagen de fondo se introduzca en Input
+    Version 2.0.2 Pequeña limpieza del código para quitar código comentado sin usar. Cambio de los nombres de Back_Im de "C" y "I" a 
+                 "Colours" y "Image" para fácilitar la lectura del código. Además, añadido la función matplot a Shadow_Multiprocess.py 
+                 para que se nada más acabar se genere la imagen sin necesidad de ejecutar Representation.py por separado continuamente.

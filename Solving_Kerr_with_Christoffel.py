@@ -151,9 +151,9 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
         #Si la coordenada radial es mayor que r_limit y aumentando se considera que se va al infinito y no cae al Agujero Negro
         if ((coord_act[5])>=r_limit) and ((coord_act[5]-coord_ant[5])>0): 
             # Elegir el color en el que acaba al llegar a r_limit
-            if Back_Im=="C":
+            if Back_Im=="Colours":
                 Back_Colour=Backg.Sphere_Quadrants(coord_act[5], coord_act[6], coord_act[7]) 
-            elif Back_Im=="I":
+            elif Back_Im=="Image":
                 Back_Colour=Backg.Background_Image(coord_act[5], coord_act[6], coord_act[7])
             return [Back_Colour, [coord_act[5], coord_act[6], coord_act[7]]] # Esto significa que se va al infinito
 

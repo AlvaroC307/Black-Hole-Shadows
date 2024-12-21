@@ -3,9 +3,9 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2
-N_pix,250
+N_pix,8
 Factor_Screen,4
-Back_Im,I
+Back_Im,Image
 r_limit,10*M
 name,Kerr_Newman
 image_name,panda.jpg

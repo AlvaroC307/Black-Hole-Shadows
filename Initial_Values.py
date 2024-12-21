@@ -44,6 +44,7 @@ constantes=Read_Cte()
 # Masa del agujero negro
 M = eval(list_Input[0])
 
+
 # Posicion inicial del Observador
 t_0 = eval(list_Input[1])
 r_0 = eval(list_Input[2])
@@ -63,8 +64,8 @@ Factor_Screen = eval(list_Input[6])
 
 # "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
 Back_Im = list_Input[7]
-if (Back_Im!="C") and (Back_Im!="I"):     # Comprobar que Back_Im tiene uno de los dos valores posibles:
-    sys.exit("Hay un error, Back_im debe ser C o I, para colores o imagen respectivamente")
+if (Back_Im != "Colours") and (Back_Im != "Image"):     # Comprobar que Back_Im tiene uno de los dos valores posibles:
+    sys.exit("Hay un error, Back_im debe ser Colours o Image, para colores o imagen respectivamente")
 
 
 # Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa

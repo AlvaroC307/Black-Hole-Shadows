@@ -8,6 +8,7 @@ import concurrent.futures as cf
 from Angle_to_Momentum import Screen_to_Momentum
 from Solving_Kerr_with_Christoffel import Geodesic_Chris
 from Initial_Values import M, r_0, Factor_Screen, N_pix
+from Representation import matplot
 
 
 def Screen()->float:  # Calculo del tamaño de la pantalla
@@ -97,22 +98,6 @@ def main()->None:
     executor = cf.ProcessPoolExecutor(max_workers=8) # Numero de trabajadores que se utilizan
 
     #Asignar a cada trabajador su parte de la pantalla total, no todos tardan lo mismo
-    """ work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
-                        -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, "a")
-    work_b = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
-                        L_screen/2, 0, N_pix_x, N_pix_y, "b")
-    work_c = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
-                        L_screen/2, 0, N_pix_x, N_pix_y, "c")
-    work_d = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
-                        L_screen/2, 0, N_pix_x, N_pix_y, "d")
-    work_e = executor.submit(Black_Hole_Geodesic, -L_screen/2,
-                        -L_screen/4, 0, -L_screen/2, N_pix_x, N_pix_y, "e")
-    work_f = executor.submit(Black_Hole_Geodesic, -L_screen/4, 0,
-                        0, -L_screen/2, N_pix_x, N_pix_y, "f")
-    work_g = executor.submit(Black_Hole_Geodesic, 0, L_screen/4,
-                        0, -L_screen/2, N_pix_x, N_pix_y, "g")
-    work_h = executor.submit(Black_Hole_Geodesic, L_screen/4, L_screen/2,
-                        0, -L_screen/2, N_pix_x, N_pix_y, "h")  """
     
     work_a = executor.submit(Black_Hole_Geodesic, -L_screen/2,
                         -L_screen/4, L_screen/2, 0, N_pix_x, N_pix_y, "a")
@@ -162,13 +147,20 @@ def main()->None:
             csv_Position.writerow(work_h.result()[1][j][i])
 
 
-    current_dir = os.getcwd()
-    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3'
+    """ current_dir = os.getcwd()
+    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3' 
+    playsound(file_path) """
 
     print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
-    playsound(file_path)
+    
+
     file_Color.close() # Cerrar el fichero
     file_Position.close()
+
+
+    matplot() # Cuando compile el programa se ejecuta representation automaticamente
+
+
 
 
 if __name__ == '__main__': #Llamar al main()
