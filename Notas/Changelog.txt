@@ -8,7 +8,7 @@ Versiones Alpha----------------------------
 
 Versiones Beta----------------------------
 
-    Beta 0.1  Desarrollo de Function_Metric.py y Solving_Kerr-With_Christoffel.py, a partir de ahora SWC.py,
+    Beta 0.1  Desarrollo de Function_Metric.py y Solving_Kerr_With_Christoffel.py, a partir de ahora SWC.py,
               en vez de con el hamiltoniano, cambio completo de como resolver las geodésicas
     Beta 0.11 Reescritura de Function_Metric.py para que el programa tome los simbolos de Christoffel automaticamente y no haya
               que pasarselos a mano 
@@ -37,7 +37,7 @@ Versiones Finales---------------------------
                  convertirlo en una función extra.
 
     Version 1.1  Utilizando Minkowski a partir de r=10M, calcular en que cuadrante cae el fotón y su color, gracias a Backgroung.py. 
-    Version 1.11 Añadir un parámetro para decidir a partir de cuando se considera que la métrica es Minkowski y el fotón no vuelve.
+    Version 1.11 Añadir un parámetro para decidir a partir de cuando se considera que la métrica es Minkowski y el fotón no vuelve al agujero negro.
 
     Version 1.2  Creación del Plot en Python en el fichero Representacion.py. Comienzo del cambio de Black Hole Shadows para que vaya
                  más rápido usando varios nucleos, estos cambios se hicieron en otro fichero para que el programa siguiera funcionando
@@ -90,7 +90,7 @@ Versiones Finales---------------------------
     Version 1.61 Pequeño ajuste del paso adaptativo
     Version 1.62 Generalizacion de la funcion Mom_Sum_r
 
-    Version 2.0  Terminado el funcionamiento para métricas analíticas arbitrarias. Acepta Kerr Newman y sale correctamente. 
+    Version 2.0  Terminado el funcionamiento para métricas analíticas arbitrarias. Acepta Kerr-Newman y sale correctamente. 
                  Creada una base de datos de simbolos de Christoffel y de las propias métricas y sus inversas. Creado el parámetro name,
                  es un string con el nombre de la carpeta de la base de datos que se vaya a usar. 
     Version 2.0.1 Cambio del fichero background.py para que el nombre de la imagen de fondo se introduzca en Input

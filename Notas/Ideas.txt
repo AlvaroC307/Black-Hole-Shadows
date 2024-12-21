@@ -13,16 +13,17 @@ Opciones mejorar programa:
 -Funcion propia para horizonte de eventos?
 -Funcion subir y bajar indices?
 -Comprobar que los parametros M,a,... sean numeros para que el usuario no borre el programa con eval()
--la metrica de Kerr-Newman de la base de datos está mal.      Yo del futuro:¿en serio?
+-La metrica de Kerr-Newman de la base de datos está mal.      Yo del futuro:¿en serio?	Yo del futuro2: khe? Los Christoffel o como?
 -Base de Datos de geodesic colors y position total para que change_background vaya bien siempre y evitar problemas
 --------------Version 1.x:
 -Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
--Si es un ordenador con más de 8 nucleos, que se divida en mas trabajadores
--Añadir Disco de Acrección  
--Cambio de angulo a x,y genérico no solo para tipo Kerr
--Que reciba la métrica desde un fichero metric.csv en la carpeta Input
+-Si es un ordenador con más de 8 nucleos, que se divida en mas trabajadores. Yo del futuro2: Se puede pedir al usuario que de su número de nucleos y coger algo tipo n_nucleos-2 
+-Cambio de angulo a x,y genérico no solo para tipo Kerr (Yo del futuro2: Con que función y cómo?)
+-Que reciba la métrica desde un fichero metric.csv en la carpeta Input (Yo del futuro2: parte de esto está hecho en el trabajo de Gravitacion Avanzada)
+-Renombrar y reescribir parte del programa para que sea más fácilmente legible. Preguntar a Mario convenciones?
 --------------Version x.0:
--Aceptar métricas numéricas 
+-Aceptar métricas numéricas (Yo del futuro2: xdd, esto es con diferencia lo más jodido)
+-Añadir Disco de Acrección
 
 
 PRUEBAS QUE HACER:

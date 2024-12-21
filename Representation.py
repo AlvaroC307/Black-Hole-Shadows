@@ -68,7 +68,7 @@ def matplot()->None:
     plt.savefig('./Graphics/Black_Hole_Image.png', bbox_inches='tight') # Guardar la imagen como un png
     plt.show() # Mostrar la imagen
 
-   
+
 
 def main()->None:
     matplot()
