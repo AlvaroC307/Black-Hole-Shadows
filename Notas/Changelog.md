@@ -107,3 +107,5 @@
     para que se nada más acabar se genere la imagen sin necesidad de ejecutar Representation.py por separado continuamente.
 #### Version 2.0.3 
     Creación de una base de datos de los resultados, Data_Base_Position_Total donde guardar los agujeros negros más típicos. Reescritura del programa Change_Background.py para que utiilce la información de la base de datos. Actualizado los archivos en Notas para que esten en markdown y no txt.
+#### Version 2.0.4
+    Se ha arreglado el bug que no permitía generar un sonido al acabar. Se ha definido una funcion para ello y ahora el path al archivo de sonido se puede dar por el usuario. Arreglado el nombre del archivo Christoffel.py.

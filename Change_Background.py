@@ -6,6 +6,8 @@ from Representation import matplot
 from Initial_Values import N_pix, Back_Im, theta_0, constantes
 
 def Read_ijxy(file_path:str)->list:
+
+
     # Leer la x y la y del fichero de colores
     # Abrir el fichero con los colores a lee
     file_Total_Color = open(file_path + '/Geodesics_Color.csv', 'r')

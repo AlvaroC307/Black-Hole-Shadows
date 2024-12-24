@@ -7,8 +7,18 @@ import os
 import concurrent.futures as cf
 from Angle_to_Momentum import Screen_to_Momentum
 from Solving_Kerr_with_Christoffel import Geodesic_Chris
-from Initial_Values import M, r_0, Factor_Screen, N_pix
+from Initial_Values import M, r_0, Factor_Screen, N_pix, sound
 from Representation import matplot
+
+def Finished_sound()->None:
+    sound_path = "./Sounds/" + sound.strip()
+    
+    if os.path.exists(sound_path):
+        playsound(sound_path)
+    else:
+        print(f"El archivo de sonido {sound_path} no existe.")
+
+
 
 
 def Screen()->float:  # Calculo del tamaño de la pantalla
@@ -147,17 +157,14 @@ def main()->None:
             csv_Position.writerow(work_h.result()[1][j][i])
 
 
-    """ current_dir = os.getcwd()
-    file_path = current_dir + '/Sounds/Barra_Metal_Cayendo.mp3' 
-    playsound(file_path) """
-
-    print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
-    
-
     file_Color.close() # Cerrar el fichero
     file_Position.close()
 
 
+    Finished_sound()
+
+    print((time.time()-start_time)/60, "minutos") #Calculo del tiempo total del programa en minutos
+    
     matplot() # Cuando compile el programa se ejecuta representation automaticamente
 
 

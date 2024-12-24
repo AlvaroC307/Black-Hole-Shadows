@@ -37,8 +37,8 @@ def Read_Cte()->dict:
     return constantes
 
 
-list_Input=Read_Input()
-constantes=Read_Cte()
+list_Input = Read_Input()
+constantes = Read_Cte()
 
 # Asignar nombres a los inputs importantes--------------------
 # Masa del agujero negro
@@ -76,3 +76,6 @@ name=list_Input[9]
 
 # Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
 Image_name=list_Input[10]
+
+# Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
+sound=list_Input[11]
