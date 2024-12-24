@@ -1,36 +1,24 @@
-# Black-Hole-Shadows
-Programa para el TFG sobre sombras de agujeros negros
+# VERSION ACTUAL--> 2.03
 
-IMPORTANTE: Las coordenadas van en el siguiente orden: t, r, phi, theta
+Explicacion de como ejecutar los programas correctamente:
 
-Descripcion corta de los programas:
+# MÉTRICAS ANALÍTICAS:
 
-Metric.py utiliza Sympy para escribir una metrica y su inversa de manera analitica en forma de matriz para luego extraerla en otros ficheros.
+##### Primer paso: 
+    Escribir la métrica analítica que se quiera comprobar en el archivo Metric.py en cada uno de los 16 g_munu (g00,g01,g02,...) el programa esta escrito de tal manera que las coordenadas vayan en el siguiente orden: t-r-phi-theta
 
-Cristoffel.py (si, esta mal escrito, falta una h), utiliza dicha metrica analitica y la utiliza para obtener los simbolos de christoffel, ya que estos son necesarios para resolver la ecuacion de las geodesicas general. A veces, tarda en compilar. 
+##### Segundo paso: 
+    Ejecutar el programa Metric.py, con ello se obtiene la métrica inversa y se escriben los elementos de la métrica y la métrica inversa en dos ficheros
 
-Initial_Values.py lee los ficheros de entrada, Input.csv y Extra_Constants.csv y almacena los datos en unas constantes que luego
-se pueden referenciar directamente. Como las constantes pueden ser un numero arbitrario con nombre dado por el usuario se
-almacenan en un diccionario.
+##### Tercer paso: 
+    Ejecutar el programa Cristoffel.py, este programa escribe los 64 símbolos de christoffel necesarios en otro fichero, los tres ficheros que se acaban de escribir estarán disponibles en la carpeta Data
 
-Function_Metric.py define la metrica y la metrica inversa como funciones, para poder estar usandolas en otros ficheros sin problema. También define una funcion para los simbolos de Christoffel. 
+##### Cuarto paso: 
+    Introducir en el fichero Input los datos referentes al agujero negro que se quiera calcular la sombra. También se debe introducir el número de Pixeles, siendo una imagen N_pix*N_pix, depende del detalle que se quiera en la imagen. El factor Factor_Screen es el factor multiplicativo a una pantalla que mida exactamente el tamaño de la sombra de Schwarzschild se recomienda un Factor_Screen de 3 o 4. Back_Im toma valor C si quiere usar la funcion que define cada cuadrante de la esfera de un color, y toma valor I si quieres proporcionar una imagen para usar de fondo. Introducir tambien los parametros del espacio tiempo en Extra_Constants.csv (a, Q, Lambda,....). name pide el nombre de la métrica para utilizar los simbolos directamente de la base de datos.
+             
+##### Quinto paso: 
+    Ejecutar el fichero Shadow_Multiprocess.py que devuelve los datos del color del pixel y su posición en la carpeta Data para realizar comprobaciones.
 
-Momento_Temporal_Inicial.py es simplemente una funcion para obligar que la geodésica sea luminica, forzando un momento temporal inicial, u otros momentos que puedan ser necesarios.
+##### Sexto paso: 
+    Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y lo muestra en pantalla. Lo guarda en la carpeta Graphics como Black_Hole_Image.png
 
-Equations_to_Solve_Christoffel.py, crea las 8 ecuaciones lineales de las geodesicas en general, utilizando los simbolos de christoffel de Function_Metric.py y añadiendo a cada una un menos porque se resuelve la geodesica hacia atras en el parametro de
-la curva.
-
-Solving_Kerr_with_Christoffel.py, es una función para resolver las ecuaciones de las geodesicas generales mediante un método RK4. Cada resolución se van adaptando p^r y p^theta para mantener constante a las constantes necesarias en el caso analítico de Kerr. En un caso en general solo se cambiaría . Tambien tiene un paso adaptativo en funcion de la coordenada radial y para evitar la singularidad del eje sin(theta)=0. El horizonte de eventos se define si varia mucho la coordenada temporal o la radial de golpe. Escapar del agujero negro se define como: coordenada radial mayor a un r_limit y aumentando, tras esto se calcula el color en función del cuadrante del espacio-tiempo en el que se encuentre.
-
-Angle_to_Momentum.py es un fichero que se encarga de tener una función que cambia las coordenadas definidas en un entorno local de Minkowski alrededor de la pantalla. Calcula los tres momentos p_r, p_phi, p_theta en coordenadas de Boyer-Lindquist y luego utiliza Momento_Temporal_Inicial para calcular p_t.
-
-Background.py es un fichero que comprueba en que cuadrante de la esfera celestial ha caido el foton y así poder ver como se deforma el agujero negro.
-
-Shadow_MultiProcess.py es el fichero final. Utiliza el resto de resultados para devolver el color de cada pixel de la imagen de un agujero negro con sus detalles correspondientes. Para ello utiliza un multiproceso con 8 trabajadores y poder calcular la sombra del agujero negro más rápidamente. La pantalla se divide en 4 workers para (L_screen, 0) y otros 4 en (0, -L_screen).
-
-Representacion.py es el fichero que se ejecuta al final para poder observar el resultado del resto del programa. Grafica los puntos
-que se han calculado con una serie de colores para ver la forma de la sombra y como el agujero negro deforma el espacio-tiempo cercano. Tras esto guarda una imagen png y otra pdf en la carpeta Graphics.
-
-
-
-Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de querer metricas numericas, su variacion numerica se llamaran: N_fichero.py
