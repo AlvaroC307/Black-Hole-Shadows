@@ -2,7 +2,7 @@
 import math
 
 # Importar otros ficheros de la carpeta
-from Initial_Values import constantes, m
+from Initial_Values import constantes, m_Geo
 from Function_Metric import G, Inv_G
 
 # Solucionar la ecuación cuadrática general (Aplicado ya las simplificaciones de la metrica debidas a estar en Kerr(Mom_temp no simplificado))
@@ -40,7 +40,7 @@ def Mom_temp_massive(t:float, r:float, phi:float, theta:float, ps_r:float, ps_ph
     B=2*(ps_phi*G(0, 2, *coords)+ps_r*G(0, 1, *coords)+ps_theta*G(0, 3, *coords))
     C1=ps_r**2*G(1, 1, *coords) +ps_phi**2*G(2, 2, *coords) +ps_theta**2*G(3, 3, *coords)
     C2=2*(ps_r*ps_phi*G(1, 2, *coords)+ps_r*ps_theta*G(1, 3, *coords)+ps_phi*ps_theta*G(2, 3, *coords))
-    C=C1+C2+m**2 # Suma de las funciones para obtener el parametro c
+    C=C1+C2+m_Geo**2 # Suma de las funciones para obtener el parametro c
     
     ps_t_positivo=(-B+math.sqrt(B**2-4*A*C))/(2*A) # Calculo de p_t con un mas antes de la raiz
     

@@ -28,7 +28,7 @@ def Read_Cte()->dict:
     cte_values = []
     for row in Reader_cte:
         cte_names.append(row[0])
-        cte_values.append(eval(row[1]))
+        cte_values.append(float(row[1]))
         # Escribir un diccionario con las constantes y su nombre asociado
     constantes = {}
     for i in range(len(cte_names)):
@@ -37,12 +37,29 @@ def Read_Cte()->dict:
     return constantes
 
 
+def Read_Input_Geodesic()->list:
+    # Leer el fichero de inputs y de constantes
+    csv_Input_Geo = open('./Input/Input_Geodesic.csv', 'r')
+    Reader_Input_Geo = csv.reader(csv_Input_Geo)
+
+    # Escribir el fichero de inputs en una lista
+    list_Input_Geo = []
+    for row in Reader_Input_Geo:
+        content_input_geo = row[1]
+        list_Input_Geo.append(content_input_geo)
+    csv_Input_Geo.close()
+
+    
+    return list_Input_Geo
+
+
 list_Input = Read_Input()
 constantes = Read_Cte()
+list_Input_Geo = Read_Input_Geodesic()
 
 # Asignar nombres a los inputs importantes--------------------
 # Masa del agujero negro
-M = eval(list_Input[0])
+M = float(list_Input[0])
 
 
 # Posicion inicial del Observador
@@ -62,7 +79,7 @@ N_pix=N
 # Factor multiplicativo para el tamaño de la pantalla
 Factor_Screen = eval(list_Input[6])
 
-# "C" es para la funcion de los cuadrantes de la esfera de colores. "I" es si ha dado el usuario una imagen de fondo.
+# "Colours" es para la funcion de los cuadrantes de la esfera de colores. "Image" es si ha dado el usuario una imagen de fondo.
 Back_Im = list_Input[7]
 if (Back_Im != "Colours") and (Back_Im != "Image"):     # Comprobar que Back_Im tiene uno de los dos valores posibles:
     sys.exit("Hay un error, Back_im debe ser Colours o Image, para colores o imagen respectivamente")
@@ -80,14 +97,37 @@ Image_name=list_Input[10]
 # Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
 sound=list_Input[11]
 
+#---------------------------------------------------------------------------------------------------------------------
+
+
+# Asignar nombres a los inputs importantes Para el cálculo de una geodésica-----------------------
+
+
+# Posicion inicial del Observador
+t_0_Geo = eval(list_Input_Geo[0])
+r_0_Geo = eval(list_Input_Geo[1])
+phi_0_Geo = eval(list_Input_Geo[2])
+theta_0_Geo = eval(list_Input_Geo[3])
+
+# "Momentum" es para elegir el cuatrimomento de la partícula. "Screen" es para dar un pixel de la pantalla y obtener su trayetoria.
+Momentum_or_Screen = list_Input_Geo[4]
+if (Momentum_or_Screen != "Momentum") and (Momentum_or_Screen != "Screen"):     # Comprobar que Back_Im tiene uno de los dos valores posibles:
+    sys.exit("Hay un error, Momentum_or_Screen debe ser Momentum o Screen")
+
+# Cuatrimomento inicial del Observador
+ps_r_0_Geo = eval(list_Input_Geo[5])
+ps_phi_0_Geo = eval(list_Input_Geo[6])
+ps_theta_0_Geo = eval(list_Input_Geo[7])
+
+# Punto de la pantalla para obtener el Cuatrimomento
+x_Geo = float(list_Input_Geo[8])
+y_Geo = float(list_Input_Geo[9])
+
 # Precision para el cálculo de una geodésica independiente
-precision=float(list_Input[12])
+precision_Geo=float(list_Input_Geo[10])
 
 # Masa de una partícula para el cálculo de una geodésica independiente (debe ser pequeña m<<M=1 para no deformar significativamente el BH)
-m=float(list_Input[13])
+m_Geo=float(list_Input_Geo[11])
 
 # Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa (GEODESICA ÚNICA)
-r_limit_geodesic=eval(list_Input[14])
-
-# Coordenada radial inicial en el cálculo de una geodésica independiente
-r_0_geodesic=eval(list_Input[15])
+r_limit_Geo=eval(list_Input_Geo[12])

@@ -1,0 +1,13 @@
+t_0,0
+r_0,8*M
+phi_0,pi/2
+theta_0,pi/2
+Momentum_or_Screen,Screen
+ps_r_0,-0.1
+ps_phi_0,0
+ps_theta_0,0
+x,0
+y,0
+precision,1
+m,0
+r_limit,10*M

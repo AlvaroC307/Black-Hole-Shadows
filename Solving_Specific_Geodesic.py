@@ -2,13 +2,16 @@
 import math
 import csv
 import numpy as np
+import time
 
 # Importar otros ficheros de la carpeta
 from Function_Metric import Inv_G
 import Momento_Temporal_Inicial as mti
 from Equations_to_Solve_Christoffel import Switch_punto
+from Angle_to_Momentum import Screen_to_Momentum_Forwards
 import Representation_Geodesic as Repr_Geo
-from Initial_Values import M, t_0, r_0_geodesic, phi_0, theta_0, precision, r_limit_geodesic
+from Initial_Values import M, t_0_Geo, r_0_Geo, phi_0_Geo, theta_0_Geo, precision_Geo, r_limit_Geo
+from Initial_Values import ps_r_0_Geo, ps_phi_0_Geo, ps_theta_0_Geo, x_Geo, y_Geo, Momentum_or_Screen
 # Este codigo se tiene que ejecutar mucho, para cada resolucion de las ecuaciones
 
 # Definición paso adaptativo como función que cambie el paso en función de la distancia a r=0
@@ -33,7 +36,7 @@ def Paso_adap_precision(r:float, theta:float)->int|float: # Es más detallado qu
     # el paso se vuelve mucho más lento
     if (abs(math.sin(theta))<0.09): 
         h=0.01 
-    return (precision*h*M)
+    return (precision_Geo*h*M)
 
 
 def Geodesic(ps_t_0:float, ps_r_0:float, ps_phi_0:float, ps_theta_0:float)->str:
@@ -42,15 +45,15 @@ def Geodesic(ps_t_0:float, ps_r_0:float, ps_phi_0:float, ps_theta_0:float)->str:
 
     #---------------------------Datos extra necesarios para la resolucion numerica
     N =5000000 # Numero de iteraciones maximas, si llega a este numero, se asume que está en órbita
-    Dif_t_Horizon=40*precision # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
-    Dif_r_Horizon=50*precision # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
+    Dif_t_Horizon=40*precision_Geo # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
+    Dif_r_Horizon=50*precision_Geo # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
     #-------------------------------------------------------------------------
 
     # Metodo de RK4 para 8 ecuaciones diferenciales de primer orden
     # Inicializar Vectores con las coordenadas y sus momentos.
     # IMPORTANTE: coord_act hace referencia a los actuales y coord_ant a los anteriores
 
-    coord_act = np.array([ps_t_0, ps_r_0, ps_phi_0, ps_theta_0, t_0, r_0_geodesic, phi_0, theta_0])
+    coord_act = np.array([ps_t_0, ps_r_0, ps_phi_0, ps_theta_0, t_0_Geo, r_0_Geo, phi_0_Geo, theta_0_Geo])
     
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
@@ -108,7 +111,7 @@ def Geodesic(ps_t_0:float, ps_r_0:float, ps_phi_0:float, ps_theta_0:float)->str:
 
         # La partícula se va al infinito y el agujero negro es despreciable
         # (Si la coordenada radial es mayor que r_limit y sigue aumentando)
-        if ((coord_act[5])>=r_limit_geodesic) and ((coord_act[5]-coord_ant[5])>0): 
+        if ((coord_act[5])>=r_limit_Geo) and ((coord_act[5]-coord_ant[5])>0): 
             return "gone to Infinity" # Esto significa que se va al infinito
 
 
@@ -124,19 +127,24 @@ def Geodesic(ps_t_0:float, ps_r_0:float, ps_phi_0:float, ps_theta_0:float)->str:
 
 def main():
 
-    # Dar los valores iniciales (PASAR A UN INPUT NUEVO JUNTO A precision Y m)------------------------------------------
+    time_Computing_initial=time.time()
 
-    ps_r_0 = -0.1
-    ps_phi_0 = 0
-    ps_theta_0 = 0
+    if Momentum_or_Screen == "Momentum":
+        # Encontramos la componente temporal del momento inicial que cumpla p^2=m^2
+        ps_t_0_Geo=mti.Mom_temp_massive(t_0_Geo, r_0_Geo, phi_0_Geo, theta_0_Geo, ps_r_0_Geo, ps_phi_0_Geo, ps_theta_0_Geo)
+        tuple_momentum = (ps_t_0_Geo, ps_r_0_Geo, ps_phi_0_Geo, ps_theta_0_Geo)
 
-    #----------------------------------------------------------------------
-
-    # Encontramos la componente temporal del momento inicial que cumpla p^2=m^2
-    ps_t_0=mti.Mom_temp_massive(t_0, r_0_geodesic, phi_0, theta_0, ps_r_0, ps_phi_0, ps_theta_0) # ESTÁ INCOMPLETO, HAY POSIBILIDAD DE PARTÏCULA MASIVA
-    result=Geodesic(ps_t_0, ps_r_0, ps_phi_0, ps_theta_0) # Calculamos la geodésica
-    print(f"The particle has {result}") # Nos dice que esta en orbita, ha caido al agujero negro o se ha ido al infinito
+    elif Momentum_or_Screen == "Screen":
+        # Encontramos el cuatrimomento asociado con un punto de la pantalla dado
+        tuple_momentum = Screen_to_Momentum_Forwards(x_Geo, y_Geo)
     
+
+    trayectory = Geodesic(*tuple_momentum) # Calculamos la geodésica
+
+
+    print(f"The particle has {trayectory}.") # Nos dice que esta en orbita, ha caido al agujero negro o se ha ido al infinito
+    print(f"The program has run for {time.time()-time_Computing_initial} seconds.")
+
     # Generamos las graficas que nos interesan
     Repr_Geo.plot_tr() 
     Repr_Geo.plot_taur()

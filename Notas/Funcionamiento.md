@@ -22,7 +22,7 @@ Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de q
 # Equations_to_Solve_Christoffel.py:
     Crea las 8 ecuaciones lineales de las geodesicas en general, utilizando los simbolos de christoffel de Function_Metric.py y añadiendo a cada una un menos porque se resuelve la geodesica hacia atras en el parametro de la curva.
 
-# Solving_Kerr_with_Christoffel.py:
+# Solving_Geodesic_Backwards_RayT.py:
     Es una función para resolver las ecuaciones de las geodesicas generales mediante un método RK4. Cada resolución se van adaptando p^r y p^theta para mantener constante a las constantes necesarias en el caso analítico de Kerr. En un caso en general solo se cambiaría . Tambien tiene un paso adaptativo en funcion de la coordenada radial y para evitar la singularidad del eje sin(theta)=0. El horizonte de eventos se define si varia mucho la coordenada temporal o la radial de golpe. Escapar del agujero negro se define como: coordenada radial mayor a un r_limit y aumentando, tras esto se calcula el color en función del cuadrante del espacio-tiempo en el que se encuentre.
 
 # Angle_to_Momentum.py:
@@ -40,8 +40,8 @@ Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de q
 # Change_Background.py:
     Este fichero lo puede activar el usuario cuando quiera cambiar la imagen de fondo que se usa en la simulacion. Para ello, utiliza los datos dados en Input.csv para accederal agujero negro correspondiente de la base de datos y usa los datos guardados para encontrar el color de los puntos que no han caido en el agujero negro.
 
-# Geodesic.py
-    Este fichero calcula la trayectoria de una única partícula alrededor del agujero negro. Para ello sigue el mismo algoritmo que Solving_Kerr_with_Christoffel.py con un par de diferencias. Por ejemplo, se ha añadido un parámetro para alterar la precisión del cálculo, se ha introducido un menos antes de llamar a la función Switch_punto puesto que en la definición dada en Equations_to_Solve_Christoffel.py se calculan las ecuaciones hacia atrás para el Backwards Ray-Tracing.
+# Solving_Specific_Geodesic.py
+    Este fichero calcula la trayectoria de una única partícula alrededor del agujero negro. Para ello sigue el mismo algoritmo que Solving_Geodesic_Backwards_RayT.py con un par de diferencias. Por ejemplo, se ha añadido un parámetro para alterar la precisión del cálculo, se ha introducido un menos antes de llamar a la función Switch_punto puesto que en la definición dada en Equations_to_Solve_Christoffel.py se calculan las ecuaciones hacia atrás para el Backwards Ray-Tracing.
     
 # Representation_Geodesic.py
     En este fichero se definen funciones para representar tres graficas de la trayectoria de una partícula cayendo a un agujero negro. La primera nos representa la coordenada radial esférica respecto al tiempo. La segunda nos representa el parámetro afín o tiempo propio respecto al tiempo y la ultima nos genera una grafica polar donde vemos claramente la trayectoria. Las lineas discontinuas rojas representan el horizonte de eventos. Se ha añadido un -phi_0 en Representacion_Geodesic.py en Polar_plot para incluir casos distintos de phi_0!=0 sin que el dibujo de un resultado extraño.

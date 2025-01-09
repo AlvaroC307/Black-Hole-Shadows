@@ -6,7 +6,7 @@ from playsound import playsound
 import os
 import concurrent.futures as cf
 from Angle_to_Momentum import Screen_to_Momentum
-from Solving_Kerr_with_Christoffel import Geodesic_Chris
+from Solving_Geodesic_Backwards_RayT import Geodesic_Chris
 from Initial_Values import M, r_0, Factor_Screen, N_pix, sound
 from Representation import matplot
 
@@ -63,10 +63,10 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
         for j in range(N_pix_x):
             x = x0+j*paso_x # Avance del eje x
             y = y0+i*paso_y # Avance del eje y
-            list_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
-            tupla_momentum = (list_momentum[0], list_momentum[1], list_momentum[2], list_momentum[3])
+            tuple_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
+
             try:
-                Pixel_Data= Geodesic_Chris(*tupla_momentum)
+                Pixel_Data= Geodesic_Chris(*tuple_momentum)
                 Pixel_Color = Pixel_Data[0] # Calculo del color en dicho pixel
                 Pixel_Position= Pixel_Data[1]
 
