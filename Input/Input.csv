@@ -3,10 +3,14 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2
-N_pix,24
+N_pix,150
 Factor_Screen,4
 Back_Im,Colours
 r_limit,10*M
 name,Kerr
 image_name,Pleiades.png
 sound,Barra_Metal_Cayendo.mp3
+precision,0.1
+m,0
+r_limit_geodesic,100*M
+r_0_geodesic, 8*M

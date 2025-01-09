@@ -79,3 +79,15 @@ Image_name=list_Input[10]
 
 # Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
 sound=list_Input[11]
+
+# Precision para el cálculo de una geodésica independiente
+precision=float(list_Input[12])
+
+# Masa de una partícula para el cálculo de una geodésica independiente (debe ser pequeña m<<M=1 para no deformar significativamente el BH)
+m=float(list_Input[13])
+
+# Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa (GEODESICA ÚNICA)
+r_limit_geodesic=eval(list_Input[14])
+
+# Coordenada radial inicial en el cálculo de una geodésica independiente
+r_0_geodesic=eval(list_Input[15])

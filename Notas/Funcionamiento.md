@@ -39,3 +39,9 @@ Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de q
 
 # Change_Background.py:
     Este fichero lo puede activar el usuario cuando quiera cambiar la imagen de fondo que se usa en la simulacion. Para ello, utiliza los datos dados en Input.csv para accederal agujero negro correspondiente de la base de datos y usa los datos guardados para encontrar el color de los puntos que no han caido en el agujero negro.
+
+# Geodesic.py
+    Este fichero calcula la trayectoria de una única partícula alrededor del agujero negro. Para ello sigue el mismo algoritmo que Solving_Kerr_with_Christoffel.py con un par de diferencias. Por ejemplo, se ha añadido un parámetro para alterar la precisión del cálculo, se ha introducido un menos antes de llamar a la función Switch_punto puesto que en la definición dada en Equations_to_Solve_Christoffel.py se calculan las ecuaciones hacia atrás para el Backwards Ray-Tracing.
+    
+# Representation_Geodesic.py
+    En este fichero se definen funciones para representar tres graficas de la trayectoria de una partícula cayendo a un agujero negro. La primera nos representa la coordenada radial esférica respecto al tiempo. La segunda nos representa el parámetro afín o tiempo propio respecto al tiempo y la ultima nos genera una grafica polar donde vemos claramente la trayectoria. Las lineas discontinuas rojas representan el horizonte de eventos. Se ha añadido un -phi_0 en Representacion_Geodesic.py en Polar_plot para incluir casos distintos de phi_0!=0 sin que el dibujo de un resultado extraño.

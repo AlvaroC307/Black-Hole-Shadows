@@ -109,3 +109,6 @@
     Creación de una base de datos de los resultados, Data_Base_Position_Total donde guardar los agujeros negros más típicos. Reescritura del programa Change_Background.py para que utiilce la información de la base de datos. Actualizado los archivos en Notas para que esten en markdown y no txt.
 #### Version 2.0.4
     Se ha arreglado el bug que no permitía generar un sonido al acabar. Se ha definido una funcion para ello y ahora el path al archivo de sonido se puede dar por el usuario. Arreglado el nombre del archivo Christoffel.py.
+
+## Version 2.1
+    Se han creado los ficheros Geodesic.py y Representation_Geodesic.py que simulan la trayectoria de una partícula (másiva o no) en el entorno de un agujero negro. Hay dos parámetros nuevos para estos cálculos: precision (precision de la computacion de la trayectoria) y m (masa de la partícula), además de dos alternativos r_limit_geodesic y r_0_geodesic.

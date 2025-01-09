@@ -16,15 +16,19 @@
 - Añadir las Data_Base que faltan
 - Cambiar el programa a que use (t, r, theta, phi) como una persona normal (HACERLO EN UN FICHERO APARTE POR SI SE JODE ALGO IMPORTANTE SIN QUERER)
 -Igual va más rapido si cuando divido los trabajadores, divido el eje y en 4 y el eje x en 2 en vez de al reves. COMPORBAR
-
+-Cambiarle el nombre a Solving_Kerr_with_Christoffel.py es muy engorroso
+-Actualizar funcionamiento, explicando los detalles de los programas nuevos (no usan menos, por qué alguna funcion o parámetro está reescrita y no se usa el mismo, etc)
+- En Geodesic.py añadir la posibilidad de dar un valor de x e y del dibujo generado.
+- En Geodesic.py y el demás añadidos para la simulación de la trayectoria revisar los comentarios y redundancias o inconsistencias
+- En Geodesic.py revisar Dif_t_Horizon y Dif_r_Horizon. Se puede crear una funcion dinámica que elija los valores en funcion de la precision elegida. Así evitar que la particula piense que se cae al BH cuando solo se mueve si la precision es alta o que no funcione si la precision es baja. La implementación actual deja que desear, meter una función con un if.
+- En Representation_Geodesic.py revisar el -phi_0 en Polar_plot para calcular x e y para ver si tiene sentido físico y no solo es para dejarlo bonito.
 ## Version 1.x:
 - Añadir un agujero negro perturbado
 - Parametros de Horizon en función de M? Paso adaptativo en funcion de M?
 - Si es un ordenador con más de 8 nucleos, que se divida en mas trabajadores. Yo del futuro2: Se puede pedir al usuario que de su número de nucleos y coger algo tipo n_nucleos-2 
 - Cambio de angulo a x,y genérico no solo para tipo Kerr (Yo del futuro2: Con que función y cómo?)
-- Que reciba la métrica desde un fichero metric.csv en la carpeta Input (Yo del futuro2: parte de esto está hecho en el trabajo de Gravitacion Avanzada)
+- Que reciba la métrica desde un fichero metric.csv en la carpeta Input (Yo del futuro2: parte de esto está hecho en algun trabajo)
 - Renombrar y reescribir parte del programa para que sea más fácilmente legible. Preguntar a Mario convenciones?
-- Implementar la opcion de que se vea graficamente el recorrido que hace una geodesica específica (Trabajo de Gravitación Avanzada)
 - Hacer que la imagen Background funcione para theta!=pi/2
 - Añadir un archivo que permita ver cual es el origen de cada pixel de la imagen deformada. Es decir, genera la grafica actual, permite al usuario especificar x e y pixel en dicha imagen (añadir ejes del grafico con el numero de pixeles). Y utilizando lo mismo que se usa en Background_Image de Background calcula cual es el pixel original y lo marca en la figura sin deformar. (De momento solo idea) 
 

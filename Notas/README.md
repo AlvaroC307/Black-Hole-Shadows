@@ -1,4 +1,4 @@
-# VERSION ACTUAL--> 2.03
+# VERSION ACTUAL--> 2.1
 
 Explicacion de como ejecutar los programas correctamente:
 
@@ -21,4 +21,14 @@ Explicacion de como ejecutar los programas correctamente:
 
 ##### Sexto paso: 
     Ejecutar el fichero Representacion.py, este sirve para hacer un dibujo con los colores de los pixeles calculados y lo muestra en pantalla. Lo guarda en la carpeta Graphics como Black_Hole_Image.png
+
+
+## Cambiar el fondo de una imagen sin simular de nuevo el agujero negro
+
+-------------------------------------------EN CONSTRUCCION-------------------------------------
+
+
+# Geodésicas Específicas
+
+-------------------------------------------EN CONSTRUCCION-------------------------------------
 
