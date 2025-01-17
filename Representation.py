@@ -1,9 +1,10 @@
 # Leer los ficheros de resultados para representarlo en un dibujo
 import csv
+import math
 import matplotlib.pyplot as plt # Esto es para el plot
 import matplotlib.colors as mcolors # Esto es para cambiar los colores a valores numéricos
 import numpy as np # Esto es para los array al cambiar de los colores a valores numericos
-from Initial_Values import N_pix, Back_Im
+from Initial_Values import N_pix, Back_Im, Factor_Screen, M, axis
 
 def matplot()->None:
 
@@ -40,14 +41,45 @@ def matplot()->None:
         color_array = Color_Total
     elif Back_Im=="Colours":
         color_array = np.array([[mcolors.to_rgb(color) for color in row] for row in Color_Total])
-    
 
     # Create a figure and plot the image
     fig, ax = plt.subplots(figsize=(5, 5)) # figsize habla sobre el tamaño de la imagen
-    ax.imshow(color_array)
 
-    # Quitar los ejes, guardar y mostrar en pantalla la imagen 
-    ax.axis('off')
+    if axis=="Yes":
+
+        # Radio de la sombra del agujero negro de Schwarzschild equivalente
+        L_Schwarzschild = 3*math.sqrt(3)*M
+        # Multiplicamos por un numero que da el usuario para que haya pantalla para ver la sombra y el espacio correctamente
+        L_screen = Factor_Screen * L_Schwarzschild
+
+        ax.imshow(color_array, extent=[-L_screen/2, L_screen/2, -L_screen/2, L_screen/2])
+
+        # Ajustar los límites de los ejes para que vayan de -l_screen/2 a L/screen/2
+        ax.set_xlim(-L_screen/2, L_screen/2)
+        ax.set_ylim(-L_screen/2, L_screen/2)
+
+        # Establecer la relación de aspecto de la imagen para evitar distorsión
+        ax.set_aspect('auto')
+
+        # Reparametrizar las marcas de los ejes (ticks)
+        num_ticks = 9  # Número de ticks que deseas 
+
+        # Ticks para el eje x y eje y, distribuidos de manera uniforme
+        ticks=np.linspace(-L_screen/2, L_screen/2, num_ticks)
+        ax.set_xticks(ticks)
+        ax.set_yticks(ticks)
+              
+        # Etiquetas de los ticks 
+        tick_labels = [f"{tick:.2f}" for tick in ticks] #.2f en el formato de cadena indica que se deben mostrar dos cifras después del punto decimal.
+        ax.set_xticklabels(tick_labels)
+        ax.set_yticklabels(tick_labels)
+        ax.axis("on")
+    else:
+        ax.imshow(color_array)
+        ax.axis('off')
+
+    # Guardar y mostrar en pantalla la imagen 
+    
     plt.savefig('./Graphics/Black_Hole_Image.pdf', bbox_inches='tight') # Guardar la imagen como un pdf
     plt.savefig('./Graphics/Black_Hole_Image.png', bbox_inches='tight') # Guardar la imagen como un png
     plt.show() # Mostrar la imagen

@@ -22,14 +22,9 @@ def Finish_sound()->None:
 
 
 def Screen()->float:  # Calculo del tamaño de la pantalla
-    rho2_Schwarzschild = r_0/2*M
 
-    # Angulo de la sombra para un agujero negro de Schwarzschild con la misma masa
-    angle_Schwarzschild = math.asin(
-        math.sqrt((27*(rho2_Schwarzschild-1))/(4*(rho2_Schwarzschild**3))))
-    
-    # Radio para el angulo de schwarzschild
-    L_Schwarzschild = r_0*math.tan(angle_Schwarzschild)
+    # Radio de la sombra del agujero negro de Schwarzschil equivalente
+    L_Schwarzschild = 3*math.sqrt(3)*M
 
     # Multiplicamos por un numero que da el usuario para que haya pantalla para ver la sombra y el espacio correctamente
     L_screen = Factor_Screen * L_Schwarzschild

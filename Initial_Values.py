@@ -97,6 +97,9 @@ Image_name=list_Input[10]
 # Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
 sound=list_Input[11]
 
+# Yes o No al tener ejes en la imagen. Lo bueno de no tenerlos es poder ver a que punto corresponde cada imagen.
+axis=list_Input[12]
+
 #---------------------------------------------------------------------------------------------------------------------
 
 

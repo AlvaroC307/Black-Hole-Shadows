@@ -10,7 +10,6 @@
 # Ideas para mejorar el programa: 
 
 ## Version 1.0x:
-- Ejes del gráfico
 - Comprobar que los parametros a,... sean numeros para que el usuario no borre el programa con eval()
 - La metrica de Kerr-Newman de la base de datos está mal.    Yo del futuro:¿en serio?	Yo del futuro2: khe? Los Christoffel o como?
 - Añadir un input que permita al usuario elegir si quiere que se saque la métrica de la base de datos o de la que ha creado él mismo. Para ello se puede crear una carpeta fantasma en Data_Base_Position_Total en la que se guarde una copia de la información en caso de que algo del programa falle. Este fichero se reinicia cada vez que se use esta función
