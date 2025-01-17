@@ -118,13 +118,13 @@ if (Momentum_or_Screen != "Momentum") and (Momentum_or_Screen != "Screen"):     
     sys.exit("Hay un error, Momentum_or_Screen debe ser Momentum o Screen")
 
 # Cuatrimomento inicial del Observador
-ps_r_0_Geo = eval(list_Input_Geo[5])
-ps_phi_0_Geo = eval(list_Input_Geo[6])
-ps_theta_0_Geo = eval(list_Input_Geo[7])
+p_r_0_Geo = eval(list_Input_Geo[5])
+p_phi_0_Geo = eval(list_Input_Geo[6])
+p_theta_0_Geo = eval(list_Input_Geo[7])
 
 # Punto de la pantalla para obtener el Cuatrimomento
-x_Geo = float(list_Input_Geo[8])
-y_Geo = float(list_Input_Geo[9])
+i_Geo = int(list_Input_Geo[8])
+j_Geo = int(list_Input_Geo[9])
 
 # Precision para el cálculo de una geodésica independiente
 precision_Geo=float(list_Input_Geo[10])

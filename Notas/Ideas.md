@@ -15,13 +15,14 @@
 - Añadir un input que permita al usuario elegir si quiere que se saque la métrica de la base de datos o de la que ha creado él mismo. Para ello se puede crear una carpeta fantasma en Data_Base_Position_Total en la que se guarde una copia de la información en caso de que algo del programa falle. Este fichero se reinicia cada vez que se use esta función
 - Añadir las Data_Base que faltan
 - Cambiar el programa a que use (t, r, theta, phi) como una persona normal (HACERLO EN UN FICHERO APARTE POR SI SE JODE ALGO IMPORTANTE SIN QUERER)
--Igual va más rapido si cuando divido los trabajadores, divido el eje y en 4 y el eje x en 2 en vez de al reves. COMPORBAR
+- Igual va más rapido si cuando divido los trabajadores, divido el eje y en 4 y el eje x en 2 en vez de al reves. COMPORBAR
 - En Geodesic.py y el demás añadidos para la simulación de la trayectoria revisar los comentarios y redundancias o inconsistencias
 - En Geodesic.py revisar Dif_t_Horizon y Dif_r_Horizon. Se puede crear una funcion dinámica que elija los valores en funcion de la precision elegida. Así evitar que la particula piense que se cae al BH cuando solo se mueve si la precision es alta o que no funcione si la precision es baja. La implementación actual deja mucho que desear, meter una función con un if.
 - En Representation_Geodesic.py revisar el -phi_0 en Polar_plot para calcular x e y para ver si tiene sentido físico y no solo es para dejarlo bonito.
 - Creo que he creado demasiadas funciones alternativas massive de las que hacen falta (Momento_Temporal_Inicial.py y Angle_to_Momentum.py). Igual merece la pena unificarlas.??
-- Revisar la elección de signos y en Angle_to_Momentum y explicarlo bien en algún sitio. Revisar también la elección de la magnitud de ps_r_0 ya que afecta a la precisión cosa que no pensé en un principio
-
+- Revisar la elección de signos y en Angle_to_Momentum y explicarlo bien en algún sitio. Revisar también la elección de la magnitud de ps_r_0 ya que afecta a la precisión cosa que no pensé en un principio. IDEA MEJOR: REWORKEAR TODO PARA QUE TAMBIEN RESUELVA LAS ECUACIONES PA ATRÁS Y ME QUITO DE LIOS
+-Comprobacion de que i_Geo y j_Geo sean menores que N_pix
+- calcular en shadow_Multiprocess cada punto en un linspace en vez de 800 for
 ## Version 1.x:
 - Añadir un agujero negro perturbado
 - Parametros de Horizon en función de M? Paso adaptativo en funcion de M?

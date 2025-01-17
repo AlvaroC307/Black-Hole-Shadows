@@ -116,3 +116,5 @@
     Creado un fichero Input_Geodesic.csv para introducir datos relevantes específicos a la resolución de la trayectoria específica. Añadido la posibilidad de calcular una geodésica dados unos puntos x,y en la imagen, para ello hemos creado una función nueva en Angle_to_momentum con otra convención de signos ya que esto no es backwards Ray-Tracing. Cambiado las funciones de Angle_to_momentum para que devuelvan una tupla. Cambiado el nombre de Solving_Kerr_with_Christoffel.py a Solving_Geodesic_Backwards_RayT y limpiado parte de código desactualizado. Añadida una función en Representation_Geodesic.py que calcula el horizonte de eventos de los agujeros negros usuales
 #### Version 2.1.2
     Añadido una opcion para poner ejes al grafico. Con ejes se puede ver el tamaño de la sombra del agujero negro y sin ellos se puede ver de que x,y se origina cada pixel. Simplificación importante de la funcion Screen en Shadow_Multiprocess.py. 
+#### Version 2.1.3
+    Arreglado la opcion de calcular una geodesica dados unos puntos x,y de la imagen. Comprobado que la elección de signos en Angle_to_Momentum.

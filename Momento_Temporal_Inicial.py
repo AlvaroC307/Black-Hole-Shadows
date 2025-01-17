@@ -31,26 +31,25 @@ def Mom_temp(t:float, r:float, phi:float, theta:float, p_r:float, p_phi:float, p
 # ESTA FUNCION TIENE EN CUENTA POSIBILIDAD DE PARTÍCULAS MASIVAS. ES MÁS GENERAL QUE LA ANTERIOR PERO ES LIGERAMENTE MÁS LENTA
 # Solucionar la ecuación cuadrática general a*p_t^2+b*p_t+c=0, a=g^tt, b=2*(g^{tphi}*p_phi+g^{tr}*p_r+g^{ttheta}*p_theta), c=...
     
-def Mom_temp_massive(t:float, r:float, phi:float, theta:float, ps_r:float, ps_phi:float, ps_theta:float)->float|list: # General
+def Mom_temp_massive(t:float, r:float, phi:float, theta:float, p_r:float, p_phi:float, p_theta:float)->float|list: # General
 
     coords=(t, r, phi, theta)
 
     # Parametros de la ecuacion de segundo grado
-    A=G(0, 0, *coords)
-    B=2*(ps_phi*G(0, 2, *coords)+ps_r*G(0, 1, *coords)+ps_theta*G(0, 3, *coords))
-    C1=ps_r**2*G(1, 1, *coords) +ps_phi**2*G(2, 2, *coords) +ps_theta**2*G(3, 3, *coords)
-    C2=2*(ps_r*ps_phi*G(1, 2, *coords)+ps_r*ps_theta*G(1, 3, *coords)+ps_phi*ps_theta*G(2, 3, *coords))
+    A=Inv_G(0, 0, *coords)
+    B=2*(p_phi*Inv_G(0, 2, *coords)+p_r*Inv_G(0, 1, *coords)+p_theta*Inv_G(0, 3, *coords))
+    C1=p_r**2*Inv_G(1, 1, *coords) +p_phi**2*Inv_G(2, 2, *coords) +p_theta**2*Inv_G(3, 3, *coords)
+    C2=2*(p_r*p_phi*Inv_G(1, 2, *coords)+p_r*p_theta*Inv_G(1, 3, *coords)+p_phi*p_theta*Inv_G(2, 3, *coords))
     C=C1+C2+m_Geo**2 # Suma de las funciones para obtener el parametro c
+    p_t_positivo=(-B+math.sqrt(B**2-4*A*C))/(2*A) # Calculo de p_t con un mas antes de la raiz
     
-    ps_t_positivo=(-B+math.sqrt(B**2-4*A*C))/(2*A) # Calculo de p_t con un mas antes de la raiz
-    
-    # Funcion if para que p_t sea positivo y la coordenada t crezca
-    if ps_t_positivo<0:
-        ps_t=(-B-math.sqrt(B**2-4*A*C))/(2*A)
+    # Funcion if para que p_t sea siempre positivo y vaya en dirección futuro (el backwards se tiene en cuenta en las ecuaciones)
+    if p_t_positivo<0:
+        p_t=(-B-math.sqrt(B**2-4*A*C))/(2*A)
     else:
-        ps_t=ps_t_positivo
+        p_t=p_t_positivo
 
-    return ps_t
+    return p_t
 
 
 # En este caso es para cambiar p^r, para ello, comprobamos el signo con el p^r calculado con el RK4

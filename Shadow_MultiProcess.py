@@ -7,7 +7,7 @@ import os
 import concurrent.futures as cf
 from Angle_to_Momentum import Screen_to_Momentum
 from Solving_Geodesic_Backwards_RayT import Geodesic_Chris
-from Initial_Values import M, r_0, Factor_Screen, N_pix, sound
+from Initial_Values import M, Factor_Screen, N_pix, sound
 from Representation import matplot
 
 def Finish_sound()->None:
@@ -51,13 +51,13 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
     y0 = y0+paso_y/2
 
     k = 0
-    for i in range(N_pix_y):
+    for j in range(N_pix_y):
         One_line_color_quadrant = []
         One_line_position_quadrant = []
 
-        for j in range(N_pix_x):
-            x = x0+j*paso_x # Avance del eje x
-            y = y0+i*paso_y # Avance del eje y
+        for i in range(N_pix_x):
+            x = x0+i*paso_x # Avance del eje x
+            y = y0+j*paso_y # Avance del eje y
             tuple_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
 
             try:
@@ -76,7 +76,7 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
             Color_Quadrant = [i, j, Pixel_Color, x, y]
             One_line_color_quadrant.append(Color_Quadrant)
             One_line_position_quadrant.append(Pixel_Position)
-            if (j+1 == N_pix_x):
+            if (i+1 == N_pix_x):
                 All_color_Quadrant.append(One_line_color_quadrant) # Escritura de los colores en una lista de listas
                 All_position_Quadrant.append(One_line_position_quadrant) # Escritura de las posiciones en una lista de listas
 

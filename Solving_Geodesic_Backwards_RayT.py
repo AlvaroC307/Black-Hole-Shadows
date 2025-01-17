@@ -6,6 +6,7 @@ import numpy as np
 # Importar otros ficheros de la carpeta
 from Function_Metric import Inv_G
 import Momento_Temporal_Inicial as mti
+from Angle_to_Momentum import Screen_to_Momentum
 from Equations_to_Solve_Christoffel import Switch_punto
 import Background as Backg
 from Initial_Values import M, t_0, r_0, phi_0, theta_0, Back_Im, constantes, r_limit
@@ -43,7 +44,7 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
     coords_0=(t_0, r_0, phi_0, theta_0)
 
     # Datos extra necesarios para la resolucion numerica
-    N =5000 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos
+    N = 5000 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos
     Dif_t_Horizon=15 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
     Dif_r_Horizon=30 # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
 
@@ -142,7 +143,6 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
         # Escribir en un fichero los momentos y coordenadas para comprobar un geodesica especifica
         #csv_manager.writerow(coord_act)
 
-
         # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
         if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or (abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon):
             return ["Black", ["Inside", "Inside", "Inside"]] # Esto significa que cae al agujero negro
@@ -161,3 +161,6 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
     #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
     return ["Pink", ["Orbit", "Orbit", "Orbit"]] # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
+
+
+Geodesic_Chris(*Screen_to_Momentum(0,0))
