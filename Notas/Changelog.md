@@ -118,3 +118,5 @@
     Añadido una opcion para poner ejes al grafico. Con ejes se puede ver el tamaño de la sombra del agujero negro y sin ellos se puede ver de que x,y se origina cada pixel. Simplificación importante de la funcion Screen en Shadow_Multiprocess.py. 
 #### Version 2.1.3
     Arreglado la opcion de calcular una geodesica dados unos puntos x,y de la imagen. Comprobado que la elección de signos en Angle_to_Momentum.
+#### Version 2.1.4
+    Añadida una condición que compruebe que i_Geo y j_Geo estén en el intervalo [0,N_pix]

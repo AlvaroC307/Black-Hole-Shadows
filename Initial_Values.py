@@ -125,6 +125,10 @@ p_theta_0_Geo = eval(list_Input_Geo[7])
 # Punto de la pantalla para obtener el Cuatrimomento
 i_Geo = int(list_Input_Geo[8])
 j_Geo = int(list_Input_Geo[9])
+if (i_Geo<0) or (i_Geo>N_pix):
+    sys.exit("Hay un error, el valor de i_Geo no es válido. No se encuentra en el intervalo [0,N_pix]")
+if (j_Geo<0) or (j_Geo>N_pix):
+    sys.exit("Hay un error, el valor de j_Geo no es válido. No se encuentra en el intervalo [0,N_pix]")
 
 # Precision para el cálculo de una geodésica independiente
 precision_Geo=float(list_Input_Geo[10])
