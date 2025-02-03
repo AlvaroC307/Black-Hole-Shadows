@@ -32,10 +32,25 @@ def Paso_adap(r:float, theta:float)->int|float:
 
     # Para evitar problemas al tener metricas con singularidades en sin(theta)=0, cuando se acerca a 0 o pi
     # el paso se vuelve mucho más lento
-    #if ((abs(theta))<0.05) or ((abs(theta-math.pi))<0.05):
+    
     if (abs(math.sin(theta))<0.09): #Antes era 0.07
         h=0.01 
     return h
+
+
+def Horizon(h:float, t_ant:float, t_act:float, r_ant:float, r_act:float)->bool:# Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
+
+    r_max_BH = 4*M # Si la geodesica supera esta superficie se empieza a coomprobar si cae al agujero negro
+
+    if r_ant<r_max_BH:  
+
+        Dif_t_Horizon=10 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
+        Dif_r_Horizon=3*h # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
+
+        if (abs(r_act-r_ant)>=Dif_r_Horizon) or (abs(t_act-t_ant)>=Dif_t_Horizon):
+            return True # Esto significa que cae al agujero negro
+
+    return False
 
 
 def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->list:
@@ -45,8 +60,6 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
     # Datos extra necesarios para la resolucion numerica
     N = 5000 # Numero de iteraciones maximas, si llega a este numero, se asume que se ha ido muy lejos
-    Dif_t_Horizon=15 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
-    Dif_r_Horizon=30 # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores 
     #Calculo de los vectores p^mu iniciales como p^mu=sum(g^{mu nu}*p_nu)
@@ -76,8 +89,8 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
     
 
     # Definimos un fichero en el que escribir los resultados que nos interesen comprobar en caso de problema con cierta geodesica
-    """ file_manager = open("./Data/Prueba.csv", "w", newline="")
-    csv_manager = csv.writer(file_manager)     """
+    file_manager = open("./Data/Prueba.csv", "w", newline="")
+    csv_manager = csv.writer(file_manager) 
 
 
     # Método RK4 como tal, empieza aqui------------------------------------------------------
@@ -141,11 +154,11 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
 
 
         # Escribir en un fichero los momentos y coordenadas para comprobar un geodesica especifica
-        #csv_manager.writerow(coord_act)
+        csv_manager.writerow(coord_act)
 
-        # Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
-        if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or (abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon):
-            return ["Black", ["Inside", "Inside", "Inside"]] # Esto significa que cae al agujero negro
+        
+        if Horizon(h, coord_ant[4], coord_act[4], coord_ant[5], coord_act[5])==True: # Comprobaciones si se va al horizonte de eventos o no
+            return ["Black", ["Inside", "Inside", "Inside"]]
 
 
         #Si la coordenada radial es mayor que r_limit y aumentando se considera que se va al infinito y no cae al Agujero Negro
@@ -158,9 +171,6 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
             return [Back_Colour, [coord_act[5], coord_act[6], coord_act[7]]] # Esto significa que se va al infinito
 
 
-    #file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
+    file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
     return ["Pink", ["Orbit", "Orbit", "Orbit"]] # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
-
-
-Geodesic_Chris(*Screen_to_Momentum(0,0))

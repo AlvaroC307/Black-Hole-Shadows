@@ -4,16 +4,20 @@ import time
 import csv
 from playsound import playsound
 import os
+import numpy as np
 import concurrent.futures as cf
 from Angle_to_Momentum import Screen_to_Momentum
 from Solving_Geodesic_Backwards_RayT import Geodesic_Chris
 from Initial_Values import M, Factor_Screen, N_pix, sound
 from Representation import matplot
 
+
 def Finish_sound()->None:
     sound_path = "./Sounds/" + sound.strip()
     
     if os.path.exists(sound_path):
+        print("La simulación ha terminado.")
+        time.sleep(1)
         playsound(sound_path)
     else:
         print(f"El archivo de sonido {sound_path} no existe.")
@@ -44,11 +48,16 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
     Ly = y1-y0 # Tamaño de la pantalla en el eje vertical
     paso_x = Lx/N_pix_x # Paso entre cada centro de cada pixel en el eje horizontal
     paso_y = Ly/N_pix_y # Paso entre cada centro de cada pixel en el eje vertical
-    # Aunque no lo parezca a primera vista paso_x=paso_y porque L_y es más grande pero también tiene más pixeles. Es importante el equilibrio
 
     # Esto es para que luego se pongan en el centro del pixel y no en una esquina
     x0 = x0+paso_x/2 
     y0 = y0+paso_y/2
+    x1 = x1-paso_x/2
+    y1 = y1-paso_y/2
+
+    list_points_x = np.linspace(x0, x1, N_pix_x) # Lista de puntos equiespaciados en el eje x que simular
+    list_points_y = np.linspace(y0, y1, N_pix_y) # Lista de puntos equiespaciados en el eje y que simular
+
 
     k = 0
     for j in range(N_pix_y):
@@ -56,24 +65,23 @@ def Black_Hole_Geodesic(x0:float, x1:float, y0:float, y1:float, N_pix_x:int, N_p
         One_line_position_quadrant = []
 
         for i in range(N_pix_x):
-            x = x0+i*paso_x # Avance del eje x
-            y = y0+j*paso_y # Avance del eje y
-            tuple_momentum = Screen_to_Momentum(x, y) # Calculo de los momentos para dicho punto
+
+            tuple_momentum = Screen_to_Momentum(list_points_x[i], list_points_y[j]) # Calculo de los momentos para dicho punto
 
             try:
-                Pixel_Data= Geodesic_Chris(*tuple_momentum)
+                Pixel_Data = Geodesic_Chris(*tuple_momentum)
                 Pixel_Color = Pixel_Data[0] # Calculo del color en dicho pixel
-                Pixel_Position= Pixel_Data[1]
+                Pixel_Position = Pixel_Data[1] # Posicion final del fotón
 
             except Exception as e:
                 # code to handle the error
                 print("An error occurred", e)
-                print("In the points:", x, y)
+                print("In the points:", list_points_x[i], list_points_y[j])
 
             print("Progreso del trabajador " + worker + ":", int(k*Porc_Avance), "%") # Barra de progreso
             k += 1
 
-            Color_Quadrant = [i, j, Pixel_Color, x, y]
+            Color_Quadrant = [i, j, Pixel_Color, list_points_x[i], list_points_y[j]]
             One_line_color_quadrant.append(Color_Quadrant)
             One_line_position_quadrant.append(Pixel_Position)
             if (i+1 == N_pix_x):

@@ -119,4 +119,6 @@
 #### Version 2.1.3
     Arreglado la opcion de calcular una geodesica dados unos puntos x,y de la imagen. Comprobado que la elección de signos en Angle_to_Momentum.
 #### Version 2.1.4
-    Añadida una condición que compruebe que i_Geo y j_Geo estén en el intervalo [0,N_pix]
+    Añadida una condición que compruebe que i_Geo y j_Geo estén en el intervalo [0,N_pix].
+#### Version 2.1.5
+    Añadida una función en Solving_Geodesic_Backwards_Ray_T.py y Solving_Specific_Geodesic.py que compruebe cuando una trayectoria ha caido al agujero negro y cambio del parámetro Dif_r_Horizon para que vaya en funcion de la distancia. Cambio en Shadow_Multiprocess.py la forma de obtener los puntos x,y que simular, ahora funciona mediante la funcion linspace de numpy.

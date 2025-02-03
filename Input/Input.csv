@@ -3,11 +3,11 @@ t_0,0
 r_0,100*M
 phi_0,pi/2
 theta_0,pi/2
-N_pix,250
+N_pix,25
 Factor_Screen,4
-Back_Im,Colours
+Back_Im,Image
 r_limit,10*M
 name,Kerr
-image_name,Pleiades.png
+image_name,Colours.png
 sound,Barra_Metal_Cayendo.mp3
 axis,No

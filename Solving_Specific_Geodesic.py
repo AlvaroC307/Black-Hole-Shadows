@@ -39,6 +39,21 @@ def Paso_adap_precision(r:float, theta:float)->int|float: # Es más detallado qu
     return (precision_Geo*h*M)
 
 
+def Horizon(h:float, t_ant:float, t_act:float, r_ant:float, r_act:float)->bool:# Comprobaciones si se va al horizonte de eventos o no (que el tiempo cambie mucho o que la coordenada radial cambie demasiado)
+
+    r_max_BH = 4*M # Si la geodesica supera esta superficie se empieza a coomprobar si cae al agujero negro
+
+    if r_ant<r_max_BH:  
+
+        Dif_t_Horizon=10 # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
+        Dif_r_Horizon=5*h # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
+
+        if (abs(r_act-r_ant)>=Dif_r_Horizon) or (abs(t_act-t_ant)>=Dif_t_Horizon):
+            return True # Esto significa que cae al agujero negro
+
+    return False
+
+
 def Geodesic(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str:
 
     # Escribir los parámetros y coordenadas iniciales del problema en dos tuplas
@@ -48,8 +63,6 @@ def Geodesic(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str:
 
     #---------------------------Datos extra necesarios para la resolucion numerica
     N =5000000 # Numero de iteraciones maximas, si llega a este numero, se asume que está en órbita
-    Dif_t_Horizon=60*precision_Geo # Parámetro que mide si cambia demasiado la coord radial y ha caido al Agujero Negro
-    Dif_r_Horizon=60*precision_Geo # Parámetro que mide si cambia demasiado la coord temporal y ha caido al Agujero Negro
     #----------------------------------------
 
     # Los momentos son una-formas, es decir, indices bajados, pero las ecuaciones los utilizan como vectores 
@@ -126,9 +139,9 @@ def Geodesic(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->str:
 
         #-----------------------Comprobaciones para parar el programa
 
-        # La partícula cae al horizonte de eventos (que el tiempo cambie mucho)
-        if (abs(coord_act[4]-coord_ant[4])>=Dif_t_Horizon) or (abs(coord_act[5]-coord_ant[5])>=Dif_r_Horizon):
-            return "fallen inside the Black Hole" # Esto significa que cae al agujero negro
+        # La partícula cae al horizonte de eventos
+        if Horizon(h, coord_ant[4], coord_act[4], coord_ant[5], coord_act[5])==True: # Comprobaciones si se va al horizonte de eventos o no
+            return ["Black", ["Inside", "Inside", "Inside"]]
 
         # La partícula se va al infinito y el agujero negro es despreciable
         # (Si la coordenada radial es mayor que r_limit y sigue aumentando)
