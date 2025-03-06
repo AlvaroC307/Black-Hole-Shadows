@@ -122,3 +122,6 @@
     Añadida una condición que compruebe que i_Geo y j_Geo estén en el intervalo [0,N_pix].
 #### Version 2.1.5
     Añadida una función en Solving_Geodesic_Backwards_Ray_T.py y Solving_Specific_Geodesic.py que compruebe cuando una trayectoria ha caido al agujero negro y cambio del parámetro Dif_r_Horizon para que vaya en funcion de la distancia. Cambio en Shadow_Multiprocess.py la forma de obtener los puntos x,y que simular, ahora funciona mediante la funcion linspace de numpy.
+
+## Version 2.2 
+    Creado un fichero Interface.py en la que crear una interfaz para el programa. De momento su única función es pedir y cargar datos en Input/Input.csv para una posterior implementacion.

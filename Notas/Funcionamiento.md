@@ -45,3 +45,6 @@ Ahora mismo, estos ficheros son para metricas analiticas tipo Kerr, en caso de q
     
 # Representation_Geodesic.py
     En este fichero se definen funciones para representar tres graficas de la trayectoria de una partícula cayendo a un agujero negro. La primera nos representa la coordenada radial esférica respecto al tiempo. La segunda nos representa el parámetro afín o tiempo propio respecto al tiempo y la ultima nos genera una grafica polar donde vemos claramente la trayectoria. Las lineas discontinuas rojas representan el horizonte de eventos. Se ha añadido un -phi_0 en Representacion_Geodesic.py en Polar_plot para incluir casos distintos de phi_0!=0 sin que el dibujo de un resultado extraño.
+
+# Interface.py 
+    Carga la Interfaz de uso sencillo de la aplicacion y una explicación de la misma

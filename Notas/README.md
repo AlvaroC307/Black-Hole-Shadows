@@ -1,4 +1,4 @@
-# VERSION ACTUAL--> 2.15
+# VERSION ACTUAL--> 2.2
 
 Explicacion de como ejecutar los programas correctamente:
 
