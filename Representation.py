@@ -85,9 +85,37 @@ def matplot()->None:
     plt.show() # Mostrar la imagen
 
 
+def locate_error_in_data()->list:
+
+    file_Position = open("./Data/Geodesics_Position_Total.csv", 'r')
+    csv_Position = csv.reader(file_Position)
+
+    position_r=[]
+    for row in csv_Position:
+        if row[0]=="Inside" or row[0] == "Orbit":
+            position_r.append(row[0])
+        else:
+            position_r.append(float(row[0]))
+
+    Problem_Source = []
+
+    for i in range(len(position_r) - 2):  # Recorremos hasta el antepenúltimo elemento
+        if position_r[i] == "Inside" and isinstance(position_r[i+1], (int, float)) and position_r[i+2] == "Inside":
+            print(f"Hay una combinacion Inside-Outside-Inside en: {i}, {i+1}, {i+2}")
+            Problem_Source.append(i+1)
+    
+    return Problem_Source
+
 
 def main()->None:
+
+    Problem_Source = locate_error_in_data()
+
+    if Problem_Source !=[]:
+        print(f"Las fuentes de problemas pueden ser los pixeles: {Problem_Source}")    
+
     matplot()
 
 if __name__ == '__main__':
+
     main()

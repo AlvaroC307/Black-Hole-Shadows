@@ -10,7 +10,7 @@ def r_Horizon():
         r_Horizon=2*M
     if name=="Kerr":
         r_Horizon=M+math.sqrt(M**2-constantes["a"]**2)
-    elif name=="Kerr_Newman":
+    elif name=="Kerr-Newman":
         r_Horizon=M+math.sqrt(M**2-constantes["a"]**2-constantes["Q_e"]**2)
 
     return r_Horizon

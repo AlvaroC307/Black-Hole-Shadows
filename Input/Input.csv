@@ -3,11 +3,11 @@ t0,0
 r0,8*M
 phi0,pi/2
 theta0,pi/2
-N_pix,100
+N_pix,250
 Factor_Screen,4
 r_limit,10*M
 name,Kerr-Newman
-Back_Im,Colours
-image_name,Colours.png
+Back_Im,Image
+image_name,Pleiades.png
 sound,Barra_Metal_Cayendo
 axis,No

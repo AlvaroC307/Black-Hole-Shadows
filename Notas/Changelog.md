@@ -125,3 +125,5 @@
 
 ## Version 2.2 
     Creado un fichero Interface.py en la que crear una interfaz para el programa. De momento su única función es pedir y cargar datos en Input/Input.csv para una posterior implementacion.
+#### Version 2.21
+    Creada una funcion locate_error_in_data en Representation.py que comprueba que no haya cadenas Inside-Outside-Inside. Es decir, se asegura que no haya pixeles dentro de la sombra que el programa les haya mandado a infinito y den problemas en la representación. Añadido comentarioas al fichero Interface.py para hacerlo legible.

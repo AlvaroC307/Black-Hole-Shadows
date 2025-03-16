@@ -174,3 +174,24 @@ def Geodesic_Chris(p_t_0:float, p_r_0:float, p_phi_0:float, p_theta_0:float)->li
     file_manager.close() # Cerrar el fichero para comprobar geodesicas aisladas
 
     return ["Pink", ["Orbit", "Orbit", "Orbit"]] # Esto significa que no cae al agujero negro en N pasos pero tampoco se va a infinito
+
+
+from Initial_Values import N_pix, Factor_Screen
+i=75
+j=50
+
+# Radio de la sombra del agujero negro de Schwarzschild equivalente
+L_screen = 3*math.sqrt(3)*M*Factor_Screen
+
+list_points_x = np.linspace(-L_screen/2 + (L_screen/(2*N_pix)), L_screen/2 - (L_screen/(2*N_pix)), N_pix)
+list_points_y = np.linspace(L_screen/2 - (L_screen/(2*N_pix)), -L_screen/2 + (L_screen/(2*N_pix)), N_pix)
+x=list_points_x[i]
+y=list_points_y[j]
+
+print(x,y)
+
+tuple_momentum = Screen_to_Momentum(x, y)
+
+print(tuple_momentum)
+trayectory = Geodesic_Chris(*tuple_momentum) # Calculamos la geodésica
+print(f"The particle has {trayectory}.") # Nos dice que esta en orbita, ha caido al agujero negro o se ha ido al infinito

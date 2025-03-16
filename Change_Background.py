@@ -20,6 +20,7 @@ def Read_ijxy(file_path:str)->list:
         ijxy_Total.append(ijxy)
 
     file_Total_Color.close()
+
     return ijxy_Total
 
 
@@ -51,6 +52,8 @@ def Rewrite_Geodesics_Color(file_path:str, ijxy_Total:list)->None:
         k+=1
         print(f"Lleva un {k*progreso} %")
 
+    file_Position.close()
+    file_Color.close()
 
 
 def main()->None:

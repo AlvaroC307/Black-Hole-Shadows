@@ -79,17 +79,18 @@ N_pix=N
 # Factor multiplicativo para el tamaño de la pantalla
 Factor_Screen = eval(list_Input[6])
 
+
+# Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa
+r_limit = eval(list_Input[7])
+
+# Nombre de la métrica que se va a elegir en la base de datos
+name=list_Input[8]
+
 # "Colours" es para la funcion de los cuadrantes de la esfera de colores. "Image" es si ha dado el usuario una imagen de fondo.
-Back_Im = list_Input[7]
+Back_Im = list_Input[9]
 if (Back_Im != "Colours") and (Back_Im != "Image"):     # Comprobar que Back_Im tiene uno de los dos valores posibles:
     sys.exit("Hay un error, Back_im debe ser Colours o Image, para colores o imagen respectivamente")
 
-
-# Parámetro para ver a partir de que radio se considera que la métrica a degenerado a Minkowski y se corta el programa
-r_limit = eval(list_Input[8])
-
-# Nombre de la métrica que se va a elegir en la base de datos
-name=list_Input[9]
 
 # Nombre de la imagen que se va a elegir en la base de datos para el fichero Background
 Image_name=list_Input[10]
